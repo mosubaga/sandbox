@@ -14,7 +14,7 @@ def read_csv(csv_file):
   with open(csv_file,'rb') as f:
     reader = csv.reader(f)
     for row in reader:
-        print row[3]
+      print(row[3])
 
 # ------------------------------------------------------------------------------
 
