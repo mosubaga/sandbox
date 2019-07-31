@@ -31,6 +31,8 @@ func GetRequest(sURL string) []byte {
 }
 
 func main() {
+
+  // Taken from JSONPlaceholder : https://jsonplaceholder.typicode.com/
 	var sURL = "https://jsonplaceholder.typicode.com/todos/1"
 	var byResponse = GetRequest(sURL)
 	fmt.Println(string(byResponse))
