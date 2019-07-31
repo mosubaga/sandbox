@@ -1,12 +1,12 @@
 package main
 
 import (
-    "fmt"
-	  "net/http"
-    "io/ioutil"
-	  // "encoding/json"
-    "os"
-	)
+"fmt"
+"net/http"
+"io/ioutil"
+// "encoding/json"
+"os"
+)
 
 
 // GetRequest http request
