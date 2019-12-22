@@ -1,3 +1,5 @@
 .DS_Store
 ./golang/bin/
 ./golang/pkg/
+./golang/src/
+
