@@ -57,7 +57,6 @@ def main():
     sURI    = sys.argv[3]
 
     AppName = {}
-    # XAPIS LOCAL
     AppName['<prod>']  = "<prod_url>"
 
     sURL = AppName[sApp] + sURI
