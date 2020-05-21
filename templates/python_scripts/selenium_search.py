@@ -18,7 +18,7 @@ class SeleniumDebut(unittest.TestCase):
         driver = self.driver
         driver.get(self.base_url + "/?gws_rd=ssl")
         driver.find_element_by_id("lst-ib").clear()
-        driver.find_element_by_id("lst-ib").send_keys("climber.com")
+        driver.find_element_by_id("lst-ib").send_keys("selenium")
 
 
     def is_element_present(self, how, what):
