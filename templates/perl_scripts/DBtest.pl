@@ -2,7 +2,7 @@ use strict;
 use DBI;
 
 #open connection to Access database
-my $dbh = DBI->connect('dbi:ODBC:driver=microsoft access driver (*.mdb);dbq=D:\Projects\Engineering\DBTest\lahman56.mdb');
+my $dbh = DBI->connect('dbi:ODBC:driver=microsoft access driver (*.mdb);dbq=D:\Projects\testdb.mdb');
 
 #prepare and execute SQL statement
 my $sqlstatement=
