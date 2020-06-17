@@ -7,8 +7,8 @@ import os, re, json,pprint
 
 async def download_html(session, url):
     async with session.get(url, ssl=False) as res:
-        aURI = re.split('\/', url)
-        filename = f'{aURI[4]}.json'
+        aURI = re.split('\.', url)
+        filename = f'{aURI[1]}.txt'
 
         async with aiofiles.open(filename, 'wb') as f:
             while True:
@@ -20,17 +20,15 @@ async def download_html(session, url):
         return await res.release()
 
 
-async def main(url):
+async def requrl(url):
     async with aiohttp.ClientSession() as session:
         await download_html(session, url)
 
 
-urls = [
-    '[API_URL1]',
-    '[API_URL2]'
-]
+def main():
+    urls = ['URL1','URL2']
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(asyncio.gather(*(requrl(url) for url in urls)))
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(
-    asyncio.gather(*(main(url) for url in urls))
-)
+if __name__ == '__main__':
+    main()

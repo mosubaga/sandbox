@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys, shutil, os, re, codecs, pprint
 import asyncio
 import aiofiles
@@ -21,7 +22,7 @@ async def search_string(pattern, sfile):
         lines = await fh.readlines()
         for line in lines:
             if pattern in line:
-                print(sfile + " line(" + str(i) + "): " + line.strip())
+                print(sfile + " | line(" + str(i) + ") | " + line.strip())
             i+=1
 
 
@@ -30,9 +31,7 @@ def main():
     pattern = "[KEY]"
     filelist = scan_dir(r'[FOLDER]')
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(
-    asyncio.gather(*(search_string(pattern, sfile) for sfile in filelist))
-    )
+    loop.run_until_complete(asyncio.gather(*(search_string(pattern, sfile) for sfile in filelist)))
 
 if __name__ == '__main__':
     main()
