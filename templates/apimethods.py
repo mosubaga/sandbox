@@ -1,5 +1,8 @@
+#! /usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import sys, shutil, os, re, codecs, pprint
-import requests
+import requests, json, urllib3
 
 # ----------------------------------------
 def getJSON():
@@ -8,42 +11,69 @@ def getJSON():
         data = dataFile.read()
     return data
 
+
+# ----------------------------------------
+def prettifyJSON(sBody):
+# ----------------------------------------
+
+    oJSON = json.loads(sBody)
+    sFormatJSON = json.dumps(oJSON, ensure_ascii = False, indent=4)
+    return sFormatJSON
+
+
 # ----------------------------------------
 def RunTestGET(sURL):
 # ----------------------------------------
-    print(sURL)
-    resp   = requests.get(sURL)
-    body   = resp.content.decode("utf-8")
+    headers = {'content-type': 'application/json'}
+    resp   = requests.get(sURL, headers=headers, verify=False)
+    body   = prettifyJSON(resp.content)
     resp.connection.close()
-    print(resp.status_code)
-    print(body)
-    
+    print(prettifyJSON(body))
+
+
 
 # ----------------------------------------
 def RunTestPOST(sURL):
-# ----------------------------------------  
+# ----------------------------------------
     sData  = getJSON()
-    resp   = requests.post(sURL, data=sData)
-    body   = resp.content.decode("utf-8")
+    headers = {'content-type': 'application/json'}
+    resp   = requests.post(sURL, data=sData, headers=headers, verify=False)
+    body   = prettifyJSON(resp.content)
     resp.connection.close()
     print(resp.status_code)
     print(body)
+
 
 # ----------------------------------------
 def RunTestPUT(sURL):
 # ----------------------------------------
     sData  = getJSON()
-    resp   = requests.put(sURL, data=sData)
-    body   = resp.content.decode("utf-8")
+    headers = {'content-type': 'application/json'}
+    resp   = requests.put(sURL, data=sData, headers=headers, verify=False)
+    body   = prettifyJSON(resp.content)
     resp.connection.close()
     print(resp.status_code)
     print(body)
 
+
+# ----------------------------------------
+def RunTestPATCH(sURL):
+# ----------------------------------------
+    sData  = getJSON()
+    headers = {'content-type': 'application/json'}
+    resp   = requests.patch(sURL, data=sData, headers=headers, verify=False)
+    body   = prettifyJSON(resp.content)
+    resp.connection.close()
+    print(resp.status_code)
+    print(body)
+
+
 # ----------------------------------------
 def RunTestDELETE(sURL):
 # ----------------------------------------
-    resp   = requests.delete(sURL)
-    body   = resp.content.decode("utf-8")
+    headers = {'content-type': 'application/json'}
+    resp   = requests.delete(sURL, headers=headers, verify=False)
+    body   = prettifyJSON(resp.content)
     resp.connection.close()
     print(resp.status_code)
     print(body)
@@ -51,15 +81,12 @@ def RunTestDELETE(sURL):
 # ----------------------------------------
 def main():
 # ----------------------------------------
-    
+
     sMethod = sys.argv[1]
-    sApp    = sys.argv[2]
-    sURI    = sys.argv[3]
+    sURI    = sys.argv[2]
 
-    AppName = {}
-    AppName['<prod>']  = "<prod_url>"
-
-    sURL = AppName[sApp] + sURI
+    urllib3.disable_warnings()
+    sURL = "[URL]" + sURI
     if (re.search("get|GET",sMethod)):
         print("GET Method")
         RunTestGET(sURL)
@@ -69,6 +96,9 @@ def main():
     elif (re.search("put|PUT",sMethod)):
         print("PUT Method")
         RunTestPUT(sURL)
+    elif (re.search("patch|PATCH",sMethod)):
+        print("PATCH Method")
+        RunTestPATCH(sURL)
     elif (re.search("delete|DELETE",sMethod)):
         print("DELETE Method")
         RunTestDELETE(sURL)
@@ -77,5 +107,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-
