@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	filePath := "/Users/nobu/Projects/scripts/sandbox/scripts/work"
+	filePath := "[FilePath]"
 	fileList := GetFileList(filePath)
 
 	for i, file := range fileList {
