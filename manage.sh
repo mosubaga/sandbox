@@ -1,5 +1,7 @@
 #! /bin/bash
 
-echo ":: File List ::"
-find . | grep -v ".git" | egrep "\.(pl|py|js)$"
+echo ":: Generating file list ::"
+find . | grep -v ".git" | egrep "\.(pl|py|js|html)$"
+
+
 
