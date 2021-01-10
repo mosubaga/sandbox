@@ -35,7 +35,7 @@ func CheckArgument(iLenArg int) string {
 func GetFileList(sFilePath string) []string {
 
 	var fileList []string
-	re, _ := regexp.Compile("^.*\\.(py|cpp|pl|rb|ja)$")
+	re, _ := regexp.Compile("^.*\\.(py|cpp|pl|rb|js)$")
 
 	err := filepath.Walk(sFilePath, func(path string, f os.FileInfo, err error) error {
 		if re.MatchString(path) {
