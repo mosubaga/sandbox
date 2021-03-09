@@ -60,7 +60,6 @@ func CleanString(line string) string {
 }
 
 // Parse JSON file
-
 func ParseJSON(sPath string) {
 
 	contents, err := ioutil.ReadFile(sPath)
