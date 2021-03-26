@@ -7,6 +7,7 @@ response = Net::HTTP.get_response(uri)
 
 parsed = JSON.parse(response.body) # returns a hash
 
+# Create Hashes
 cases  = Hash.new()
 deaths = Hash.new()
 
