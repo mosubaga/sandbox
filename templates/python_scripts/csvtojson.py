@@ -20,7 +20,7 @@ def csv_to_json(sName):
 
     #convert python jsonArray to JSON String and write to file
     with codecs.open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
-        jsonString = json.dumps(jsonArray, indent=4)
+        jsonString = json.dumps(jsonArray, ensure_ascii=False, indent=4)
         jsonf.write(jsonString)
 
 def main():
