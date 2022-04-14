@@ -2,22 +2,26 @@ package main
 
 import (
 	"fmt"
-	"github.com/gen2brain/go-unarr"
 	"os"
 	"path/filepath"
 	"regexp"
+	"time"
+
+	"github.com/gen2brain/go-unarr"
 )
+
+var sFilePath string = "[FILE_PATH]"
 
 func main() {
 
-	sFilePath := "<ROOTFOLDER>"
 	fmt.Println("Getting files from " + sFilePath)
 	fileList := GetFileList(sFilePath)
+
+	ZipChannel := make(chan string, len(fileList))
+	defer close(ZipChannel)
 	for _, file := range fileList {
-		done := make(chan string)
-		go ExtractArchive(done, sFilePath, file)
-		msg := <-done
-		fmt.Println("Completed: " + msg)
+		go ExtractArchive(ZipChannel, file)
+		<-ZipChannel
 	}
 }
 
@@ -40,9 +44,7 @@ func GetFileList(sFilePath string) []string {
 	return fileList
 }
 
-func ExtractArchive(done chan string, sDst string, sArchive string) {
-
-	fmt.Printf("Extracting: " + sArchive + "\n")
+func ExtractArchive(ZipChannel chan<- string, sArchive string) {
 
 	a, err := unarr.NewArchive(sArchive)
 	if err != nil {
@@ -50,10 +52,11 @@ func ExtractArchive(done chan string, sDst string, sArchive string) {
 	}
 	defer a.Close()
 
-	_, err = a.Extract(sDst)
+	_, err = a.Extract(sFilePath)
 	if err != nil {
 		panic(err)
 	}
 
-	done <- string(sArchive)
+	fmt.Printf(":: %s :: Unzipped %s\n", time.Now().Format("2006.01.02 15:04:05"), sArchive)
+	ZipChannel <- string(sArchive)
 }
