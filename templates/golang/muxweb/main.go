@@ -44,7 +44,7 @@ func GetFilteredItems(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal([]byte(contents), &results)
 
 	var aFiltered []interface{}
-	wps := results["weapons"].([]interface{})
+	wps := results["items"].([]interface{})
 	for _, wp := range wps {
 		//Reading each value by its key
 		val := wp.(map[string]any)
