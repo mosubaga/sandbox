@@ -46,3 +46,4 @@ func main() {
 	}
 
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
+}
