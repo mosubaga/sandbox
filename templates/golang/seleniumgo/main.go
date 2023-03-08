@@ -31,8 +31,7 @@ func main() {
 
     cssselector := "body"
 
-    sURL := "https://patient.accredo.com/frontend/wwwaccredo/#/es/"
-    // sURL := "https://www.koltunballetboston.com"
+    sURL := "[URL]"
 
     driver.WaitWithTimeoutAndInterval(waitcomplete, 1000, 1000)
     driver.Get(sURL)
