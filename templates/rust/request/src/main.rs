@@ -14,5 +14,5 @@ fn main(){
         Err(err) => panic!("Error: {}", err)
     };
 
-    println!("XAPIS VERSION on STAGAING: {}",  json_data["[FIELD]"]);
+    println!("Version of app: {}",  json_data["[FIELD]"]);
 }
