@@ -6,5 +6,5 @@ sql = "[SQL]"
 rows = DBInterface.execute(dbconn, sql)
 
 for row in rows
-    println(row[:origin_name], " == ", row[:project_key])
+    println(row[:field1], " == ", row[:field2])
 end
