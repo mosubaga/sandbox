@@ -2,5 +2,6 @@
 ./golang/bin/
 ./golang/pkg/
 ./golang/src/
+./golang/.idea
 .vscode/
 
