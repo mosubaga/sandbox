@@ -72,7 +72,6 @@ def load_lahman_data(data_path='./'):
     except FileNotFoundError as e:
         print(f"Error loading data: {e}")
         print("Please ensure Lahman CSV files are in the specified directory")
-        print("Download from: http://www.seanlahman.com/baseball-archive/statistics/")
         return None, None, None
     except Exception as e:
         print(f"Unexpected error: {e}")
@@ -1004,7 +1003,7 @@ if __name__ == "__main__":
         print("  - Batting.csv")
         print("  - People.csv (or Master.csv)")  
         print("  - Teams.csv")
-        print("\nDownload from: http://www.seanlahman.com/baseball-archive/statistics/")
+        print("\nDownload lahman dataset")
 
 # ------------------------------------------------------------------
 # 1️⃣4️⃣ Utility Functions for Custom Analysis
@@ -1109,5 +1108,5 @@ def run_example_analyses(df):
     print(f"   - Access the processed dataframe as 'df' for your own analysis")
 
 # ---------------------------------
-# Note: Data from Lahman database files: http://www.seanlahman.com/baseball-archive/statistics/
+# Note: Data from Lahman database files
 # ---------------------------------
