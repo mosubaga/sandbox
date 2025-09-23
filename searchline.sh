@@ -3,7 +3,7 @@
 echo ":: Generating file list ::"
 echo ":: Start Search ::"
 
-keyword="json"
+keyword=$1
 
 for file in $(find ./templates | grep -v ".git" | egrep "\.(pl|py|js|html|go|rs|rb|cpp|h)$")
 do
