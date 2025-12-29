@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 #include <string>
 
 bool contains_substring(const std::string& text, const std::string& needle) {
@@ -30,6 +31,35 @@ std::string replace_all(std::string text, const std::string& from, const std::st
     return text;
 }
 
+std::string regex_group(const std::string& text, const std::string& pattern, std::size_t group_index) {
+    const std::regex compiled(pattern);
+    std::smatch match;
+    if (!std::regex_match(text, match, compiled)) {
+        return "";
+    }
+
+    if (group_index >= match.size()) {
+        return "";
+    }
+
+    return match[group_index].str();
+}
+
+std::size_t regex_group_count(const std::string& pattern) {
+    const std::regex compiled(pattern);
+    return compiled.mark_count();
+}
+
+bool regex_matches(const std::string& text, const std::string& pattern) {
+    return std::regex_match(text, std::regex(pattern));
+}
+
+std::string regex_replace_all(const std::string& text,
+                              const std::string& pattern,
+                              const std::string& replacement) {
+    return std::regex_replace(text, std::regex(pattern), replacement);
+}
+
 int main() {
     std::string message = "  Hello, C++ strings!  ";
     std::string trimmed = trim(message);
@@ -42,6 +72,18 @@ int main() {
 
     std::string replaced = replace_all(trimmed, "strings", "utilities");
     std::cout << "Replaced: [" << replaced << "]\n";
+
+    std::string email = "nhayashi@example.com";
+    std::string email_pattern = "(.*)@(.*)\\.com";
+    std::cout << "Regex group count: " << regex_group_count(email_pattern) << "\n";
+    std::cout << "Regex group 1: [" << regex_group(email, email_pattern, 1) << "]\n";
+    std::cout << "Regex group 2: [" << regex_group(email, email_pattern, 2) << "]\n";
+    std::cout << "Regex matches: "
+              << (regex_matches(email, email_pattern) ? "yes" : "no")
+              << "\n";
+    std::cout << "Regex replaced: ["
+              << regex_replace_all(email, "@example\\.com", "@example.org")
+              << "]\n";
 
     return 0;
 }
