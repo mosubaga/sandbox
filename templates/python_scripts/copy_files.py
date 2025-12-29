@@ -1,55 +1,52 @@
 import sys
 import shutil
-import os
-import re
+from pathlib import Path
 
 ################################################################################
-root_dir = "<rootDir>"
+ROOT_DIR = "<rootDir>"
 ################################################################################
 
-# ------------------------------------------------------------------------------
+EURO_LANGS = {"german", "french", "spanish", "italian", "swedish", "finnish"}
+TARGET_EXTS = {".xxx", ".yyy"}
 
-def list_file(root_dir):
 
-    lang = sys.argv[1]
-    pattern = '[german|french|spanish|italian|swedish|finnish]'
+def normalize_language(lang):
+    print(f"Copying for language: {lang}")
+    return "euro" if lang in EURO_LANGS else lang
 
-    print "Copying for language: %s" % lang
 
-    if re.match(pattern,lang):
-        lang = 'euro'
+def list_files(root_dir, lang):
+    root_path = Path(root_dir)
+    matches = []
 
-    obj = []
+    for path in root_path.rglob("*"):
+        if path.is_file() and path.suffix in TARGET_EXTS:
+            if lang in str(path):
+                matches.append(path)
 
-    for root, dirs, files in os.walk(root_dir):
-        for file in files:
-    	   if file.endswith('.xxx') or file.endswith('.yyy') :
-              full_obj = os.path.join(root,file)
-              if lang in full_obj:
-                obj.append(full_obj)
+    return matches
 
-    return obj
 
-# ------------------------------------------------------------------------------
+def copy_files(files, root_dir):
+    root_path = Path(root_dir)
 
-def copy_files(obj):
+    for src in files:
+        tgt = root_path / src.name
+        if tgt.is_file():
+            tgt.unlink()
+        print(f"Copying {src} to {tgt} ... ")
+        shutil.copy(src, tgt)
 
-    for obj_file in obj:
-        o = os.path.basename(obj_file)
-        tgt = root_dir + "\\" + o
-        if os.path.isfile(tgt):
-            os.remove(tgt)
-        print "Copying %s to %s ... " % (obj_file,tgt)
-        shutil.copy(obj_file,tgt)
-
-# ------------------------------------------------------------------------------
 
 def main():
+    if len(sys.argv) < 2:
+        raise SystemExit("Usage: copy_files.py <language>")
 
-    obj = []
-    obj = list_file(root_dir)
-    copy_files(obj)
-    print "Finish copying ...\n"
+    lang = normalize_language(sys.argv[1])
+    files = list_files(ROOT_DIR, lang)
+    copy_files(files, ROOT_DIR)
+    print("Finish copying ...\n")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
