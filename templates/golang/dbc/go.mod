@@ -1,4 +1,4 @@
-module gldb
+module dbc
 
 go 1.25
 
