@@ -3,7 +3,7 @@ use mysql::*;
 
 fn main() {
     // MySQL database connection details
-    let url = "mysql://admin:gyoker@localhost:8889/megaten";
+    let url = "mysql://admin:passwd@localhost:xxxx/some_db";
 
     // Establish a connection to the MySQL database
     let pool = Pool::new(url).expect("Failed to create MySQL connection pool");
