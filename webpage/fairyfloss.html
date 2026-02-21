@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairy Floss CSS Theme 🍬</title>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   🍬 FAIRY FLOSS CSS THEME
+   Spun-sugar pastels — pink, violet & blue, soft as air
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Pastel Pink ── */
+  --ff-pink:         #F7C5D8;   /* fairy floss pink */
+  --ff-pink-soft:    #FBDCEA;   /* blush cloud */
+  --ff-pink-pale:    #FEF0F5;   /* palest blush */
+  --ff-pink-deep:    #ECA0BF;   /* deeper petal */
+
+  /* ── Pastel Violet ── */
+  --ff-violet:       #D4BAF0;   /* wisteria dream */
+  --ff-violet-soft:  #E8D8F8;   /* lavender mist */
+  --ff-violet-pale:  #F4EEFF;   /* palest lavender */
+  --ff-violet-deep:  #BBA0E0;   /* deeper violet */
+
+  /* ── Pastel Blue ── */
+  --ff-blue:         #B8D8F8;   /* cotton sky blue */
+  --ff-blue-soft:    #D4ECFC;   /* ice blue */
+  --ff-blue-pale:    #EDF6FE;   /* mist blue */
+  --ff-blue-deep:    #96C4F0;   /* deeper sky */
+
+  /* ── Neutrals ── */
+  --ff-white:        #FEFCFF;   /* snow white */
+  --ff-cream:        #FDF8FF;   /* warm white */
+  --ff-ink:          #5A4A6A;   /* soft ink (no harsh black) */
+  --ff-ink-soft:     #8A7A9A;   /* muted ink */
+  --ff-ink-pale:     #B0A5BF;   /* whisper ink */
+
+  /* ── Glow colors ── */
+  --ff-glow-pink:   rgba(247,197,216,0.55);
+  --ff-glow-violet: rgba(212,186,240,0.50);
+  --ff-glow-blue:   rgba(184,216,248,0.55);
+
+  /* ── Candy gradient (the hero sweep) ── */
+  --ff-candy: linear-gradient(135deg,
+    var(--ff-pink-soft)   0%,
+    var(--ff-violet-soft) 40%,
+    var(--ff-blue-soft)   80%,
+    var(--ff-pink-soft)   100%);
+
+  /* ── Fonts ── */
+  --font-display: 'Comfortaa', sans-serif;
+  --font-body:    'Quicksand', sans-serif;
+
+  /* ── Radii — everything is soft and round ── */
+  --r-pill:  999px;
+  --r-xl:    28px;
+  --r-lg:    20px;
+  --r-md:    14px;
+  --r-sm:    9px;
+  --r-xs:    5px;
+
+  /* ── Easing ── */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-soft:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-wisp:   cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--ff-violet-pale); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ff-pink), var(--ff-violet));
+  border-radius: var(--r-pill);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(212,186,240,0.45);
+  color: var(--ff-ink);
+}
+
+/* ─── Body ─── */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background: var(--ff-cream);
+  color: var(--ff-ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.75;
+  cursor: default;
+}
+
+/* ─── Layered pastel sky background ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 10%,  rgba(247,197,216,0.38) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 85% 15%,  rgba(212,186,240,0.32) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 50% at 50% 85%,  rgba(184,216,248,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 75% 60%,  rgba(247,197,216,0.22) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 40% at 20% 65%,  rgba(184,216,248,0.22) 0%, transparent 50%),
+    linear-gradient(155deg, #FEF2F9 0%, #F8F0FF 35%, #EFF6FE 65%, #FEF4FB 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Soft vignette edges */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%,
+    transparent 55%,
+    rgba(212,186,240,0.12) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FLOATING WISPS (candy floss strands)
+   ═══════════════════════════════════════════════════════ */
+.ff-wisp-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ff-wisp {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: ff-float-wisp linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ff-float-wisp {
+  0%   { transform: translateY(110vh) translateX(0px) rotate(0deg); opacity: 0; }
+  8%   { opacity: 1; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-15vh) translateX(var(--wisp-drift)) rotate(360deg); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════════ */
+
+.ff-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ff-ink);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+.ff-heading-xl  { font-size: clamp(2.5rem, 6vw, 4.2rem); }
+.ff-heading-lg  { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.ff-heading-md  { font-size: 1.3rem; }
+.ff-heading-sm  { font-size: 1.0rem; }
+
+/* Gradient text headline */
+.ff-title-gradient {
+  background: linear-gradient(135deg,
+    var(--ff-pink-deep)   0%,
+    var(--ff-violet-deep) 45%,
+    var(--ff-blue-deep)   100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: ff-gradient-shift 6s ease-in-out infinite;
+}
+
+.ff-label {
+  font-family: var(--font-display);
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ff-ink-soft);
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CARDS
+   ═══════════════════════════════════════════════════════ */
+
+.ff-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(18px) saturate(130%);
+  border: 1.5px solid rgba(255,255,255,0.90);
+  border-radius: var(--r-xl);
+  padding: 2rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 28px rgba(212,186,240,0.22),
+    0 1px 4px rgba(184,216,248,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  transition:
+    transform 0.35s var(--ease-bounce),
+    box-shadow 0.35s var(--ease-soft);
+}
+
+/* Candy swirl orb top-right */
+.ff-card::before {
+  content: '';
+  position: absolute;
+  top: -55px; right: -45px;
+  width: 190px; height: 190px;
+  background: radial-gradient(circle,
+    rgba(247,197,216,0.28) 0%,
+    rgba(212,186,240,0.18) 45%,
+    rgba(184,216,248,0.12) 70%,
+    transparent 85%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.5s var(--ease-soft), opacity 0.5s;
+}
+
+/* Pastel shimmer bottom strip */
+.ff-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--ff-pink)   0%,
+    var(--ff-violet) 45%,
+    var(--ff-blue)   100%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-soft);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+}
+
+.ff-card:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow:
+    0 14px 48px rgba(212,186,240,0.32),
+    0 4px 16px rgba(247,197,216,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+}
+.ff-card:hover::before { transform: scale(1.2) rotate(15deg); }
+.ff-card:hover::after  { opacity: 1; }
+
+/* Pink card variant */
+.ff-card-pink {
+  background: linear-gradient(145deg,
+    rgba(251,220,234,0.85) 0%,
+    rgba(255,255,255,0.80) 100%);
+  border-color: rgba(247,197,216,0.55);
+  box-shadow: 0 4px 28px rgba(247,197,216,0.30), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Violet card variant */
+.ff-card-violet {
+  background: linear-gradient(145deg,
+    rgba(232,216,248,0.85) 0%,
+    rgba(255,255,255,0.80) 100%);
+  border-color: rgba(212,186,240,0.55);
+  box-shadow: 0 4px 28px rgba(212,186,240,0.30), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Blue card variant */
+.ff-card-blue {
+  background: linear-gradient(145deg,
+    rgba(212,236,252,0.85) 0%,
+    rgba(255,255,255,0.80) 100%);
+  border-color: rgba(184,216,248,0.55);
+  box-shadow: 0 4px 28px rgba(184,216,248,0.30), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════ */
+
+.ff-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  padding: 0.65em 1.7em;
+  border: none;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.28s var(--ease-bounce),
+    box-shadow 0.28s var(--ease-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Inner shine layer */
+.ff-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255,255,255,0.40) 0%, transparent 55%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Ripple sparkle on hover */
+.ff-btn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+    rgba(255,255,255,0.0),
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.0));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.ff-btn:hover::after { opacity: 1; }
+.ff-btn:active { transform: scale(0.93) !important; }
+
+/* ── Pink ── */
+.ff-btn-pink {
+  background: linear-gradient(135deg, var(--ff-pink) 0%, var(--ff-pink-deep) 100%);
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(180,100,130,0.30);
+  box-shadow: 0 4px 20px var(--ff-glow-pink), 0 1px 3px rgba(0,0,0,0.06);
+}
+.ff-btn-pink:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 32px rgba(236,160,191,0.50), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── Violet ── */
+.ff-btn-violet {
+  background: linear-gradient(135deg, var(--ff-violet) 0%, var(--ff-violet-deep) 100%);
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(130,100,180,0.30);
+  box-shadow: 0 4px 20px var(--ff-glow-violet), 0 1px 3px rgba(0,0,0,0.06);
+}
+.ff-btn-violet:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 32px rgba(187,160,224,0.52), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── Blue ── */
+.ff-btn-blue {
+  background: linear-gradient(135deg, var(--ff-blue) 0%, var(--ff-blue-deep) 100%);
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(80,120,170,0.30);
+  box-shadow: 0 4px 20px var(--ff-glow-blue), 0 1px 3px rgba(0,0,0,0.06);
+}
+.ff-btn-blue:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 32px rgba(150,196,240,0.52), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── Candy (tri-color gradient) ── */
+.ff-btn-candy {
+  background: linear-gradient(135deg,
+    var(--ff-pink)   0%,
+    var(--ff-violet) 48%,
+    var(--ff-blue)   100%);
+  background-size: 200% 200%;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(120,80,150,0.25);
+  box-shadow:
+    0 4px 20px rgba(212,186,240,0.45),
+    0 1px 3px rgba(0,0,0,0.06);
+  animation: ff-gradient-shift 4s ease-in-out infinite;
+}
+.ff-btn-candy:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 36px rgba(212,186,240,0.55), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── Ghost ── */
+.ff-btn-ghost {
+  background: rgba(255,255,255,0.65);
+  color: var(--ff-ink-soft);
+  border: 1.5px solid rgba(212,186,240,0.50);
+  box-shadow: 0 2px 12px rgba(212,186,240,0.18);
+}
+.ff-btn-ghost:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: var(--ff-violet-pale);
+  border-color: var(--ff-violet);
+  color: var(--ff-ink);
+}
+
+/* ═══════════════════════════════════════════════════════
+   INPUT
+   ═══════════════════════════════════════════════════════ */
+
+.ff-input {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  width: 100%;
+  padding: 0.72em 1.15em;
+  border: 1.5px solid rgba(212,186,240,0.40);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.80);
+  color: var(--ff-ink);
+  outline: none;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
+}
+.ff-input::placeholder { color: var(--ff-ink-pale); }
+.ff-input:focus {
+  border-color: var(--ff-violet);
+  background: rgba(255,255,255,0.97);
+  box-shadow:
+    0 0 0 3.5px rgba(212,186,240,0.22),
+    0 0 0 1.5px rgba(184,216,248,0.18);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BADGES
+   ═══════════════════════════════════════════════════════ */
+
+.ff-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  padding: 0.28em 0.85em;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.ff-badge-pink   {
+  background: var(--ff-pink-soft);
+  color: #b06080;
+  border: 1px solid rgba(247,197,216,0.60);
+}
+.ff-badge-violet {
+  background: var(--ff-violet-soft);
+  color: #7055a0;
+  border: 1px solid rgba(212,186,240,0.55);
+}
+.ff-badge-blue   {
+  background: var(--ff-blue-soft);
+  color: #4a7aaa;
+  border: 1px solid rgba(184,216,248,0.55);
+}
+.ff-badge-candy  {
+  background: linear-gradient(135deg, var(--ff-pink-soft), var(--ff-violet-soft), var(--ff-blue-soft));
+  color: var(--ff-ink-soft);
+  border: 1px solid rgba(212,186,240,0.40);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CHIPS
+   ═══════════════════════════════════════════════════════ */
+
+.ff-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.80rem;
+  padding: 0.30em 0.90em;
+  border-radius: var(--r-pill);
+  cursor: default;
+  transition:
+    transform 0.22s var(--ease-bounce),
+    box-shadow 0.22s var(--ease-soft);
+}
+.ff-chip:hover {
+  transform: scale(1.08) translateY(-1px);
+}
+
+.ff-chip-pink   { background: var(--ff-pink-pale);   color: #b06080; border: 1px solid rgba(247,197,216,0.50); }
+.ff-chip-violet { background: var(--ff-violet-pale);  color: #7055a0; border: 1px solid rgba(212,186,240,0.50); }
+.ff-chip-blue   { background: var(--ff-blue-pale);    color: #4a7aaa; border: 1px solid rgba(184,216,248,0.50); }
+
+.ff-chip-pink:hover   { box-shadow: 0 4px 14px rgba(247,197,216,0.45); }
+.ff-chip-violet:hover { box-shadow: 0 4px 14px rgba(212,186,240,0.42); }
+.ff-chip-blue:hover   { box-shadow: 0 4px 14px rgba(184,216,248,0.45); }
+
+/* ═══════════════════════════════════════════════════════
+   PROGRESS / CANDY BAR
+   ═══════════════════════════════════════════════════════ */
+
+.ff-progress {
+  height: 12px;
+  border-radius: var(--r-pill);
+  background: rgba(212,186,240,0.15);
+  border: 1.5px solid rgba(212,186,240,0.22);
+  overflow: hidden;
+  position: relative;
+}
+.ff-progress-fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg,
+    var(--ff-pink)   0%,
+    var(--ff-violet) 50%,
+    var(--ff-blue)   100%);
+  background-size: 200% 100%;
+  box-shadow:
+    0 0 14px rgba(212,186,240,0.55),
+    0 0 4px rgba(247,197,216,0.40);
+  transition: width 0.8s var(--ease-soft);
+  animation: ff-candy-slide 4s linear infinite;
+  position: relative;
+}
+.ff-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  border-radius: var(--r-pill);
+  animation: ff-shimmer 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   DIVIDERS
+   ═══════════════════════════════════════════════════════ */
+
+.ff-divider {
+  border: none;
+  height: 1.5px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(247,197,216,0.55) 20%,
+    rgba(212,186,240,0.55) 50%,
+    rgba(184,216,248,0.55) 80%,
+    transparent);
+  margin: 1.5rem 0;
+  border-radius: var(--r-pill);
+}
+
+/* Dotted candy divider */
+.ff-divider-dots {
+  border: none;
+  height: 8px;
+  background:
+    radial-gradient(circle, var(--ff-pink)   4px, transparent 4px) 0    0 / 24px 8px,
+    radial-gradient(circle, var(--ff-violet) 4px, transparent 4px) 12px 0 / 24px 8px;
+  background-repeat: repeat-x;
+  margin: 1.5rem 0;
+  opacity: 0.60;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CLOUD CALLOUT
+   ═══════════════════════════════════════════════════════ */
+
+.ff-cloud {
+  background: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(212,186,240,0.40);
+  border-radius: var(--r-xl);
+  padding: 1.4rem 1.8rem;
+  position: relative;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--ff-ink-soft);
+  box-shadow:
+    0 3px 20px rgba(212,186,240,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+}
+.ff-cloud::before {
+  content: '✦';
+  position: absolute;
+  top: -0.7rem; left: 1.5rem;
+  font-size: 0.75rem;
+  background: linear-gradient(135deg, var(--ff-pink-deep), var(--ff-violet-deep));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TOGGLE / SWITCH
+   ═══════════════════════════════════════════════════════ */
+
+.ff-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  cursor: pointer;
+  user-select: none;
+}
+.ff-toggle-track {
+  width: 48px; height: 26px;
+  border-radius: var(--r-pill);
+  background: rgba(212,186,240,0.25);
+  border: 1.5px solid rgba(212,186,240,0.40);
+  position: relative;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.ff-toggle input { display: none; }
+.ff-toggle-thumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--ff-ink-pale);
+  transition: transform 0.3s var(--ease-bounce), background 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+.ff-toggle input:checked ~ .ff-toggle-track {
+  background: linear-gradient(135deg, var(--ff-pink), var(--ff-violet));
+  border-color: var(--ff-violet);
+  box-shadow: 0 0 12px rgba(212,186,240,0.45);
+}
+.ff-toggle input:checked ~ .ff-toggle-track .ff-toggle-thumb {
+  transform: translateX(22px);
+  background: white;
+}
+
+/* ═══════════════════════════════════════════════════════
+   AVATAR CLUSTER
+   ═══════════════════════════════════════════════════════ */
+
+.ff-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255,255,255,0.9);
+  box-shadow: 0 2px 12px rgba(212,186,240,0.40);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.ff-avatar-pink   { background: linear-gradient(135deg, var(--ff-pink-soft), var(--ff-pink-deep)); color: #fff; }
+.ff-avatar-violet { background: linear-gradient(135deg, var(--ff-violet-soft), var(--ff-violet-deep)); color: #fff; }
+.ff-avatar-blue   { background: linear-gradient(135deg, var(--ff-blue-soft), var(--ff-blue-deep)); color: #fff; }
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes ff-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes ff-candy-slide {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+@keyframes ff-shimmer {
+  0%, 100% { opacity: 0.5; transform: translateX(-100%); }
+  50%       { opacity: 1; transform: translateX(300%); }
+}
+@keyframes ff-float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(1deg); }
+}
+@keyframes ff-spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes ff-fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ff-pop {
+  0%   { opacity: 0; transform: scale(0.6) rotate(-6deg); }
+  70%  { transform: scale(1.08) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes ff-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,186,240,0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(212,186,240,0); }
+}
+
+.ff-float    { animation: ff-float  4s ease-in-out infinite; }
+.ff-fade-up  { animation: ff-fade-up 0.6s var(--ease-soft) both; }
+.ff-pop      { animation: ff-pop    0.6s var(--ease-bounce) both; }
+.ff-pulse    { animation: ff-pulse-glow 2.5s ease-in-out infinite; }
+
+.ff-delay-1 { animation-delay: 0.10s; }
+.ff-delay-2 { animation-delay: 0.22s; }
+.ff-delay-3 { animation-delay: 0.36s; }
+.ff-delay-4 { animation-delay: 0.52s; }
+.ff-delay-5 { animation-delay: 0.68s; }
+
+/* ═══════════════════════════════════════════════════════
+   DEMO PAGE
+   ═══════════════════════════════════════════════════════ */
+
+.demo-page {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 7rem;
+}
+
+/* ── Hero ── */
+.demo-hero {
+  text-align: center;
+  padding: 2.5rem 0 4rem;
+}
+
+.demo-hero-icon {
+  font-size: 3.8rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  animation: ff-float 4s ease-in-out infinite;
+  filter: drop-shadow(0 6px 18px rgba(212,186,240,0.55));
+}
+
+.demo-hero-kicker {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ff-violet-deep);
+  margin-bottom: 0.7rem;
+  opacity: 0.85;
+}
+
+/* Three candy dots separator */
+.demo-candy-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.8rem 0;
+}
+.demo-candy-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  animation: ff-pulse-glow 2.5s ease-in-out infinite;
+}
+.demo-candy-dot:nth-child(1) { background: var(--ff-pink-deep);   animation-delay: 0s; }
+.demo-candy-dot:nth-child(2) { background: var(--ff-violet-deep); animation-delay: 0.35s; }
+.demo-candy-dot:nth-child(3) { background: var(--ff-blue-deep);   animation-delay: 0.70s; }
+
+/* Section */
+.demo-section { margin-bottom: 3rem; }
+.demo-section-title {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ff-ink-pale);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(212,186,240,0.28);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.demo-section-title::before {
+  content: '✿';
+  font-size: 0.82rem;
+  background: linear-gradient(135deg, var(--ff-pink-deep), var(--ff-violet-deep));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.demo-row  { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1.3rem; }
+.demo-form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+</style>
+</head>
+<body>
+
+<!-- Floating candy wisps -->
+<div class="ff-wisp-field" id="wispField"></div>
+
+<main class="demo-page">
+
+  <!-- ── Hero ── -->
+  <header class="demo-hero">
+    <span class="demo-hero-icon">🍬</span>
+    <p class="demo-hero-kicker ff-fade-up">CSS Design System</p>
+    <h1 class="ff-heading ff-heading-xl ff-title-gradient ff-fade-up ff-delay-1" style="margin-bottom:0.6rem">
+      Fairy Floss
+    </h1>
+    <p class="ff-fade-up ff-delay-2" style="font-size:0.96rem;color:var(--ff-ink-soft);max-width:500px;margin:0 auto;line-height:1.8;">
+      A dreamy, spun-sugar design system woven from pastel pink, violet & blue — as light and airy as cotton candy.
+    </p>
+    <div class="demo-candy-sep ff-fade-up ff-delay-3">
+      <div class="demo-candy-dot"></div>
+      <div class="demo-candy-dot"></div>
+      <div class="demo-candy-dot"></div>
+    </div>
+    <div class="demo-row ff-fade-up ff-delay-4" style="justify-content:center;gap:0.7rem;">
+      <button class="ff-btn ff-btn-candy">Taste the Theme 🍭</button>
+      <button class="ff-btn ff-btn-ghost">Learn More</button>
+    </div>
+  </header>
+
+  <!-- ── Palette ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Colour Palette</p>
+    <div class="demo-row" style="gap:0.55rem;">
+      <div title="--ff-pink"         style="width:52px;height:52px;border-radius:50%;background:var(--ff-pink);        box-shadow:0 3px 14px rgba(247,197,216,0.60)"></div>
+      <div title="--ff-pink-deep"    style="width:52px;height:52px;border-radius:50%;background:var(--ff-pink-deep);   box-shadow:0 3px 12px rgba(236,160,191,0.55)"></div>
+      <div title="--ff-pink-pale"    style="width:52px;height:52px;border-radius:50%;background:var(--ff-pink-pale);   border:1.5px solid rgba(247,197,216,0.40)"></div>
+      <div title="--ff-violet"       style="width:52px;height:52px;border-radius:50%;background:var(--ff-violet);      box-shadow:0 3px 14px rgba(212,186,240,0.60)"></div>
+      <div title="--ff-violet-deep"  style="width:52px;height:52px;border-radius:50%;background:var(--ff-violet-deep); box-shadow:0 3px 12px rgba(187,160,224,0.55)"></div>
+      <div title="--ff-violet-pale"  style="width:52px;height:52px;border-radius:50%;background:var(--ff-violet-pale); border:1.5px solid rgba(212,186,240,0.40)"></div>
+      <div title="--ff-blue"         style="width:52px;height:52px;border-radius:50%;background:var(--ff-blue);        box-shadow:0 3px 14px rgba(184,216,248,0.60)"></div>
+      <div title="--ff-blue-deep"    style="width:52px;height:52px;border-radius:50%;background:var(--ff-blue-deep);   box-shadow:0 3px 12px rgba(150,196,240,0.55)"></div>
+      <div title="--ff-blue-pale"    style="width:52px;height:52px;border-radius:50%;background:var(--ff-blue-pale);   border:1.5px solid rgba(184,216,248,0.40)"></div>
+    </div>
+  </section>
+
+  <!-- ── Buttons ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Buttons</p>
+    <div class="demo-row">
+      <button class="ff-btn ff-btn-pink">Pink Floss 🌸</button>
+      <button class="ff-btn ff-btn-violet">Violet Dream ✿</button>
+      <button class="ff-btn ff-btn-blue">Sky Blue ☁️</button>
+      <button class="ff-btn ff-btn-candy">Candy Swirl 🍭</button>
+      <button class="ff-btn ff-btn-ghost">Ghost</button>
+    </div>
+  </section>
+
+  <!-- ── Cards ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Cards</p>
+    <div class="demo-grid">
+
+      <div class="ff-card ff-card-pink ff-fade-up" style="animation-delay:0.05s">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <div class="ff-avatar ff-avatar-pink ff-float" style="animation-delay:0s">🌸</div>
+          <div>
+            <h3 class="ff-heading ff-heading-sm" style="color:var(--ff-ink)">Strawberry Floss</h3>
+            <span class="ff-badge ff-badge-pink">Sweet</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;line-height:1.8;color:var(--ff-ink-soft)">Light as air and twice as sweet — the classic pink spun sugar melts on your tongue like a dream.</p>
+        <hr class="ff-divider">
+        <div class="demo-row" style="gap:0.4rem;">
+          <span class="ff-chip ff-chip-pink">Fruity</span>
+          <span class="ff-chip ff-chip-pink">Classic</span>
+        </div>
+      </div>
+
+      <div class="ff-card ff-card-violet ff-fade-up" style="animation-delay:0.13s">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <div class="ff-avatar ff-avatar-violet ff-float" style="animation-delay:0.5s">✿</div>
+          <div>
+            <h3 class="ff-heading ff-heading-sm" style="color:var(--ff-ink)">Wisteria Whirl</h3>
+            <span class="ff-badge ff-badge-violet">Dreamy</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;line-height:1.8;color:var(--ff-ink-soft)">A soft violet swirl with hints of lavender — delicate wisps that dissolve into pure imagination.</p>
+        <hr class="ff-divider">
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.76rem;color:var(--ff-ink-pale)">
+            <span>Dreaminess</span>
+            <span style="color:var(--ff-violet-deep);font-weight:600">88%</span>
+          </div>
+          <div class="ff-progress"><div class="ff-progress-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+
+      <div class="ff-card ff-card-blue ff-fade-up" style="animation-delay:0.22s">
+        <span class="ff-badge ff-badge-candy" style="margin-bottom:0.8rem;display:inline-flex">✦ New Flavour</span>
+        <h3 class="ff-heading ff-heading-sm" style="margin-bottom:0.5rem;color:var(--ff-ink)">Blueberry Sky</h3>
+        <p style="font-size:0.86rem;line-height:1.8;color:var(--ff-ink-soft)">Cotton candy clouds the colour of a summer afternoon — crisp, airy, impossibly light blue.</p>
+        <hr class="ff-divider">
+        <div class="demo-row" style="gap:0.4rem;">
+          <span class="ff-chip ff-chip-blue">Airy</span>
+          <span class="ff-chip ff-chip-violet">Seasonal</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Cloud callout ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Cloud Callout</p>
+    <div class="ff-cloud" style="max-width:560px">
+      Fairy floss (cotton candy) was first spun at a fairground in 1897 — ironically co-invented by a dentist. It is made of nothing but air and sugar, yet it fills the whole world with colour. That's the spirit of this theme.
+    </div>
+  </section>
+
+  <!-- ── Form ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Form Elements</p>
+    <div class="ff-card" style="max-width:440px;">
+      <h3 class="ff-heading ff-heading-sm" style="margin-bottom:1.4rem">Pick Your Flavour 🍬</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="demo-form-group">
+          <label class="ff-label">Your Name</label>
+          <input class="ff-input" type="text" placeholder="e.g. Lily">
+        </div>
+        <div class="demo-form-group">
+          <label class="ff-label">Favourite Colour</label>
+          <input class="ff-input" type="text" placeholder="Pink, Violet or Blue?">
+        </div>
+        <!-- Toggles -->
+        <div style="display:flex;flex-direction:column;gap:0.7rem;margin-top:0.2rem">
+          <label class="ff-toggle">
+            <input type="checkbox" checked>
+            <div class="ff-toggle-track"><div class="ff-toggle-thumb"></div></div>
+            <span style="font-size:0.84rem;color:var(--ff-ink-soft)">Extra sprinkles</span>
+          </label>
+          <label class="ff-toggle">
+            <input type="checkbox">
+            <div class="ff-toggle-track"><div class="ff-toggle-thumb"></div></div>
+            <span style="font-size:0.84rem;color:var(--ff-ink-soft)">Double the sugar</span>
+          </label>
+        </div>
+        <div style="display:flex;gap:0.6rem;margin-top:0.3rem;">
+          <button class="ff-btn ff-btn-candy" style="flex:1;">Order Now 🍭</button>
+          <button class="ff-btn ff-btn-ghost">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Progress ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Candy Progress Bars</p>
+    <div class="ff-card" style="max-width:480px;display:flex;flex-direction:column;gap:1.1rem;">
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ff-ink-soft);margin-bottom:0.45rem;">
+          <span>Pink Floss</span><span style="color:var(--ff-pink-deep);font-weight:600">92%</span>
+        </div>
+        <div class="ff-progress"><div class="ff-progress-fill" style="width:92%"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ff-ink-soft);margin-bottom:0.45rem;">
+          <span>Violet Mist</span><span style="color:var(--ff-violet-deep);font-weight:600">67%</span>
+        </div>
+        <div class="ff-progress"><div class="ff-progress-fill" style="width:67%"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ff-ink-soft);margin-bottom:0.45rem;">
+          <span>Sky Blue</span><span style="color:var(--ff-blue-deep);font-weight:600">45%</span>
+        </div>
+        <div class="ff-progress"><div class="ff-progress-fill" style="width:45%"></div></div>
+      </div>
+      <hr class="ff-divider" style="margin:0.2rem 0">
+      <div class="demo-row">
+        <span class="ff-chip ff-chip-pink">🌸 Strawberry</span>
+        <span class="ff-chip ff-chip-violet">✿ Lavender</span>
+        <span class="ff-chip ff-chip-blue">☁️ Blueberry</span>
+        <span class="ff-chip ff-chip-pink">🍑 Peach</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Badges & Tags ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Badges & Chips</p>
+    <div class="demo-row">
+      <span class="ff-badge ff-badge-pink">Fairy Floss</span>
+      <span class="ff-badge ff-badge-violet">Wisteria</span>
+      <span class="ff-badge ff-badge-blue">Cotton Sky</span>
+      <span class="ff-badge ff-badge-candy">All Flavours</span>
+    </div>
+    <div class="demo-row" style="margin-top:0.8rem">
+      <div class="ff-divider-dots" style="width:100%;margin:0.5rem 0 0.8rem"></div>
+    </div>
+    <!-- Avatars -->
+    <div class="demo-row">
+      <div class="ff-avatar ff-avatar-pink ff-pulse">P</div>
+      <div class="ff-avatar ff-avatar-violet">V</div>
+      <div class="ff-avatar ff-avatar-blue">B</div>
+      <div class="ff-avatar" style="background:linear-gradient(135deg,var(--ff-pink),var(--ff-violet),var(--ff-blue));color:#fff;">✦</div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── Generate floating candy wisps ──
+const field = document.getElementById('wispField');
+
+const COLORS = [
+  'rgba(247,197,216,VAL)',  // pink
+  'rgba(251,220,234,VAL)',  // pink soft
+  'rgba(212,186,240,VAL)',  // violet
+  'rgba(232,216,248,VAL)',  // violet soft
+  'rgba(184,216,248,VAL)',  // blue
+  'rgba(212,236,252,VAL)',  // blue soft
+];
+
+for (let i = 0; i < 28; i++) {
+  const el = document.createElement('div');
+  el.className = 'ff-wisp';
+
+  const size    = 6 + Math.random() * 28;
+  const left    = Math.random() * 105;
+  const alpha   = (0.25 + Math.random() * 0.45).toFixed(2);
+  const color   = COLORS[Math.floor(Math.random() * COLORS.length)].replace('VAL', alpha);
+  const dur     = 10 + Math.random() * 18;
+  const delay   = Math.random() * 20;
+  const drift   = ((Math.random() - 0.5) * 160).toFixed(0) + 'px';
+  const blur    = (1 + Math.random() * 5).toFixed(1);
+
+  el.style.cssText = `
+    width: ${size}px;
+    height: ${size}px;
+    left: ${left}%;
+    background: ${color};
+    filter: blur(${blur}px);
+    --wisp-drift: ${drift};
+    animation-duration: ${dur}s;
+    animation-delay: -${delay}s;
+  `;
+
+  field.appendChild(el);
+}
+</script>
+</body>
+</html>

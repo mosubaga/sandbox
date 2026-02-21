@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kindaichi Kosuke — Gothic Mystery</title>
+
+<style>
+/* ==========================
+   Kindaichi Gothic Mystery Theme
+   ========================== */
+:root{
+  --bg-0:#07080b;
+  --bg-1:#0e1117;
+  --paper:#f3ecd9;
+  --paper-2:#e6dcc2;
+  --ink:#121318;
+  --muted:#a7a7b4;
+  --moon:#c9d6ff;
+  --blood:#a4141c;
+  --brass:#bda56a;
+  --shadow: rgba(0,0,0,.55);
+  --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Garamond, Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --max: 980px;
+  --ring: 0 0 0 1px rgba(201,214,255,.18);
+  --glow: 0 0 24px rgba(201,214,255,.14);
+}
+
+html, body { height: 100%; }
+body{
+  margin:0;
+  color: var(--paper);
+  font-family: var(--serif);
+  line-height: 1.65;
+  background:
+    radial-gradient(1200px 600px at 75% 10%, rgba(201,214,255,.12), transparent 60%),
+    radial-gradient(900px 500px at 20% 30%, rgba(189,165,106,.08), transparent 55%),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1) 55%, #07070a);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 700px at 50% 10%, transparent 55%, rgba(0,0,0,.55) 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.015), rgba(255,255,255,.015) 1px, rgba(0,0,0,.015) 2px, rgba(0,0,0,.015) 3px);
+  mix-blend-mode: overlay;
+  opacity:.5;
+}
+
+.container{
+  position:relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 20px 80px;
+}
+
+.hero{
+  padding: 44px 26px;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(201,214,255,.12), rgba(0,0,0,.15)),
+    linear-gradient(135deg, rgba(189,165,106,.10), transparent 55%);
+  box-shadow: var(--ring), 0 24px 60px rgba(0,0,0,.6);
+  border: 1px solid rgba(201,214,255,.12);
+  backdrop-filter: blur(6px);
+}
+
+.hero__kicker{
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .78rem;
+  color: rgba(201,214,255,.78);
+}
+
+h1, h2, h3{
+  margin: 0 0 12px;
+  line-height: 1.12;
+  text-shadow: 0 2px 20px rgba(0,0,0,.65);
+}
+
+h1{
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+}
+
+.hero__sub{
+  margin-top: 14px;
+  max-width: 70ch;
+  color: rgba(243,236,217,.85);
+}
+
+.section{
+  margin-top: 30px;
+  padding: 22px 22px;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(18,19,24,.65), rgba(7,8,11,.75));
+  border: 1px solid rgba(189,165,106,.10);
+  box-shadow: 0 18px 44px rgba(0,0,0,.55);
+}
+
+.parchment{
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  background:
+    radial-gradient(900px 260px at 30% 20%, rgba(255,255,255,.65), transparent 60%),
+    linear-gradient(180deg, var(--paper), var(--paper-2));
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.case-notes{
+  list-style: none;
+  padding: 0;
+}
+.case-notes li{
+  padding: 10px 12px;
+  margin: 10px 0;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(189,165,106,.10);
+}
+
+.accent-blood{ color: var(--blood); }
+
+.btn{
+  display:inline-block;
+  margin-top:12px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(201,214,255,.18), rgba(0,0,0,.22));
+  border: 1px solid rgba(201,214,255,.18);
+  color: rgba(243,236,217,.94);
+  font-family: var(--sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  text-decoration:none;
+}
+
+blockquote{
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border-left: 3px solid rgba(189,165,106,.7);
+  background: rgba(255,255,255,.03);
+}
+
+.footer{
+  margin-top: 34px;
+  padding-top: 18px;
+  color: rgba(167,167,180,.85);
+  font-family: var(--sans);
+  font-size: .92rem;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header class="hero">
+  <div class="hero__kicker">Japanese Gothic Mystery</div>
+  <h1>Kindaichi Kosuke</h1>
+  <p class="hero__sub">
+    A wandering detective with unkempt hair and razor-sharp logic,
+    solving murders hidden beneath decaying aristocratic families and 
+    <span class="accent-blood">blood-stained inheritances</span>.
+  </p>
+  <a href="#" class="btn">Enter the Case File</a>
+</header>
+
+<section class="section">
+  <h2>The Detective</h2>
+  <p>
+    Kindaichi Kosuke appears quiet, awkward, almost fragile —
+    yet behind the disheveled appearance lies a mind capable of
+    dismantling the most elaborate locked-room murders.
+  </p>
+
+  <div class="parchment">
+    <strong>Case File:</strong> Honjin Murder<br>
+    Snow falls outside a rural estate. A koto string echoes in the night.
+    By morning, a bride and groom lie dead inside a sealed room.
+  </div>
+</section>
+
+<section class="section">
+  <h2>Recurring Themes</h2>
+  <ul class="case-notes">
+    <li>Ancient family lineages hiding dark secrets</li>
+    <li>Post-war social collapse and psychological trauma</li>
+    <li>Grotesque yet methodical murder designs</li>
+    <li>Logic triumphing over superstition</li>
+  </ul>
+
+  <blockquote>
+    “The truth does not hide in shadows —
+    it waits patiently for someone willing to look.”
+  </blockquote>
+</section>
+
+<footer class="footer">
+  © 2026 Gothic Mystery Archive — Mansfield, MA
+</footer>
+
+</div>
+</body>
+</html>

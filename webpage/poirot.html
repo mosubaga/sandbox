@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hercule Poirot — Art Deco Elegance</title>
+
+<style>
+/* ==========================
+   Hercule Poirot — Art Deco Elegance
+   Order • Symmetry • Precision
+   ========================== */
+
+:root{
+  --ivory:#fbf6ea;
+  --ivory-2:#f2ead7;
+  --ink:#121319;
+  --ink-2:#1b1d26;
+  --navy:#0f1a2b;
+  --gold:#c9a24a;
+  --gold-2:#a8842f;
+  --emerald:#1f6f5b;
+  --muted:#5a5e6a;
+  --shadow: rgba(0,0,0,.18);
+
+  --serif: ui-serif, "Didot", "Bodoni MT", "Playfair Display", Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --max: 980px;
+}
+
+html, body { height: 100%; }
+body{
+  margin:0;
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(201,162,74,.14), transparent 60%),
+    radial-gradient(900px 500px at 80% 0%, rgba(31,111,91,.10), transparent 55%),
+    linear-gradient(180deg, var(--ivory), var(--ivory-2));
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  background:
+    radial-gradient(1000px 500px at 50% 0%, transparent 55%, rgba(0,0,0,.10) 100%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.018), rgba(0,0,0,.018) 1px, transparent 2px, transparent 4px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.012), rgba(0,0,0,.012) 1px, transparent 2px, transparent 5px);
+  opacity:.45;
+}
+
+.container{
+  position:relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 20px 84px;
+}
+
+.deco-card{
+  background: rgba(255,255,255,.72);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(15,26,43,.12);
+  border: 1px solid rgba(18,19,25,.10);
+  position:relative;
+  overflow:hidden;
+}
+
+.deco-card::before{
+  content:"";
+  position:absolute;
+  inset: 14px;
+  border-radius: calc(var(--radius) - 8px);
+  border: 1px solid rgba(201,162,74,.55);
+  pointer-events:none;
+}
+.deco-card::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0;
+  height: 10px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(201,162,74,.55) 18%,
+    rgba(15,26,43,.20) 50%,
+    rgba(201,162,74,.55) 82%,
+    transparent 100%
+  );
+  opacity:.65;
+}
+
+.hero{
+  padding: 42px 26px 28px;
+}
+.kicker{
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: .78rem;
+  color: rgba(15,26,43,.78);
+}
+
+h1, h2, h3{
+  font-family: var(--serif);
+  margin: 10px 0 10px;
+  line-height: 1.1;
+}
+h1{
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  color: var(--navy);
+}
+.sub{
+  max-width: 72ch;
+  color: rgba(18,19,25,.84);
+  font-size: 1.05rem;
+}
+
+.deco-divider{
+  margin: 18px 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,74,.7), transparent);
+  position: relative;
+}
+.deco-divider::after{
+  content:"⌁ ⌁ ⌁";
+  position:absolute;
+  left:50%;
+  top:-12px;
+  transform: translateX(-50%);
+  letter-spacing:.18em;
+  color: rgba(201,162,74,.85);
+  background: rgba(255,255,255,.72);
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.section{
+  padding: 22px 26px;
+}
+.section h2{
+  font-size: 1.5rem;
+}
+.section p{
+  color: rgba(18,19,25,.86);
+}
+
+.callout{
+  margin-top: 14px;
+  padding: 16px 16px;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(201,162,74,.14), rgba(31,111,91,.06)),
+    rgba(255,255,255,.65);
+  border: 1px solid rgba(201,162,74,.35);
+}
+.callout strong{
+  color: var(--navy);
+  letter-spacing:.02em;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,162,74,.55);
+  background: linear-gradient(180deg, rgba(201,162,74,.18), rgba(15,26,43,.06));
+  color: var(--navy);
+  font-family: var(--sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  text-decoration:none;
+  transition: transform .14s ease, box-shadow .14s ease;
+  box-shadow: 0 14px 30px rgba(15,26,43,.10);
+}
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(15,26,43,.14);
+}
+
+a{
+  color: var(--emerald);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(31,111,91,.25);
+}
+a:hover{
+  border-bottom-color: rgba(201,162,74,.75);
+}
+
+.case-list{
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.case-list li{
+  margin: 10px 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(18,19,25,.10);
+  display:flex;
+  gap:10px;
+  align-items: baseline;
+}
+.case-list li::before{
+  content:"◆";
+  color: rgba(201,162,74,.9);
+}
+
+.footer{
+  margin-top: 10px;
+  padding: 18px 26px 26px;
+  color: rgba(90,94,106,.92);
+  font-size: .92rem;
+}
+
+/* Small enhancement: a neat “monogram” chip */
+.monogram{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,162,74,.55);
+  color: var(--navy);
+  font-family: var(--serif);
+  font-weight: 700;
+  background: rgba(255,255,255,.62);
+  box-shadow: 0 10px 22px rgba(15,26,43,.10);
+}
+
+/* Responsive */
+@media (max-width: 640px){
+  .hero{ padding: 34px 18px 24px; }
+  .section{ padding: 18px 18px; }
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+
+    <main class="deco-card">
+      <header class="hero">
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <div class="monogram" aria-hidden="true">HP</div>
+          <div>
+            <div class="kicker">Art Deco Detective • Belgian Precision</div>
+            <h1>Hercule Poirot</h1>
+          </div>
+        </div>
+
+        <p class="sub">
+          Where others see confusion, Poirot sees a pattern—symmetry, motive, and method.
+          He does not chase shadows; he arranges the facts, perfectly, until the truth has no place left to hide.
+        </p>
+
+        <a class="btn" href="#">Open the Dossier</a>
+
+        <div class="deco-divider" aria-hidden="true"></div>
+      </header>
+
+      <section class="section">
+        <h2>The Method</h2>
+        <p>
+          Poirot’s cases are not about darkness creeping in—they’re about light becoming focused.
+          Each clue is placed with care, every contradiction is measured, and the solution arrives with calm certainty:
+          the work of the <em>little grey cells</em>.
+        </p>
+
+        <div class="callout">
+          <strong>Little Grey Cells:</strong> Start with order. Arrange the timeline. Test each alibi.
+          When the facts line up, the guilty party stands out like a stain on ivory.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Signature Atmosphere</h2>
+        <ul class="case-list">
+          <li><span><strong>Setting:</strong> salons, hotels, trains, country houses—civilized spaces with hidden motives.</span></li>
+          <li><span><strong>Tone:</strong> elegant, controlled tension—no chaos, only concealed truth.</span></li>
+          <li><span><strong>Visual:</strong> brass, geometry, clean borders, deliberate symmetry.</span></li>
+          <li><span><strong>Reveal:</strong> the drawing-room conclusion—facts aligned, culprit exposed.</span></li>
+        </ul>
+
+        <p style="margin-top:14px;">
+          Learn more about Poirot on <a href="#">Agatha Christie’s canon</a> or explore a case timeline.
+        </p>
+      </section>
+
+      <footer class="footer">
+        © 2026 • The Poirot Archive • Designed in Art Deco elegance
+      </footer>
+    </main>
+
+  </div>
+</body>
+</html>
