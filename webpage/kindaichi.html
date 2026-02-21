@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金田一耕助 — Kindaichi Kōsuke</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Shippori+Mincho+B1:wght@400;500;700;800&family=Kaisei+Tokumin:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   金田一耕助 CSS THEME
+   Yokomizo Gothic — cursed estates, Showa shadows,
+   ink and blood, the weight of old family secrets
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Darkness ── */
+  --k-void:        #080608;    /* absolute dark */
+  --k-shadow:      #100D12;    /* deep shadow */
+  --k-dusk:        #1C1620;    /* dusk wall */
+  --k-charcoal:    #2A2230;    /* aged charcoal */
+  --k-ash:         #3D3345;    /* ash wood */
+  --k-fog:         #6B5E78;    /* evening fog */
+  --k-mist:        #9B8FAA;    /* pale mist */
+
+  /* ── Paper & Washi ── */
+  --k-washi:       #D4C9A8;    /* aged washi paper */
+  --k-ivory:       #E8DFC0;    /* yellowed page */
+  --k-parchment:   #F2E8C8;    /* faded manuscript */
+
+  /* ── Blood & Fire ── */
+  --k-blood:       #8B1A1A;    /* dark blood red */
+  --k-crimson:     #B52020;    /* vivid crimson */
+  --k-ember:       #C0431A;    /* dying ember */
+  --k-lantern:     #D4831A;    /* lantern amber */
+  --k-candle:      #E8A830;    /* candle flame */
+
+  /* ── Ink ── */
+  --k-ink:         #1A1520;    /* sumi ink */
+  --k-ink-soft:    #4A3D58;    /* diluted ink */
+
+  /* ── Fonts ── */
+  --font-display:  'Shippori Mincho B1', 'Noto Serif JP', serif;
+  --font-body:     'Kaisei Tokumin', 'Noto Serif JP', serif;
+  --font-accent:   'Noto Serif JP', serif;
+
+  /* ── Radii (minimal — angular, tense) ── */
+  --r-none: 0;
+  --r-sm:   3px;
+  --r-md:   6px;
+  --r-lg:   10px;
+
+  /* ── Shadows ── */
+  --shadow-blood:   rgba(139,26,26,0.45);
+  --shadow-lantern: rgba(212,131,26,0.30);
+  --shadow-void:    rgba(0,0,0,0.75);
+
+  /* ── Easing ── */
+  --ease-dread:   cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-reveal:  cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-flicker: cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--k-void); }
+::-webkit-scrollbar-thumb { background: var(--k-blood); border-radius: 3px; }
+
+/* ─── Selection ─── */
+::selection { background: rgba(139,26,26,0.55); color: var(--k-ivory); }
+
+/* ─── Body ─── */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background: var(--k-void);
+  color: var(--k-washi);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.8;
+  /* Subtle noise grain */
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* ─── Atmospheric background layers ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 0%,   rgba(139,26,26,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 20% 80%,   rgba(212,131,26,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 80% 60%,   rgba(8,6,8,0.60) 0%, transparent 70%),
+    linear-gradient(180deg, #0e0b10 0%, #080608 40%, #0a0710 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%,
+    transparent 40%,
+    rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES
+   ═══════════════════════════════════════════════════════ */
+
+.k-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--k-ivory);
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+}
+.k-heading-xl  { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+.k-heading-lg  { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+.k-heading-md  { font-size: 1.25rem; letter-spacing: 0.10em; }
+.k-heading-sm  { font-size: 1rem;    letter-spacing: 0.08em; }
+
+.k-kanji {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: var(--k-blood);
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(139,26,26,0.6), 0 2px 4px rgba(0,0,0,0.8);
+  letter-spacing: 0.12em;
+}
+
+.k-subtitle {
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--k-fog);
+}
+
+.k-body {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 2.0;
+  color: var(--k-washi);
+  opacity: 0.85;
+}
+
+/* Blood-red inline emphasis */
+.k-suspect {
+  color: var(--k-crimson);
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(181,32,32,0.40);
+}
+
+/* Faded, as if redacted */
+.k-redacted {
+  background: var(--k-ash);
+  color: transparent;
+  border-radius: 2px;
+  user-select: none;
+  transition: background 0.4s, color 0.4s;
+}
+.k-redacted:hover {
+  background: transparent;
+  color: var(--k-crimson);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CARDS
+   ═══════════════════════════════════════════════════════ */
+
+.k-card {
+  background: linear-gradient(150deg, #1a1420 0%, #110d16 100%);
+  border: 1px solid rgba(212,131,26,0.12);
+  border-top: 1px solid rgba(212,131,26,0.22);
+  border-radius: var(--r-md);
+  padding: 1.8rem 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 32px rgba(0,0,0,0.70),
+    inset 0 1px 0 rgba(212,131,26,0.08);
+  transition: border-color 0.4s var(--ease-dread), box-shadow 0.4s var(--ease-dread), transform 0.4s var(--ease-dread);
+}
+
+/* Lantern-light corner glow */
+.k-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle,
+    rgba(212,131,26,0.08) 0%,
+    transparent 65%);
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+/* Blood-line bottom accent */
+.k-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139,26,26,0.0) 10%,
+    rgba(139,26,26,0.60) 50%,
+    rgba(139,26,26,0.0) 90%,
+    transparent 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s var(--ease-reveal);
+}
+
+.k-card:hover {
+  border-color: rgba(212,131,26,0.28);
+  border-top-color: rgba(212,131,26,0.45);
+  box-shadow:
+    0 8px 48px rgba(0,0,0,0.80),
+    0 0 30px rgba(139,26,26,0.12),
+    inset 0 1px 0 rgba(212,131,26,0.14);
+  transform: translateY(-3px);
+}
+
+.k-card:hover::after { transform: scaleX(1); }
+
+/* Evidence card — washi paper style */
+.k-card-evidence {
+  background: linear-gradient(160deg, #1e1508 0%, #160f05 100%);
+  border: 1px solid rgba(212,131,26,0.20);
+  border-radius: var(--r-sm);
+  padding: 1.6rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 3px 24px rgba(0,0,0,0.65),
+    inset 0 0 40px rgba(0,0,0,0.30);
+}
+
+/* Torn paper edge top */
+.k-card-evidence::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(90deg,
+    rgba(212,131,26,0.30) 0px, rgba(212,131,26,0.30) 3px,
+    transparent 3px, transparent 7px,
+    rgba(212,131,26,0.15) 7px, rgba(212,131,26,0.15) 9px,
+    transparent 9px, transparent 14px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════ */
+
+.k-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.65em 1.7em;
+  border: none;
+  border-radius: var(--r-none);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-dread);
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+/* Corner-cut notch effect */
+.k-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.k-btn:active { transform: scale(0.96) translateY(1px); }
+
+/* Blood red — primary */
+.k-btn-blood {
+  background: var(--k-blood);
+  color: var(--k-ivory);
+  box-shadow: 0 0 0 1px rgba(139,26,26,0.5), 0 4px 20px rgba(139,26,26,0.40);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.k-btn-blood:hover {
+  background: var(--k-crimson);
+  box-shadow: 0 0 0 1px rgba(181,32,32,0.6), 0 6px 28px rgba(139,26,26,0.55), 0 0 40px rgba(181,32,32,0.20);
+  transform: translateY(-2px);
+}
+
+/* Lantern amber */
+.k-btn-lantern {
+  background: transparent;
+  color: var(--k-lantern);
+  box-shadow: 0 0 0 1px rgba(212,131,26,0.40);
+  text-shadow: 0 0 10px rgba(212,131,26,0.40);
+}
+.k-btn-lantern:hover {
+  background: rgba(212,131,26,0.10);
+  box-shadow: 0 0 0 1px rgba(212,131,26,0.60), 0 0 20px rgba(212,131,26,0.20);
+  color: var(--k-candle);
+  transform: translateY(-2px);
+}
+
+/* Ghost / Void */
+.k-btn-ghost {
+  background: transparent;
+  color: var(--k-fog);
+  box-shadow: 0 0 0 1px rgba(107,94,120,0.35);
+  clip-path: none;
+  border-radius: var(--r-sm);
+}
+.k-btn-ghost:hover {
+  background: rgba(107,94,120,0.10);
+  color: var(--k-mist);
+  box-shadow: 0 0 0 1px rgba(107,94,120,0.55);
+}
+
+/* ═══════════════════════════════════════════════════════
+   FORM ELEMENTS
+   ═══════════════════════════════════════════════════════ */
+
+.k-input {
+  font-family: var(--font-body);
+  font-size: 0.90rem;
+  width: 100%;
+  padding: 0.72em 1em;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(107,94,120,0.30);
+  border-bottom: 1px solid rgba(212,131,26,0.30);
+  border-radius: var(--r-none);
+  color: var(--k-washi);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  letter-spacing: 0.04em;
+}
+.k-input::placeholder { color: rgba(107,94,120,0.50); font-style: italic; }
+.k-input:focus {
+  border-bottom-color: var(--k-blood);
+  background: rgba(139,26,26,0.04);
+  box-shadow: 0 2px 0 rgba(139,26,26,0.50), 0 4px 16px rgba(139,26,26,0.08);
+}
+
+.k-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--k-fog);
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BADGES & TAGS
+   ═══════════════════════════════════════════════════════ */
+
+.k-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.22em 0.75em;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+}
+.k-badge-blood   { background: rgba(139,26,26,0.30); color: #E88080; border: 1px solid rgba(139,26,26,0.55); }
+.k-badge-lantern { background: rgba(212,131,26,0.18); color: var(--k-candle); border: 1px solid rgba(212,131,26,0.38); }
+.k-badge-fog     { background: rgba(107,94,120,0.20); color: var(--k-mist); border: 1px solid rgba(107,94,120,0.35); }
+.k-badge-void    { background: rgba(0,0,0,0.50); color: var(--k-fog); border: 1px solid rgba(107,94,120,0.20); }
+
+/* ═══════════════════════════════════════════════════════
+   DIVIDERS
+   ═══════════════════════════════════════════════════════ */
+
+.k-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(107,94,120,0.25) 20%,
+    rgba(212,131,26,0.15) 50%,
+    rgba(107,94,120,0.25) 80%,
+    transparent);
+  margin: 1.5rem 0;
+}
+
+.k-divider-blood {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(139,26,26,0.55) 30%,
+    rgba(139,26,26,0.55) 70%,
+    transparent);
+  margin: 1.5rem 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CASE FILE / BLOCKQUOTE
+   ═══════════════════════════════════════════════════════ */
+
+.k-casefile {
+  border-left: 3px solid var(--k-blood);
+  padding: 1.2rem 1.5rem;
+  background: rgba(139,26,26,0.06);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 2.0;
+  color: var(--k-washi);
+  position: relative;
+  margin: 1.5rem 0;
+}
+.k-casefile::before {
+  content: '事件';
+  position: absolute;
+  top: -0.6rem; left: 1rem;
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  background: var(--k-blood);
+  color: var(--k-ivory);
+  padding: 0.1em 0.5em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROGRESS / SUSPENSE METER
+   ═══════════════════════════════════════════════════════ */
+
+.k-progress {
+  height: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(107,94,120,0.20);
+  border-radius: var(--r-none);
+  overflow: hidden;
+}
+.k-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--k-blood) 0%, var(--k-crimson) 50%, var(--k-lantern) 100%);
+  box-shadow: 0 0 12px rgba(139,26,26,0.60), 0 0 4px rgba(212,131,26,0.30);
+  transition: width 0.8s var(--ease-reveal);
+  position: relative;
+  overflow: hidden;
+}
+.k-progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+  animation: k-bleed 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TABLE
+   ═══════════════════════════════════════════════════════ */
+
+.k-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+}
+.k-table th {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--k-fog);
+  border-bottom: 1px solid rgba(212,131,26,0.25);
+  padding: 0.7em 1em;
+  text-align: left;
+}
+.k-table td {
+  padding: 0.75em 1em;
+  border-bottom: 1px solid rgba(107,94,120,0.12);
+  color: var(--k-washi);
+  line-height: 1.6;
+}
+.k-table tr:hover td {
+  background: rgba(139,26,26,0.05);
+  color: var(--k-ivory);
+}
+.k-table tr:hover td:first-child {
+  color: var(--k-crimson);
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes k-bleed {
+  0%, 100% { transform: translateX(-100%); }
+  50%       { transform: translateX(200%); }
+}
+@keyframes k-flicker {
+  0%, 100% { opacity: 1; }
+  8%        { opacity: 0.88; }
+  15%       { opacity: 1; }
+  42%       { opacity: 0.82; }
+  45%       { opacity: 1; }
+  78%       { opacity: 0.90; }
+  82%       { opacity: 1; }
+}
+@keyframes k-fog-drift {
+  0%   { transform: translateX(-5%) translateY(0); opacity: 0.5; }
+  50%  { transform: translateX(3%) translateY(-10px); opacity: 0.8; }
+  100% { transform: translateX(-5%) translateY(0); opacity: 0.5; }
+}
+@keyframes k-reveal {
+  from { opacity: 0; transform: translateY(16px); clip-path: inset(0 0 100% 0); }
+  to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 0% 0); }
+}
+@keyframes k-blood-drip {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: top; }
+}
+@keyframes k-pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139,26,26,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(139,26,26,0); }
+}
+
+.k-flicker  { animation: k-flicker 6s ease-in-out infinite; }
+.k-fog      { animation: k-fog-drift 12s ease-in-out infinite; }
+.k-reveal   { animation: k-reveal 0.7s var(--ease-reveal) both; }
+.k-pulse    { animation: k-pulse-red 2.5s ease-in-out infinite; }
+
+/* Staggered reveal delays */
+.k-delay-1 { animation-delay: 0.1s; }
+.k-delay-2 { animation-delay: 0.22s; }
+.k-delay-3 { animation-delay: 0.36s; }
+.k-delay-4 { animation-delay: 0.52s; }
+.k-delay-5 { animation-delay: 0.70s; }
+
+
+/* ═══════════════════════════════════════════════════════
+   FOG LAYER (animated)
+   ═══════════════════════════════════════════════════════ */
+.k-fog-layer {
+  position: fixed;
+  bottom: 0; left: -10%;
+  width: 120%;
+  height: 35vh;
+  background: linear-gradient(0deg,
+    rgba(8,6,8,0.90) 0%,
+    rgba(20,14,24,0.55) 35%,
+    rgba(28,22,32,0.18) 65%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  animation: k-fog-drift 18s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   DEMO PAGE
+   ═══════════════════════════════════════════════════════ */
+
+.demo-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 7rem;
+}
+
+/* Hero */
+.demo-hero {
+  text-align: center;
+  padding: 3rem 0 4rem;
+  position: relative;
+}
+
+/* Vertical kanji side decoration */
+.demo-hero-side {
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: rgba(212,131,26,0.30);
+  text-transform: uppercase;
+  display: none;
+}
+@media (min-width: 720px) { .demo-hero-side { display: block; } }
+
+.demo-hero-kicker {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--k-blood);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 18px rgba(139,26,26,0.6);
+}
+
+/* Blood-drip line separator */
+.demo-drip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.demo-drip-line {
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(139,26,26,0.55));
+}
+.demo-drip-line.r { background: linear-gradient(90deg, rgba(139,26,26,0.55), transparent); }
+.demo-drip-center {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--k-blood);
+  box-shadow: 0 0 12px rgba(139,26,26,0.70);
+  animation: k-pulse-red 2.5s ease-in-out infinite;
+}
+
+/* Section header */
+.demo-section { margin-bottom: 3rem; }
+.demo-section-title {
+  font-family: var(--font-display);
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(212,131,26,0.55);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(212,131,26,0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.demo-section-title::before {
+  content: '▪';
+  color: var(--k-blood);
+  font-size: 0.8rem;
+}
+
+.demo-row  { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+.demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.3rem; }
+.demo-form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+</style>
+</head>
+<body>
+
+<!-- Atmospheric fog at bottom -->
+<div class="k-fog-layer"></div>
+
+<div class="demo-wrap">
+
+  <!-- ── Hero ── -->
+  <header class="demo-hero">
+    <span class="demo-hero-side">横溝正史 — Seishi Yokomizo</span>
+
+    <p class="demo-hero-kicker k-reveal">Detective Fiction · Shōwa Gothic</p>
+
+    <div class="k-kanji k-reveal k-delay-1" style="margin-bottom:0.4rem">金田一耕助</div>
+
+    <h1 class="k-heading k-heading-xl k-reveal k-delay-2" style="color:var(--k-ivory);margin-bottom:0.6rem">
+      Kindaichi Kōsuke
+    </h1>
+
+    <p class="k-subtitle k-reveal k-delay-3" style="margin-bottom:1.5rem">
+      The Dishevelled Detective · Japan's Master of Mystery
+    </p>
+
+    <p class="k-body k-reveal k-delay-4" style="max-width:560px;margin:0 auto;text-align:center;opacity:0.70">
+      In cursed estates and fog-wreathed villages, where old blood feuds fester beneath tatami floors — he scratches his unkempt hair and sees what others dare not look upon.
+    </p>
+
+    <div class="demo-drip k-reveal k-delay-5">
+      <div class="demo-drip-line"></div>
+      <div class="demo-drip-center"></div>
+      <div class="demo-drip-line r"></div>
+    </div>
+
+    <div class="demo-row" style="justify-content:center;gap:0.8rem;">
+      <button class="k-btn k-btn-blood">事件を読む Read Cases</button>
+      <button class="k-btn k-btn-lantern">探偵を知る About</button>
+    </div>
+  </header>
+
+  <!-- ── Palette ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Colour Palette</p>
+    <div class="demo-row" style="gap:0.6rem;">
+      <div title="--k-void"      style="width:50px;height:50px;border-radius:3px;background:var(--k-void);    border:1px solid rgba(107,94,120,0.2)"></div>
+      <div title="--k-dusk"      style="width:50px;height:50px;border-radius:3px;background:var(--k-dusk);    border:1px solid rgba(107,94,120,0.2)"></div>
+      <div title="--k-ash"       style="width:50px;height:50px;border-radius:3px;background:var(--k-ash);     border:1px solid rgba(107,94,120,0.2)"></div>
+      <div title="--k-fog"       style="width:50px;height:50px;border-radius:3px;background:var(--k-fog)"></div>
+      <div title="--k-blood"     style="width:50px;height:50px;border-radius:3px;background:var(--k-blood);   box-shadow:0 0 12px rgba(139,26,26,0.5)"></div>
+      <div title="--k-crimson"   style="width:50px;height:50px;border-radius:3px;background:var(--k-crimson); box-shadow:0 0 10px rgba(181,32,32,0.4)"></div>
+      <div title="--k-lantern"   style="width:50px;height:50px;border-radius:3px;background:var(--k-lantern); box-shadow:0 0 10px rgba(212,131,26,0.4)"></div>
+      <div title="--k-washi"     style="width:50px;height:50px;border-radius:3px;background:var(--k-washi)"></div>
+    </div>
+  </section>
+
+  <!-- ── Cards ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Cards</p>
+    <div class="demo-grid">
+
+      <div class="k-card">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.8rem;">
+          <span class="k-badge k-badge-blood">殺人事件</span>
+          <span style="font-size:0.68rem;color:var(--k-fog);letter-spacing:0.08em">1946</span>
+        </div>
+        <h3 class="k-heading k-heading-sm" style="margin-bottom:0.6rem;color:var(--k-ivory)">本陣殺人事件</h3>
+        <p style="font-size:0.78rem;color:var(--k-fog);letter-spacing:0.08em;margin-bottom:0.9rem">The Honjin Murders</p>
+        <p class="k-body" style="font-size:0.83rem;opacity:0.70">A bride murdered on her wedding night in a sealed room — the first and most perfect of Kindaichi's locked-room cases.</p>
+        <hr class="k-divider">
+        <div class="demo-row" style="gap:0.4rem;">
+          <span class="k-badge k-badge-fog">Locked Room</span>
+          <span class="k-badge k-badge-void">Debut Novel</span>
+        </div>
+      </div>
+
+      <div class="k-card">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.8rem;">
+          <span class="k-badge k-badge-blood">呪われた家</span>
+          <span style="font-size:0.68rem;color:var(--k-fog);letter-spacing:0.08em">1951</span>
+        </div>
+        <h3 class="k-heading k-heading-sm" style="margin-bottom:0.6rem;color:var(--k-ivory)">犬神家の一族</h3>
+        <p style="font-size:0.78rem;color:var(--k-fog);letter-spacing:0.08em;margin-bottom:0.9rem">The Inugami Clan</p>
+        <p class="k-body" style="font-size:0.83rem;opacity:0.70">Three grandsons, a contested will, and bodies surfacing from the lake — the most celebrated of all Yokomizo's works.</p>
+        <hr class="k-divider">
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem;">
+            <span style="color:var(--k-fog)">Dread level</span>
+            <span style="color:var(--k-crimson)">94%</span>
+          </div>
+          <div class="k-progress"><div class="k-progress-fill" style="width:94%"></div></div>
+        </div>
+      </div>
+
+      <div class="k-card k-card-evidence">
+        <div style="margin-bottom:0.8rem;">
+          <span class="k-badge k-badge-lantern k-flicker">遺書</span>
+        </div>
+        <h3 class="k-heading k-heading-sm" style="margin-bottom:0.6rem;color:var(--k-candle)">獄門島</h3>
+        <p style="font-size:0.78rem;color:rgba(212,131,26,0.55);letter-spacing:0.08em;margin-bottom:0.9rem">Gokumon Island</p>
+        <p class="k-body" style="font-size:0.83rem;opacity:0.70">Three sisters of the Kito family killed according to haiku verses — murder as dark poetry on an island of no escape.</p>
+        <hr class="k-divider">
+        <div class="demo-row" style="gap:0.4rem;">
+          <span class="k-badge k-badge-lantern">Island</span>
+          <span class="k-badge k-badge-blood">Haiku Murders</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Case file blockquote ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Case File Block</p>
+    <div class="k-casefile">
+      "The moment he entered the Inugami estate, Kindaichi sensed it — that particular smell of old money souring into hatred, of a family tree that had grown too twisted to bear fruit. He scratched his unkempt hair three times. <span class="k-suspect">Three bodies. Three heirs. Three curses.</span> And yet only one pair of eyes had watched them all fall."
+    </div>
+  </section>
+
+  <!-- ── Suspects table ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Suspects Register</p>
+    <div class="k-card" style="padding:0;overflow:hidden;">
+      <table class="k-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Relation</th>
+            <th>Status</th>
+            <th>Motive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--k-ivory);font-weight:500">Sukekiyo</td>
+            <td style="color:var(--k-fog)">First Grandson</td>
+            <td><span class="k-badge k-badge-blood">Suspect</span></td>
+            <td style="font-size:0.80rem">Inheritance</td>
+          </tr>
+          <tr>
+            <td style="color:var(--k-ivory);font-weight:500">Suketake</td>
+            <td style="color:var(--k-fog)">Second Grandson</td>
+            <td><span class="k-badge k-badge-fog">Unclear</span></td>
+            <td style="font-size:0.80rem">Rivalry</td>
+          </tr>
+          <tr>
+            <td style="color:var(--k-ivory);font-weight:500">Suketomo</td>
+            <td style="color:var(--k-fog)">Third Grandson</td>
+            <td><span class="k-badge k-badge-lantern k-flicker">Missing</span></td>
+            <td style="font-size:0.80rem">Unknown</td>
+          </tr>
+          <tr>
+            <td style="color:var(--k-ivory);font-weight:500">Matsuko</td>
+            <td style="color:var(--k-fog)">Eldest Daughter</td>
+            <td><span class="k-badge k-badge-void">Cleared</span></td>
+            <td style="font-size:0.80rem">Jealousy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Form ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Investigation Form</p>
+    <div class="k-card" style="max-width:440px;">
+      <h3 class="k-heading k-heading-sm" style="margin-bottom:0.4rem;color:var(--k-ivory)">Report a Case</h3>
+      <p style="font-size:0.76rem;color:var(--k-fog);letter-spacing:0.06em;margin-bottom:1.5rem">金田一事務所 — Kindaichi Detective Office</p>
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        <div class="demo-form-group">
+          <label class="k-label">Witness Name</label>
+          <input class="k-input" type="text" placeholder="Your name…">
+        </div>
+        <div class="demo-form-group">
+          <label class="k-label">Location of Incident</label>
+          <input class="k-input" type="text" placeholder="Estate, village, island…">
+        </div>
+        <div class="demo-form-group">
+          <label class="k-label">Description</label>
+          <input class="k-input" type="text" placeholder="Describe what you witnessed…" style="padding-bottom:3rem">
+        </div>
+        <div class="demo-row" style="gap:0.6rem;margin-top:0.2rem;">
+          <button class="k-btn k-btn-blood" style="flex:1;">Submit Report</button>
+          <button class="k-btn k-btn-ghost">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Buttons all together ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Buttons</p>
+    <div class="demo-row">
+      <button class="k-btn k-btn-blood">Blood Red</button>
+      <button class="k-btn k-btn-lantern">Lantern Amber</button>
+      <button class="k-btn k-btn-ghost">Ghost Void</button>
+    </div>
+  </section>
+
+  <!-- ── Badges ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Badges</p>
+    <div class="demo-row">
+      <span class="k-badge k-badge-blood">Murder</span>
+      <span class="k-badge k-badge-lantern k-flicker">Missing</span>
+      <span class="k-badge k-badge-fog">Suspect</span>
+      <span class="k-badge k-badge-void">Cleared</span>
+    </div>
+  </section>
+
+  <!-- ── Redacted text ── -->
+  <section class="demo-section">
+    <p class="demo-section-title">Redacted Text <span style="font-size:0.55rem;opacity:0.5">(hover to reveal)</span></p>
+    <p class="k-body" style="max-width:560px;line-height:2.2;">
+      The killer entered through the <span class="k-redacted">north garden gate</span> at precisely <span class="k-redacted">11:47 PM</span>, concealing the weapon beneath <span class="k-redacted">a white kimono</span>. The motive traces back to a secret buried in <span class="k-redacted">the Inugami testament of 1938</span>.
+    </p>
+  </section>
+
+</div>
+
+</body>
+</html>

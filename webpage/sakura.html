@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakura CSS Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   SAKURA CSS THEME
+   Cherry blossom haze with wisteria whispers —
+   a soft, poetic design system
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* ── Sakura palette ── */
+  --s-petal:        #F9C8D4;   /* fresh petal */
+  --s-petal-deep:   #E8899A;   /* flushed petal center */
+  --s-blossom:      #FDE8EE;   /* pale blossom */
+  --s-cream:        #FDF6F0;   /* warm paper */
+  --s-bark:         #7A4B3A;   /* cherry bark brown */
+  --s-bark-light:   #B07060;   /* branch warm */
+  --s-mist:         #FAF0F5;   /* morning mist */
+
+  /* ── Violet accents ── */
+  --s-violet:       #BBA3D8;   /* wisteria */
+  --s-violet-deep:  #8B6BB1;   /* deep wisteria */
+  --s-violet-mist:  #EDE5F8;   /* violet haze */
+
+  /* ── Neutrals ── */
+  --s-ink:          #3D2B35;   /* deep ink */
+  --s-ink-soft:     #7A5566;   /* soft ink */
+  --s-white:        rgba(255,255,255,0.92);
+
+  /* ── Shadows ── */
+  --s-shadow-petal: rgba(232,137,154,0.22);
+  --s-shadow-violet: rgba(139,107,177,0.18);
+
+  /* ── Fonts ── */
+  --font-display: 'Shippori Mincho', serif;
+  --font-body:    'Noto Sans JP', sans-serif;
+
+  /* ── Radii ── */
+  --r-pill: 999px;
+  --r-lg:   20px;
+  --r-md:   12px;
+  --r-sm:   7px;
+
+  /* ── Easing ── */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-gentle: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-petal:  cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Body & background ─── */
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background: var(--s-mist);
+  color: var(--s-ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  cursor: default;
+}
+
+/* Layered sky background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 0%,   rgba(249,200,212,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 10%,  rgba(187,163,216,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 40% at 10% 70%,  rgba(187,163,216,0.20) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(249,200,212,0.25) 0%, transparent 60%),
+    linear-gradient(175deg, #fef3f7 0%, #f5edf8 35%, #faf0f5 65%, #fdf6f0 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════════
+   FALLING PETALS (CSS-only SVG petals)
+   ═══════════════════════════════════════════════ */
+.petal-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -60px;
+  width: 24px;
+  height: 24px;
+  will-change: transform, opacity;
+  animation: petal-fall linear infinite;
+}
+
+.petal-shape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--s-petal);
+  background: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='black'%3E%3Cellipse cx='50' cy='24' rx='12' ry='22'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(72 50 50)'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(144 50 50)'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(216 50 50)'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(288 50 50)'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='black'%3E%3Cellipse cx='50' cy='24' rx='12' ry='22'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(72 50 50)'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(144 50 50)'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(216 50 50)'/%3E%3Cellipse cx='50' cy='24' rx='12' ry='22' transform='rotate(288 50 50)'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  filter: drop-shadow(0 2px 4px rgba(232,137,154,0.22));
+  transform-origin: center;
+  animation: petal-spin linear infinite;
+}
+.petal.round .petal-shape {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 72'%3E%3Cellipse cx='30' cy='36' rx='24' ry='33' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 72'%3E%3Cellipse cx='30' cy='36' rx='24' ry='33' fill='black'/%3E%3C/svg%3E");
+}
+.petal.violet .petal-shape {
+  color: var(--s-violet);
+  filter: drop-shadow(0 2px 4px rgba(139,107,177,0.22));
+}
+
+@keyframes petal-fall {
+  0%   { transform: translateX(0px) translateY(-60px); opacity: 0; }
+  5%   { opacity: 1; }
+  85%  { opacity: 0.8; }
+  100% { transform: translateX(var(--drift)) translateY(110vh); opacity: 0; }
+}
+
+@keyframes petal-spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(0.88); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.petal-1  { left: 2%;  --drift: 90px;   animation-duration: 15s; animation-delay: -3s;  transform: scale(0.9); }
+.petal-2  { left: 6%;  --drift: -130px; animation-duration: 18s; animation-delay: -11s; transform: scale(1.1); }
+.petal-3  { left: 10%; --drift: 70px;   animation-duration: 13s; animation-delay: -6s;  transform: scale(0.75); }
+.petal-4  { left: 14%; --drift: -95px;  animation-duration: 20s; animation-delay: -15s; transform: scale(1.25); }
+.petal-5  { left: 18%; --drift: 110px;  animation-duration: 16s; animation-delay: -9s;  transform: scale(0.95); }
+.petal-6  { left: 22%; --drift: -70px;  animation-duration: 14s; animation-delay: -4s;  transform: scale(0.8); }
+.petal-7  { left: 26%; --drift: 120px;  animation-duration: 19s; animation-delay: -12s; transform: scale(1.2); }
+.petal-8  { left: 30%; --drift: -100px; animation-duration: 17s; animation-delay: -7s;  transform: scale(1); }
+.petal-9  { left: 34%; --drift: 80px;   animation-duration: 12s; animation-delay: -10s; transform: scale(0.72); }
+.petal-10 { left: 38%; --drift: -140px; animation-duration: 21s; animation-delay: -17s; transform: scale(1.35); }
+.petal-11 { left: 42%; --drift: 95px;   animation-duration: 15s; animation-delay: -2s;  transform: scale(0.92); }
+.petal-12 { left: 46%; --drift: -85px;  animation-duration: 18s; animation-delay: -13s; transform: scale(1.08); }
+.petal-13 { left: 50%; --drift: 125px;  animation-duration: 20s; animation-delay: -5s;  transform: scale(1.24); }
+.petal-14 { left: 54%; --drift: -75px;  animation-duration: 14s; animation-delay: -8s;  transform: scale(0.84); }
+.petal-15 { left: 58%; --drift: 105px;  animation-duration: 17s; animation-delay: -14s; transform: scale(1.1); }
+.petal-16 { left: 62%; --drift: -115px; animation-duration: 19s; animation-delay: -1s;  transform: scale(1.18); }
+.petal-17 { left: 66%; --drift: 70px;   animation-duration: 13s; animation-delay: -16s; transform: scale(0.78); }
+.petal-18 { left: 70%; --drift: -90px;  animation-duration: 16s; animation-delay: -6s;  transform: scale(0.98); }
+.petal-19 { left: 74%; --drift: 130px;  animation-duration: 22s; animation-delay: -18s; transform: scale(1.32); }
+.petal-20 { left: 78%; --drift: -110px; animation-duration: 15s; animation-delay: -9s;  transform: scale(0.9); }
+.petal-21 { left: 82%; --drift: 100px;  animation-duration: 18s; animation-delay: -3s;  transform: scale(1.15); }
+.petal-22 { left: 86%; --drift: -80px;  animation-duration: 14s; animation-delay: -12s; transform: scale(0.82); }
+.petal-23 { left: 90%; --drift: 115px;  animation-duration: 20s; animation-delay: -7s;  transform: scale(1.22); }
+.petal-24 { left: 94%; --drift: -95px;  animation-duration: 17s; animation-delay: -15s; transform: scale(1.04); }
+
+.petal-1 .petal-shape, .petal-9 .petal-shape, .petal-17 .petal-shape { animation-duration: 5.8s; }
+.petal-2 .petal-shape, .petal-10 .petal-shape, .petal-18 .petal-shape { animation-duration: 8.5s; }
+.petal-3 .petal-shape, .petal-11 .petal-shape, .petal-19 .petal-shape { animation-duration: 6.9s; }
+.petal-4 .petal-shape, .petal-12 .petal-shape, .petal-20 .petal-shape { animation-duration: 9.2s; }
+.petal-5 .petal-shape, .petal-13 .petal-shape, .petal-21 .petal-shape { animation-duration: 7.4s; }
+.petal-6 .petal-shape, .petal-14 .petal-shape, .petal-22 .petal-shape { animation-duration: 6.3s; }
+.petal-7 .petal-shape, .petal-15 .petal-shape, .petal-23 .petal-shape { animation-duration: 8.1s; }
+.petal-8 .petal-shape, .petal-16 .petal-shape, .petal-24 .petal-shape { animation-duration: 7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .petal {
+    animation: none;
+    opacity: 0.35;
+  }
+  .petal-shape {
+    animation: none;
+  }
+}
+/* ═══════════════════════════════════════════════
+   COMPONENTS
+   ═══════════════════════════════════════════════ */
+
+/* ── .sakura-card ── */
+.sakura-card {
+  background: rgba(255,255,255,0.68);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(249,200,212,0.55);
+  border-radius: var(--r-lg);
+  padding: 2rem 2.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 2px 20px var(--s-shadow-petal),
+    0 1px 3px rgba(61,43,53,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-gentle);
+}
+
+/* Petal shimmer on card top-right */
+.sakura-card::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle,
+    rgba(249,200,212,0.30) 0%,
+    rgba(187,163,216,0.12) 50%,
+    transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+/* Delicate branch line decoration */
+.sakura-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(232,137,154,0.35) 30%,
+    rgba(187,163,216,0.35) 70%,
+    transparent 100%);
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+}
+
+.sakura-card:hover {
+  transform: translateY(-5px) scale(1.008);
+  box-shadow:
+    0 8px 36px var(--s-shadow-petal),
+    0 2px 8px rgba(61,43,53,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* ── Buttons ── */
+.sakura-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.6em 1.5em;
+  border: none;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-gentle);
+  text-decoration: none;
+}
+
+.sakura-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg, rgba(255,255,255,0.30) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.sakura-btn:active { transform: scale(0.94) !important; }
+
+/* Primary — petal gradient */
+.sakura-btn-primary {
+  background: linear-gradient(135deg, var(--s-petal) 0%, var(--s-petal-deep) 100%);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(120,40,60,0.25);
+  box-shadow: 0 3px 16px var(--s-shadow-petal), 0 1px 3px rgba(0,0,0,0.08);
+}
+.sakura-btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 7px 24px rgba(232,137,154,0.45);
+}
+
+/* Violet */
+.sakura-btn-violet {
+  background: linear-gradient(135deg, var(--s-violet) 0%, var(--s-violet-deep) 100%);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(60,20,90,0.25);
+  box-shadow: 0 3px 16px var(--s-shadow-violet);
+}
+.sakura-btn-violet:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 7px 24px rgba(139,107,177,0.40);
+}
+
+/* Ghost */
+.sakura-btn-ghost {
+  background: rgba(255,255,255,0.60);
+  color: var(--s-bark);
+  border: 1.5px solid rgba(232,137,154,0.45);
+  box-shadow: 0 2px 8px rgba(122,75,58,0.08);
+}
+.sakura-btn-ghost:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: var(--s-blossom);
+  border-color: var(--s-petal-deep);
+}
+
+/* Bark (dark) */
+.sakura-btn-bark {
+  background: var(--s-bark);
+  color: var(--s-petal);
+  letter-spacing: 0.1em;
+  box-shadow: 0 3px 16px rgba(122,75,58,0.30);
+}
+.sakura-btn-bark:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: var(--s-bark-light);
+}
+
+/* ── Input ── */
+.sakura-input {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 300;
+  width: 100%;
+  padding: 0.72em 1.1em;
+  border: 1.5px solid rgba(232,137,154,0.35);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.75);
+  color: var(--s-ink);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+.sakura-input::placeholder { color: rgba(122,75,58,0.38); }
+.sakura-input:focus {
+  border-color: var(--s-petal-deep);
+  background: rgba(255,255,255,0.95);
+  box-shadow:
+    0 0 0 3px rgba(232,137,154,0.14),
+    0 0 0 1px rgba(187,163,216,0.20);
+}
+
+/* ── Label ── */
+.sakura-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--s-ink-soft);
+  margin-bottom: 0.45em;
+  display: block;
+}
+
+/* ── Badge ── */
+.sakura-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: var(--font-display);
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.25em 0.8em;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.sakura-badge-petal  { background: rgba(249,200,212,0.55); color: #7a2e45; border: 1px solid rgba(232,137,154,0.35); }
+.sakura-badge-violet { background: var(--s-violet-mist);   color: #5a3580; border: 1px solid rgba(187,163,216,0.40); }
+.sakura-badge-bark   { background: rgba(122,75,58,0.10);   color: var(--s-bark); border: 1px solid rgba(122,75,58,0.20); }
+.sakura-badge-mist   { background: rgba(255,255,255,0.70); color: var(--s-ink-soft); border: 1px solid rgba(249,200,212,0.40); }
+
+/* ── Tag ── */
+.sakura-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: var(--r-sm);
+  background: var(--s-petal-deep);
+  color: #fff;
+}
+.sakura-tag-violet {
+  background: var(--s-violet-deep);
+  color: #fff;
+}
+
+/* ── Divider ── */
+.sakura-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(232,137,154,0.35) 20%,
+    rgba(187,163,216,0.30) 60%,
+    transparent);
+  margin: 1.4rem 0;
+}
+
+/* ── Chip ── */
+.sakura-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: var(--font-body);
+  font-size: 0.80rem;
+  font-weight: 400;
+  padding: 0.28em 0.85em;
+  background: rgba(249,200,212,0.25);
+  border: 1px solid rgba(232,137,154,0.28);
+  border-radius: var(--r-pill);
+  color: var(--s-bark);
+  transition: background 0.2s, transform 0.2s var(--ease-spring), border-color 0.2s;
+}
+.sakura-chip:hover {
+  background: rgba(249,200,212,0.50);
+  border-color: var(--s-petal-deep);
+  transform: scale(1.05);
+}
+.sakura-chip-violet {
+  background: rgba(187,163,216,0.20);
+  border-color: rgba(187,163,216,0.38);
+  color: var(--s-violet-deep);
+}
+.sakura-chip-violet:hover {
+  background: rgba(187,163,216,0.38);
+}
+
+/* ── Progress ── */
+.sakura-progress {
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: rgba(249,200,212,0.25);
+  border: 1px solid rgba(232,137,154,0.18);
+  overflow: hidden;
+}
+.sakura-progress-fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--s-petal) 0%, var(--s-petal-deep) 60%, var(--s-violet) 100%);
+  box-shadow: 0 0 10px rgba(232,137,154,0.40);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.7s var(--ease-gentle);
+}
+.sakura-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  animation: sakura-shimmer 2.5s ease-in-out infinite;
+}
+
+/* ── Heading ── */
+.sakura-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--s-ink);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+.sakura-heading-xl  { font-size: 3rem; }
+.sakura-heading-lg  { font-size: 2rem; }
+.sakura-heading-md  { font-size: 1.3rem; }
+.sakura-heading-sm  { font-size: 1rem; }
+
+/* ── Quote / Haiku block ── */
+.sakura-haiku {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--s-ink-soft);
+  line-height: 2.2;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background: rgba(255,255,255,0.55);
+  border-left: 3px solid var(--s-petal-deep);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  position: relative;
+}
+.sakura-haiku::before {
+  content: '❀';
+  position: absolute;
+  top: 1rem; left: -0.75rem;
+  width: 1.5rem; height: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--s-petal-deep);
+  color: white;
+  font-size: 0.65rem;
+  border-radius: 50%;
+}
+
+/* ── Petal ornament ── */
+.sakura-ornament {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%,
+    rgba(255,255,255,0.9) 0%,
+    rgba(249,200,212,0.75) 35%,
+    rgba(232,137,154,0.55) 65%,
+    rgba(187,163,216,0.70) 100%);
+  box-shadow:
+    0 3px 14px var(--s-shadow-petal),
+    inset 0 1px 2px rgba(255,255,255,0.7);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ── Avatar ── */
+.sakura-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2.5px solid var(--s-petal);
+  box-shadow: 0 2px 10px var(--s-shadow-petal);
+  background: linear-gradient(135deg, var(--s-blossom), var(--s-violet-mist));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--s-ink-soft);
+}
+
+/* ── Animations ── */
+@keyframes sakura-shimmer {
+  0%   { left: -100%; }
+  100% { left: 160%; }
+}
+@keyframes sakura-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-9px); }
+}
+@keyframes sakura-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg); }
+}
+@keyframes sakura-bloom {
+  0%   { opacity: 0; transform: scale(0.7) rotate(-8deg); }
+  70%  { transform: scale(1.05) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes sakura-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.s-float  { animation: sakura-float 4s ease-in-out infinite; }
+.s-sway   { animation: sakura-sway  5s ease-in-out infinite; }
+.s-bloom  { animation: sakura-bloom 0.7s var(--ease-spring) forwards; }
+.s-fade-up { animation: sakura-fade-up 0.6s var(--ease-gentle) both; }
+
+/* ═══════════════════════════════════════════════
+   DEMO PAGE LAYOUT
+   ═══════════════════════════════════════════════ */
+.demo-page {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 6rem;
+}
+
+/* Header hero */
+.demo-hero {
+  text-align: center;
+  margin-bottom: 4.5rem;
+  position: relative;
+}
+
+.demo-hero-kicker {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--s-petal-deep);
+  margin-bottom: 0.8rem;
+  opacity: 0.85;
+  animation: sakura-fade-up 0.5s both;
+}
+
+.demo-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--s-ink);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  animation: sakura-fade-up 0.6s 0.1s both;
+}
+
+.demo-hero h1 span {
+  background: linear-gradient(135deg, var(--s-petal-deep), var(--s-violet-deep));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.demo-hero p {
+  font-size: 0.95rem;
+  color: var(--s-ink-soft);
+  margin-top: 0.8rem;
+  line-height: 1.7;
+  animation: sakura-fade-up 0.6s 0.2s both;
+}
+
+/* Branch decoration */
+.demo-branch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.8rem 0 0;
+  animation: sakura-fade-up 0.6s 0.3s both;
+}
+.demo-branch-line {
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, rgba(232,137,154,0.40));
+}
+.demo-branch-line.right {
+  background: linear-gradient(90deg, rgba(232,137,154,0.40), transparent);
+}
+.demo-branch-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--s-petal-deep);
+  box-shadow: 0 0 0 3px rgba(232,137,154,0.20);
+}
+
+/* Section */
+.demo-section { margin-bottom: 2.8rem; }
+.demo-section-title {
+  font-family: var(--font-display);
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(122,75,58,0.50);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(232,137,154,0.18);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.demo-section-title::before {
+  content: '✿';
+  color: var(--s-petal-deep);
+  font-size: 0.75rem;
+}
+
+.demo-row  { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; }
+.demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.25rem; }
+.demo-form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+</style>
+</head>
+<body>
+
+<!-- Falling sakura petals -->
+<div class="petal-field" aria-hidden="true">
+  <span class="petal petal-1"><span class="petal-shape"></span></span>
+  <span class="petal petal-2 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-3 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-4"><span class="petal-shape"></span></span>
+  <span class="petal petal-5 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-6 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-7"><span class="petal-shape"></span></span>
+  <span class="petal petal-8 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-9 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-10"><span class="petal-shape"></span></span>
+  <span class="petal petal-11 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-12 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-13"><span class="petal-shape"></span></span>
+  <span class="petal petal-14 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-15 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-16"><span class="petal-shape"></span></span>
+  <span class="petal petal-17 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-18 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-19"><span class="petal-shape"></span></span>
+  <span class="petal petal-20 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-21 round"><span class="petal-shape"></span></span>
+  <span class="petal petal-22"><span class="petal-shape"></span></span>
+  <span class="petal petal-23 violet"><span class="petal-shape"></span></span>
+  <span class="petal petal-24 round"><span class="petal-shape"></span></span>
+</div>
+
+<main class="demo-page">
+
+  <!-- Hero -->
+  <header class="demo-hero">
+    <p class="demo-hero-kicker">CSS Design System</p>
+    <h1>Sakura <span>Theme</span></h1>
+    <p>Cherry blossom beauty with a breath of wisteria —<br>a poetic, soft, Japanese-inspired design system.</p>
+    <div class="demo-branch">
+      <div class="demo-branch-line"></div>
+      <span style="font-size:1.2rem; animation: sakura-sway 5s ease-in-out infinite; display:inline-block">🌸</span>
+      <div class="demo-branch-dot"></div>
+      <span style="font-size:0.95rem; animation: sakura-sway 5s 0.8s ease-in-out infinite; display:inline-block">🌸</span>
+      <div class="demo-branch-line right"></div>
+    </div>
+  </header>
+
+  <!-- Palette -->
+  <section class="demo-section">
+    <p class="demo-section-title">Colour Palette</p>
+    <div class="demo-row" style="gap:0.5rem;">
+      <div title="--s-petal"        style="width:50px;height:50px;border-radius:50%;background:var(--s-petal);       box-shadow:0 3px 10px rgba(249,200,212,0.6)"></div>
+      <div title="--s-petal-deep"   style="width:50px;height:50px;border-radius:50%;background:var(--s-petal-deep); box-shadow:0 3px 10px rgba(232,137,154,0.5)"></div>
+      <div title="--s-blossom"      style="width:50px;height:50px;border-radius:50%;background:var(--s-blossom);    border:1.5px solid rgba(232,137,154,0.25)"></div>
+      <div title="--s-violet"       style="width:50px;height:50px;border-radius:50%;background:var(--s-violet);     box-shadow:0 3px 10px rgba(187,163,216,0.5)"></div>
+      <div title="--s-violet-deep"  style="width:50px;height:50px;border-radius:50%;background:var(--s-violet-deep);box-shadow:0 3px 10px rgba(139,107,177,0.4)"></div>
+      <div title="--s-violet-mist"  style="width:50px;height:50px;border-radius:50%;background:var(--s-violet-mist);border:1.5px solid rgba(187,163,216,0.35)"></div>
+      <div title="--s-bark"         style="width:50px;height:50px;border-radius:50%;background:var(--s-bark);       box-shadow:0 3px 10px rgba(122,75,58,0.35)"></div>
+      <div title="--s-cream"        style="width:50px;height:50px;border-radius:50%;background:var(--s-cream);      border:1.5px solid rgba(232,137,154,0.2)"></div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section class="demo-section">
+    <p class="demo-section-title">Buttons</p>
+    <div class="demo-row">
+      <button class="sakura-btn sakura-btn-primary">花見 Hanami 🌸</button>
+      <button class="sakura-btn sakura-btn-violet">紫 Wisteria</button>
+      <button class="sakura-btn sakura-btn-ghost">Ghost Petal</button>
+      <button class="sakura-btn sakura-btn-bark">桜 Bark</button>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="demo-section">
+    <p class="demo-section-title">Cards</p>
+    <div class="demo-grid">
+
+      <div class="sakura-card s-fade-up" style="animation-delay:0.05s">
+        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
+          <div class="sakura-ornament s-float" style="animation-delay:0s">🌸</div>
+          <div>
+            <h3 class="sakura-heading sakura-heading-sm">Yoshino Cherry</h3>
+            <span class="sakura-badge sakura-badge-petal">吉野桜</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;line-height:1.75;color:var(--s-ink-soft)">The most celebrated cherry variety, carpeting Nara in soft white-pink each spring.</p>
+        <hr class="sakura-divider">
+        <div class="demo-row" style="gap:0.4rem;">
+          <span class="sakura-chip">White-Pink</span>
+          <span class="sakura-chip">April</span>
+        </div>
+      </div>
+
+      <div class="sakura-card s-fade-up" style="animation-delay:0.12s">
+        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
+          <div class="sakura-ornament s-float" style="animation-delay:0.6s;background:radial-gradient(circle at 38% 38%, rgba(255,255,255,0.9), rgba(187,163,216,0.70) 35%, rgba(139,107,177,0.55) 70%, rgba(232,137,154,0.50) 100%)">✿</div>
+          <div>
+            <h3 class="sakura-heading sakura-heading-sm">Shirofugen</h3>
+            <span class="sakura-badge sakura-badge-violet">白藤</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;line-height:1.75;color:var(--s-ink-soft)">A double-flowered variety whose petals blush from white to violet-pink as they age.</p>
+        <hr class="sakura-divider">
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--s-ink-soft);">
+            <span>Bloom intensity</span><span style="color:var(--s-violet-deep);font-weight:500">78%</span>
+          </div>
+          <div class="sakura-progress"><div class="sakura-progress-fill" style="width:78%"></div></div>
+        </div>
+      </div>
+
+      <div class="sakura-card s-fade-up" style="animation-delay:0.20s">
+        <span class="sakura-tag sakura-tag-violet" style="margin-bottom:0.8rem;display:inline-flex;">New Variety</span>
+        <h3 class="sakura-heading sakura-heading-sm" style="margin-bottom:0.5rem;">Kanzan</h3>
+        <p style="font-size:0.86rem;line-height:1.75;color:var(--s-ink-soft)">Deep rose-pink, densely petalled blossoms that sway like silk in the spring wind.</p>
+        <hr class="sakura-divider">
+        <div class="demo-row" style="gap:0.4rem;">
+          <span class="sakura-badge sakura-badge-petal">Deep Rose</span>
+          <span class="sakura-badge sakura-badge-bark">Late Bloom</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Haiku & Quote -->
+  <section class="demo-section">
+    <p class="demo-section-title">Haiku Block</p>
+    <div class="sakura-haiku" style="max-width:480px;">
+      散る花びら<br>
+      空に溶けゆく薄紫<br>
+      春の終わりに
+      <p style="font-size:0.72rem;margin-top:1rem;opacity:0.55;letter-spacing:0.08em;font-style:italic">Petals drifting, dissolving into pale violet — at the end of spring.</p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="demo-section">
+    <p class="demo-section-title">Form Elements</p>
+    <div class="sakura-card" style="max-width:440px;">
+      <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem;">
+        <div class="sakura-avatar">花</div>
+        <h3 class="sakura-heading sakura-heading-sm">Blossom Journal</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="demo-form-group">
+          <label class="sakura-label">Your Name</label>
+          <input class="sakura-input" type="text" placeholder="e.g. Haruki">
+        </div>
+        <div class="demo-form-group">
+          <label class="sakura-label">Favourite Spot</label>
+          <input class="sakura-input" type="text" placeholder="e.g. Maruyama Park, Kyoto…">
+        </div>
+        <div style="display:flex;gap:0.55rem;margin-top:0.2rem;">
+          <button class="sakura-btn sakura-btn-primary" style="flex:1;">Record 🌸</button>
+          <button class="sakura-btn sakura-btn-ghost">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress -->
+  <section class="demo-section">
+    <p class="demo-section-title">Progress & Chips</p>
+    <div class="sakura-card" style="max-width:460px;display:flex;flex-direction:column;gap:1.1rem;">
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--s-ink-soft);margin-bottom:0.45rem;">
+          <span>Petal density</span><span style="color:var(--s-petal-deep);font-weight:500">92%</span>
+        </div>
+        <div class="sakura-progress"><div class="sakura-progress-fill" style="width:92%"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--s-ink-soft);margin-bottom:0.45rem;">
+          <span>Violet accent</span><span style="color:var(--s-violet-deep);font-weight:500">45%</span>
+        </div>
+        <div class="sakura-progress"><div class="sakura-progress-fill" style="width:45%"></div></div>
+      </div>
+      <hr class="sakura-divider">
+      <div class="demo-row">
+        <span class="sakura-chip">🌸 Somei</span>
+        <span class="sakura-chip">🌿 Nara</span>
+        <span class="sakura-chip chip-violet sakura-chip-violet">✿ Wisteria</span>
+        <span class="sakura-chip">🍃 Ueno</span>
+        <span class="sakura-chip chip-violet sakura-chip-violet">紫 Violet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges -->
+  <section class="demo-section">
+    <p class="demo-section-title">Badges & Tags</p>
+    <div class="demo-row">
+      <span class="sakura-badge sakura-badge-petal">Cherry Blossom</span>
+      <span class="sakura-badge sakura-badge-violet">Wisteria</span>
+      <span class="sakura-badge sakura-badge-bark">Bark</span>
+      <span class="sakura-badge sakura-badge-mist">Mist</span>
+      <span class="sakura-tag">Spring</span>
+      <span class="sakura-tag sakura-tag-violet">紫</span>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
