@@ -1,0 +1,193 @@
+/* Fresh Mint Theme */
+
+:root {
+  --mint-white:      #FFFFFF;
+  --mint-frost:      #EFF7F5;
+  --mint-light:      #E8F4F1;
+  --mint-soft:       #D4E9E2;
+  --mint-base:       #B8DCD4;
+  --mint-blush:      #F9E4E4;
+
+  --gradient-primary:   linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(239, 247, 245, 1) 35%);
+  --gradient-light:     linear-gradient(135deg, var(--mint-light) 0%, var(--mint-soft) 100%);
+  --gradient-warm:      linear-gradient(135deg, var(--mint-blush) 0%, var(--mint-light) 100%);
+  --gradient-deep:      linear-gradient(135deg, var(--mint-soft) 0%, var(--mint-base) 100%);
+}
+
+/* Base */
+body {
+  background: var(--gradient-primary);
+  color: #2d4a44;
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+/* Backgrounds */
+.bg-mint-frost  { background-color: var(--mint-frost); }
+.bg-mint-light  { background-color: var(--mint-light); }
+.bg-mint-soft   { background-color: var(--mint-soft); }
+.bg-mint-base   { background-color: var(--mint-base); }
+.bg-mint-blush  { background-color: var(--mint-blush); }
+
+/* Gradient surfaces */
+.surface-primary {
+  background: var(--gradient-primary);
+}
+
+.surface-card {
+  background: linear-gradient(135deg, var(--mint-frost) 0%, var(--mint-light) 100%);
+  border: 1px solid var(--mint-soft);
+  border-radius: 12px;
+}
+
+.surface-hero {
+  background: linear-gradient(135deg, var(--mint-white) 0%, var(--mint-light) 50%, var(--mint-soft) 100%);
+}
+
+.surface-light {
+  background: var(--gradient-light);
+}
+
+.surface-warm {
+  background: var(--gradient-warm);
+}
+
+.surface-deep {
+  background: var(--gradient-deep);
+  border: 1px solid var(--mint-base);
+  border-radius: 12px;
+}
+
+/* Tinted panels */
+.panel-light {
+  background-color: var(--mint-light);
+  border-left: 3px solid var(--mint-soft);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.panel-soft {
+  background-color: var(--mint-soft);
+  border-left: 3px solid var(--mint-base);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.panel-blush {
+  background-color: var(--mint-blush);
+  border-left: 3px solid #e0b8b8;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+/* Accents */
+.accent-blush {
+  background: linear-gradient(135deg, var(--mint-blush) 0%, var(--mint-frost) 100%);
+}
+
+.accent-base {
+  background: linear-gradient(135deg, var(--mint-base) 0%, var(--mint-soft) 100%);
+}
+
+/* Text */
+.text-mint-dark   { color: #2d4a44; }
+.text-mint-mid    { color: #4a7a6e; }
+.text-mint-light  { color: #7ab5a8; }
+
+/* Borders */
+.border-mint      { border-color: var(--mint-soft); }
+.border-mint-base { border-color: var(--mint-base); }
+
+/* Buttons */
+.btn-mint {
+  background: linear-gradient(90deg, var(--mint-soft) 0%, var(--mint-base) 100%);
+  color: #1f3a35;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.btn-mint:hover {
+  filter: brightness(0.95);
+}
+
+.btn-mint-outline {
+  background: transparent;
+  color: #4a7a6e;
+  border: 1.5px solid var(--mint-base);
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-mint-outline:hover {
+  background: var(--mint-frost);
+}
+
+/* Inputs */
+.input-mint {
+  background: var(--mint-white);
+  border: 1.5px solid var(--mint-soft);
+  border-radius: 8px;
+  padding: 0.5rem 0.875rem;
+  color: #2d4a44;
+  transition: border-color 0.2s ease;
+}
+
+.input-mint:focus {
+  outline: none;
+  border-color: var(--mint-base);
+  box-shadow: 0 0 0 3px rgba(184, 220, 212, 0.3);
+}
+
+/* Badges */
+.badge-mint {
+  background: var(--mint-light);
+  color: #2d4a44;
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.badge-blush {
+  background: var(--mint-blush);
+  color: #7a3535;
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* Divider */
+.divider-mint {
+  border: none;
+  border-top: 1px solid var(--mint-soft);
+}
+
+.divider-base {
+  border: none;
+  border-top: 1px solid var(--mint-base);
+}
+
+/* Shadow */
+.shadow-mint {
+  box-shadow: 0 4px 20px rgba(184, 220, 212, 0.35);
+}
+
+.shadow-soft {
+  box-shadow: 0 2px 12px rgba(212, 233, 226, 0.5);
+}
+
+.shadow-blush {
+  box-shadow: 0 4px 20px rgba(249, 228, 228, 0.6);
+}
+
+/* Ring / focus helpers */
+.ring-light {
+  box-shadow: 0 0 0 3px rgba(232, 244, 241, 0.7);
+}
+
+.ring-base {
+  box-shadow: 0 0 0 3px rgba(184, 220, 212, 0.4);
+}

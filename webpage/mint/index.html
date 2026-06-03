@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Fresh Mint Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 2.25rem;
+      height: 2.25rem;
+      place-items: center;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #4a7a6e;
+      font-size: 0.92rem;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 2rem;
+      align-items: center;
+      min-height: 430px;
+      padding: 3rem;
+      border: 1px solid var(--mint-soft);
+      border-radius: 16px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.25rem, 6vw, 4.75rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin-top: 1.25rem;
+      color: #4a7a6e;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .profile-card {
+      padding: 1.5rem;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .avatar {
+      display: grid;
+      width: 4.5rem;
+      height: 4.5rem;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .profile-card h2,
+    .section-title {
+      font-size: 1.35rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .profile-card p {
+      color: #4a7a6e;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .stat {
+      padding: 0.85rem;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.3rem;
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: #4a7a6e;
+      font-size: 0.78rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .section {
+      margin-top: 2.5rem;
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .panel-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .value-card {
+      min-height: 178px;
+      padding: 1.25rem;
+    }
+
+    .value-card h3 {
+      margin: 0.85rem 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    .value-card p,
+    .story p {
+      color: #4a7a6e;
+      font-size: 0.94rem;
+    }
+
+    .icon-tile {
+      display: grid;
+      width: 2.35rem;
+      height: 2.35rem;
+      place-items: center;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-card,
+    .story {
+      padding: 1.5rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.35rem;
+      color: #4a7a6e;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    textarea.input-mint {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .input-mint {
+      width: 100%;
+      font: inherit;
+    }
+
+    .footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem 2rem;
+      color: #4a7a6e;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 820px) {
+      .site-header,
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero,
+      .content-grid,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 2rem;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding: 1.25rem;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand text-mint-dark" href="index.html">
+      <span class="brand-mark surface-deep shadow-soft">M</span>
+      <span>Fresh Mint Studio</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Style Preview</a>
+      <a href="about.html">About</a>
+      <a class="badge-mint" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero surface-hero shadow-mint">
+      <div>
+        <span class="eyebrow badge-blush">About the sample</span>
+        <h1 class="text-mint-dark">Calm digital spaces for focused teams.</h1>
+        <p class="hero-copy">
+          Fresh Mint Studio is a fictional design practice used to demonstrate how the mint theme works across a real page layout.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-mint" href="#values">Our Values</a>
+          <a class="btn-mint-outline" href="#contact">Say Hello</a>
+        </div>
+      </div>
+
+      <aside class="profile-card surface-card shadow-soft" aria-label="Studio profile">
+        <div class="profile-top">
+          <div class="avatar accent-base text-mint-dark">FM</div>
+          <div>
+            <h2 class="text-mint-dark">Soft by design</h2>
+            <p>Practical layouts, gentle color, and tidy interactions.</p>
+          </div>
+        </div>
+        <hr class="divider-mint" />
+        <div class="stats">
+          <div class="stat bg-mint-frost">
+            <strong>24</strong>
+            <span>Projects</span>
+          </div>
+          <div class="stat bg-mint-light">
+            <strong>8</strong>
+            <span>Services</span>
+          </div>
+          <div class="stat bg-mint-blush">
+            <strong>4.9</strong>
+            <span>Rating</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section content-grid">
+      <div class="story surface-card shadow-soft">
+        <span class="badge-mint">Our story</span>
+        <h2 class="section-title text-mint-dark">A small studio with a careful eye.</h2>
+        <p>
+          This sample page uses the existing mint palette for cards, panels, dividers, badges, buttons, inputs, and shaded surfaces. The goal is to show the stylesheet in a natural content setting.
+        </p>
+      </div>
+
+      <div class="panel-stack">
+        <div class="panel-light">
+          <strong>Clear structure</strong>
+          <p>Sections use spacious grids and restrained borders so content remains easy to scan.</p>
+        </div>
+        <div class="panel-soft">
+          <strong>Gentle emphasis</strong>
+          <p>Mint surface classes highlight important areas without making the page feel heavy.</p>
+        </div>
+        <div class="panel-blush">
+          <strong>Warm accents</strong>
+          <p>Blush details add a friendly counterpoint to the cooler mint tones.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="values">
+      <h2 class="section-title text-mint-dark">What we care about</h2>
+      <div class="values">
+        <article class="value-card surface-card shadow-soft">
+          <div class="icon-tile bg-mint-soft">01</div>
+          <h3 class="text-mint-dark">Useful first</h3>
+          <p>Every screen should help people complete the thing they came to do.</p>
+        </article>
+        <article class="value-card surface-deep shadow-mint">
+          <div class="icon-tile bg-mint-frost">02</div>
+          <h3 class="text-mint-dark">Quiet polish</h3>
+          <p>Good spacing, readable type, and consistent states make the interface feel steady.</p>
+        </article>
+        <article class="value-card accent-blush shadow-blush">
+          <div class="icon-tile bg-mint-light">03</div>
+          <h3 class="text-mint-dark">Human warmth</h3>
+          <p>Small visual details can make a practical page feel more welcoming.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-card surface-warm shadow-blush">
+        <span class="badge-blush">Contact</span>
+        <h2 class="section-title text-mint-dark">Start a soft launch.</h2>
+        <p class="text-mint-mid">
+          Use this form as a visual sample for the input, button, shadow, and warm surface styles.
+        </p>
+      </div>
+
+      <form class="contact-card surface-card shadow-soft">
+        <h2 class="section-title text-mint-dark">Send a note</h2>
+        <div class="contact-form">
+          <label>
+            Name
+            <input class="input-mint" type="text" name="name" placeholder="Mina Chen" />
+          </label>
+          <label>
+            Email
+            <input class="input-mint" type="email" name="email" placeholder="mina@example.com" />
+          </label>
+          <label>
+            Message
+            <textarea class="input-mint" name="message" placeholder="Tell us what you are building."></textarea>
+          </label>
+          <button class="btn-mint" type="button">Send Message</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <hr class="divider-base" />
+    <p>Fresh Mint Studio sample page using style.css.</p>
+  </footer>
+</body>
+</html>
