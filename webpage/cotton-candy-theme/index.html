@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cotton Candy Theme Preview</title>
+    <link rel="stylesheet" href="cotton-candy-theme.css">
+    <style>
+      .preview-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 24px;
+        align-items: stretch;
+        margin-bottom: 24px;
+      }
+
+      .preview-title {
+        max-width: 12ch;
+        font-size: clamp(2.7rem, 8vw, 5.6rem);
+        letter-spacing: 0;
+      }
+
+      .preview-lede {
+        max-width: 62ch;
+        color: var(--cc-text-muted);
+        font-size: 1.08rem;
+      }
+
+      .preview-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .preview-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .preview-swatches {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .preview-swatch {
+        min-height: 74px;
+        padding: 12px;
+        border: 1px solid var(--cc-border);
+        border-radius: var(--cc-radius-sm);
+        color: var(--cc-text-strong);
+        font-weight: 800;
+        background: var(--swatch);
+      }
+
+      .preview-section {
+        margin-top: 24px;
+      }
+
+      .preview-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .preview-form .wide {
+        grid-column: 1 / -1;
+      }
+
+      .preview-note-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .preview-note-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--cc-border);
+      }
+
+      .preview-note-list li:last-child {
+        border-bottom: 0;
+      }
+
+      @media (max-width: 780px) {
+        .preview-hero,
+        .preview-form {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="cc-page">
+      <section class="preview-hero">
+        <div class="cc-panel">
+          <span class="cc-badge">Light theme</span>
+          <h1 class="preview-title">Cotton Candy</h1>
+          <p class="preview-lede">
+            A soft UI palette based on your VS Code theme: blush surfaces, lavender text,
+            mint highlights, peach warnings, and a cool blue status accent.
+          </p>
+          <div class="preview-actions">
+            <button class="cc-button">Primary action</button>
+            <button class="cc-button secondary">Secondary</button>
+            <button class="cc-button ghost">Ghost</button>
+          </div>
+        </div>
+
+        <aside class="cc-card preview-stack">
+          <h2>Palette</h2>
+          <div class="preview-swatches">
+            <div class="preview-swatch" style="--swatch: var(--cc-bg);">Blush</div>
+            <div class="preview-swatch" style="--swatch: var(--cc-bg-soft);">Lavender</div>
+            <div class="preview-swatch" style="--swatch: var(--cc-pink-soft);">Pink</div>
+            <div class="preview-swatch" style="--swatch: var(--cc-mint);">Mint</div>
+            <div class="preview-swatch" style="--swatch: var(--cc-blue);">Blue</div>
+            <div class="preview-swatch" style="--swatch: var(--cc-peach);">Peach</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="cc-grid preview-section">
+        <article class="cc-card">
+          <h2>Cards</h2>
+          <p>
+            Cards use a quiet white surface, a pale pink border, and a lavender shadow.
+            Inline code looks like <code>--cc-pink-soft</code>.
+          </p>
+          <a href="#">Preview link styling</a>
+        </article>
+
+        <article class="cc-card">
+          <h2>Status</h2>
+          <ul class="preview-note-list">
+            <li><span>Selected tab</span><span class="cc-badge">Active</span></li>
+            <li><span>Hover rows</span><span class="cc-badge">Soft</span></li>
+            <li><span>Focus ring</span><span class="cc-badge">Pink</span></li>
+          </ul>
+        </article>
+
+        <article class="cc-card">
+          <h2>Tabs</h2>
+          <div class="cc-tabs" role="tablist" aria-label="Preview tabs">
+            <button class="cc-tab is-active" type="button" aria-selected="true">Overview</button>
+            <button class="cc-tab" type="button" aria-selected="false">Details</button>
+            <button class="cc-tab" type="button" aria-selected="false">Notes</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="cc-panel preview-section">
+        <h2>Form Elements</h2>
+        <form class="preview-form">
+          <div>
+            <label for="name">Project name</label>
+            <input id="name" type="text" value="Cotton Candy Theme">
+          </div>
+          <div>
+            <label for="mood">Mood</label>
+            <select id="mood">
+              <option>Sweet and calm</option>
+              <option>Bright and playful</option>
+              <option>Quiet and polished</option>
+            </select>
+          </div>
+          <div class="wide">
+            <label for="notes">Notes</label>
+            <textarea id="notes">The focus state, buttons, panels, and table should all feel like they belong to the same soft editor-inspired theme.</textarea>
+          </div>
+          <div>
+            <label><input type="checkbox" checked> Enable candy mode</label>
+          </div>
+          <div>
+            <label><input type="radio" checked name="preview"> Light palette</label>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-section">
+        <div class="cc-toolbar">
+          <button class="cc-button">Save</button>
+          <button class="cc-button secondary">Export</button>
+          <span class="cc-muted">Toolbar preview with wrapped controls</span>
+        </div>
+      </section>
+
+      <section class="cc-grid preview-section">
+        <div class="cc-alert info">Info alert using the cool blue status color.</div>
+        <div class="cc-alert success">Success alert using the mint diff-insert color.</div>
+        <div class="cc-alert warning">Warning alert using the peach editor warning color.</div>
+        <div class="cc-alert danger">Danger alert using the soft error pink.</div>
+      </section>
+
+      <section class="preview-section">
+        <table>
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Value</th>
+              <th>Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--cc-bg</code></td>
+              <td>#fff0f8</td>
+              <td>Page background</td>
+            </tr>
+            <tr>
+              <td><code>--cc-text</code></td>
+              <td>#8b5a9d</td>
+              <td>Main text</td>
+            </tr>
+            <tr>
+              <td><code>--cc-pink-soft</code></td>
+              <td>#ffd6e8</td>
+              <td>Buttons and badges</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
