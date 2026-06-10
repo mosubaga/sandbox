@@ -1,0 +1,366 @@
+/* ============================================================
+   Sakura — a soft pastel design system
+   Palette: pale rose / mauve / mint
+   Typeface: Mulish
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* ------------------------------------------------------------
+   1. Tokens
+   ------------------------------------------------------------ */
+:root {
+  /* --- Given palette --- */
+  --background: #FAF2F2;   /* page background  */
+  --primary:    #F8E8E8;   /* primary surface  */
+  --secondary:  #F5E4E7;   /* secondary surface */
+  --sub1:       #E8E2EC;   /* lavender accent  */
+  --sub2:       #E8F2F2;   /* mint accent      */
+
+  /* --- Derived ink (text) --- these are not in the palette but
+     are needed because every supplied colour is too pale to read
+     against another. Deep desaturated plum reads warm on rose. */
+  --ink:        #3A2C34;   /* headings, body   */
+  --ink-soft:   #6B5560;   /* secondary text   */
+  --ink-faint:  #9A8690;   /* captions, hints  */
+
+  /* --- Derived accent --- a saturated rose pulled from the same
+     hue family so links / buttons pop without clashing. */
+  --accent:        #C25D7B;
+  --accent-hover:  #A84866;
+  --accent-soft:   #E9C6D1;  /* tints, focus rings */
+
+  /* Supporting accents from the sub tones */
+  --lavender:   #8E7FA0;   /* deepened --sub1 for text use */
+  --mint:       #4E8C8C;   /* deepened --sub2 for text use */
+
+  /* --- Borders & lines --- */
+  --line:       #ECDADF;
+  --line-strong:#DCC4CC;
+
+  /* --- Functional --- */
+  --success:    #5C9A78;
+  --warning:    #C99A4E;
+  --danger:     #C2566A;
+
+  /* --- Type --- */
+  --font: 'Mulish', system-ui, -apple-system, sans-serif;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* --- Scale (1.25 modular) --- */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.563rem;
+  --text-2xl:  1.953rem;
+  --text-3xl:  2.441rem;
+  --text-4xl:  3.052rem;
+
+  /* --- Spacing (4px base) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+
+  /* --- Radius --- */
+  --radius-sm: 6px;
+  --radius:    12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* --- Shadows (soft, warm-tinted) --- */
+  --shadow-sm: 0 1px 2px rgba(58, 44, 52, 0.06);
+  --shadow:    0 4px 16px rgba(58, 44, 52, 0.08);
+  --shadow-lg: 0 12px 36px rgba(58, 44, 52, 0.12);
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:  180ms;
+}
+
+/* ------------------------------------------------------------
+   2. Reset & base
+   ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  font-weight: var(--fw-normal);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, svg, video { display: block; max-width: 100%; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+/* ------------------------------------------------------------
+   3. Typography
+   ------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: var(--fw-bold);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--text-4xl); font-weight: var(--fw-black); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+
+p { color: var(--ink); }
+p + p { margin-top: var(--space-4); }
+
+small, .text-sm { font-size: var(--text-sm); }
+.text-muted { color: var(--ink-soft); }
+.text-faint { color: var(--ink-faint); }
+
+.lead {
+  font-size: var(--text-lg);
+  font-weight: var(--fw-light);
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+code, kbd, pre {
+  font-family: 'SFMono-Regular', ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.9em;
+}
+code {
+  background: var(--sub1);
+  color: var(--lavender);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+}
+pre {
+  background: var(--primary);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  border: 1px solid var(--line);
+}
+pre code { background: none; color: var(--ink); padding: 0; }
+
+blockquote {
+  border-left: 3px solid var(--accent-soft);
+  padding: var(--space-2) var(--space-5);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+hr { border: none; border-top: 1px solid var(--line); margin: var(--space-6) 0; }
+
+/* ------------------------------------------------------------
+   4. Layout helpers
+   ------------------------------------------------------------ */
+.container { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: var(--space-5); }
+.container-narrow { max-width: 720px; }
+
+.stack > * + * { margin-top: var(--space-4); }
+.row { display: flex; gap: var(--space-4); align-items: center; }
+.row-between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+
+.grid { display: grid; gap: var(--space-5); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 720px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------
+   5. Surfaces
+   ------------------------------------------------------------ */
+.surface-primary   { background: var(--primary); }
+.surface-secondary { background: var(--secondary); }
+.surface-sub1      { background: var(--sub1); }
+.surface-sub2      { background: var(--sub2); }
+
+.card {
+  background: var(--primary);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.card:hover { box-shadow: var(--shadow); }
+
+.card-interactive { cursor: pointer; }
+.card-interactive:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.card-header { margin-bottom: var(--space-4); }
+.card-title  { font-size: var(--text-xl); font-weight: var(--fw-bold); }
+.card-subtitle { color: var(--ink-soft); font-size: var(--text-sm); margin-top: var(--space-1); }
+
+.panel {
+  background: var(--secondary);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+/* ------------------------------------------------------------
+   6. Buttons
+   ------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font);
+  font-weight: var(--fw-semibold);
+  font-size: var(--text-sm);
+  line-height: 1;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover { background: var(--accent-hover); box-shadow: var(--shadow); }
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn-secondary:hover { background: var(--sub1); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+}
+.btn-ghost:hover { background: var(--accent-soft); }
+
+.btn-sm { padding: 0.5rem 1rem; font-size: var(--text-xs); }
+.btn-lg { padding: 1rem 2rem; font-size: var(--text-base); }
+
+/* ------------------------------------------------------------
+   7. Forms
+   ------------------------------------------------------------ */
+label { display: block; font-size: var(--text-sm); font-weight: var(--fw-semibold); color: var(--ink-soft); margin-bottom: var(--space-2); }
+
+.input, input[type="text"], input[type="email"], input[type="password"],
+input[type="number"], input[type="search"], textarea, select {
+  width: 100%;
+  font-family: var(--font);
+  font-size: var(--text-base);
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.input::placeholder, textarea::placeholder { color: var(--ink-faint); }
+
+.input:focus, input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+textarea { resize: vertical; min-height: 6rem; }
+
+.field + .field { margin-top: var(--space-4); }
+.hint { font-size: var(--text-xs); color: var(--ink-faint); margin-top: var(--space-1); }
+
+/* ------------------------------------------------------------
+   8. Badges & tags
+   ------------------------------------------------------------ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: var(--sub1);
+  color: var(--lavender);
+}
+.badge-rose  { background: var(--secondary); color: var(--accent-hover); }
+.badge-mint  { background: var(--sub2); color: var(--mint); }
+.badge-solid { background: var(--accent); color: #fff; }
+
+/* ------------------------------------------------------------
+   9. Tables
+   ------------------------------------------------------------ */
+table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+th, td { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--line); }
+th { font-weight: var(--fw-bold); color: var(--ink-soft); background: var(--primary); }
+tbody tr { transition: background var(--dur) var(--ease); }
+tbody tr:hover { background: var(--secondary); }
+
+/* ------------------------------------------------------------
+   10. Alerts
+   ------------------------------------------------------------ */
+.alert {
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--accent);
+  background: var(--secondary);
+  color: var(--ink);
+}
+.alert-mint   { background: var(--sub2); border-color: var(--mint); }
+.alert-lavender { background: var(--sub1); border-color: var(--lavender); }
+
+/* ------------------------------------------------------------
+   11. Utilities
+   ------------------------------------------------------------ */
+.text-center { text-align: center; }
+.text-accent { color: var(--accent); }
+.fw-light { font-weight: var(--fw-light); }
+.fw-bold  { font-weight: var(--fw-bold); }
+.rounded  { border-radius: var(--radius); }
+.rounded-full { border-radius: var(--radius-full); }
+.shadow   { box-shadow: var(--shadow); }
+.mt-0{margin-top:0}.mt-4{margin-top:var(--space-4)}.mt-6{margin-top:var(--space-6)}
+.mb-4{margin-bottom:var(--space-4)}.mb-6{margin-bottom:var(--space-6)}
+.p-4{padding:var(--space-4)}.p-6{padding:var(--space-6)}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
