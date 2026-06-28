@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+:root {
+  --base: #FDF4F5;
+  --main: #E9B2BC;
+  --accent: #A84C5D;
+  --sub-1: #F3DBE0;
+  --sub-2: #D9A1AA;
+  --ink: #4f4548;
+  --muted: #8e7c80;
+  --white: #fffafb;
+  --radius: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Varela Round", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 8%, rgba(233, 178, 188, 0.30), transparent 22%),
+    radial-gradient(circle at 78% 4%, rgba(243, 219, 224, 0.75), transparent 26%),
+    var(--base);
+  line-height: 1.65;
+}
+
+.page {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hero {
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  padding: 80px 0 56px;
+}
+
+.kicker {
+  color: var(--accent);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 14px 0 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 8vw, 6.6rem);
+  line-height: 0.92;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero p {
+  max-width: 590px;
+  font-size: 1.08rem;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.brand-card {
+  background: var(--white);
+  border: 1px solid rgba(168, 76, 93, 0.10);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.brand-header {
+  height: 150px;
+  background:
+    linear-gradient(rgba(253, 244, 245, 0.62), rgba(253, 244, 245, 0.62)),
+    url("rose.jpg") center top / cover;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.brand-grid > div {
+  min-height: 142px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.brand-grid .main {
+  background: var(--main);
+  color: var(--white);
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.12em;
+}
+
+.brand-grid .accent {
+  background: var(--accent);
+  color: var(--white);
+  font-size: 3.4rem;
+  font-family: Georgia, serif;
+}
+
+.brand-grid .base {
+  background: var(--white);
+  color: var(--accent);
+  font-family: cursive;
+  font-size: 1.7rem;
+}
+
+.section {
+  padding: 54px 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.section-title span {
+  width: 44px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  color: var(--accent);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 500;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: rgba(255, 250, 251, 0.82);
+  border: 1px solid rgba(217, 161, 170, 0.36);
+  border-radius: 24px;
+  padding: 28px;
+}
+
+.card:nth-child(2) {
+  background: var(--sub-1);
+}
+
+.card:nth-child(3) {
+  background: var(--main);
+  color: var(--white);
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+
+.card:nth-child(3) h3 {
+  color: var(--white);
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.swatch {
+  min-height: 150px;
+  border-radius: 999px 999px 24px 24px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgba(79, 69, 72, 0.08);
+}
+
+.swatch strong {
+  display: block;
+  font-family: Georgia, serif;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.swatch small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.swatch.base { background: var(--base); }
+.swatch.main { background: var(--main); color: var(--white); }
+.swatch.accent { background: var(--accent); color: var(--white); }
+.swatch.sub1 { background: var(--sub-1); }
+.swatch.sub2 { background: var(--sub-2); color: var(--white); }
+.swatch.main small,
+.swatch.accent small,
+.swatch.sub2 small { color: rgba(255, 255, 255, 0.82); }
+
+.feature {
+  background: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.feature h2 {
+  color: var(--white);
+}
+
+.feature .button {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+footer {
+  padding: 36px 0 50px;
+  text-align: center;
+  color: var(--muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .feature {
+    grid-template-columns: 1fr;
+  }
+
+  .cards,
+  .palette {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    width: min(100% - 24px, 1120px);
+  }
+
+  .cards,
+  .palette,
+  .brand-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 48px;
+  }
+}
