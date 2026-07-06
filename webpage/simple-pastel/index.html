@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>style.css Preview</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    .preview-header {
+      margin-bottom: 28px;
+    }
+
+    .preview-header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .preview-header p,
+    .pastel-card p {
+      line-height: 1.8;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .swatch {
+      min-height: 92px;
+      border: 1px solid rgba(108, 122, 137, 0.14);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      align-items: end;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .bg-pastel {
+      background: var(--bg-pastel);
+    }
+
+    .bg-card {
+      background: var(--bg-card);
+    }
+
+    .color-accent {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .color-point {
+      background: var(--color-point);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .sample-note {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      border-radius: var(--border-curved);
+      background: var(--color-point);
+      padding: 0 16px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="preview-header">
+      <h1>style.css Preview</h1>
+      <p>
+        プロジェクト直下の <strong>style.css</strong> を読み込んで、背景、文字色、カード、ボタン、CSS変数の見た目を確認するためのページです。
+      </p>
+    </header>
+
+    <section class="preview-grid" aria-label="Component preview">
+      <article class="pastel-card">
+        <h2>Pastel Card</h2>
+        <p>
+          このカードは <code>.pastel-card</code> を使っています。白い背景、丸み、やわらかい影がどのように見えるかを確認できます。
+        </p>
+        <div class="actions">
+          <button class="pastel-btn" type="button">Pastel Button</button>
+          <span class="sample-note">Point Color</span>
+        </div>
+      </article>
+
+      <article class="pastel-card">
+        <h2>Text Sample</h2>
+        <p>
+          本文の色と日本語フォントの雰囲気を確認するサンプルです。明るい背景に対して、少し淡いダークカラーの文字が表示されます。
+        </p>
+        <button class="pastel-btn" type="button">Hover Me</button>
+      </article>
+    </section>
+
+    <section class="pastel-card" aria-label="Color variables">
+      <h2>Color Variables</h2>
+      <div class="swatches">
+        <div class="swatch bg-pastel">--bg-pastel</div>
+        <div class="swatch bg-card">--bg-card</div>
+        <div class="swatch color-accent">--color-accent</div>
+        <div class="swatch color-point">--color-point</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

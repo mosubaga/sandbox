@@ -1,0 +1,44 @@
+:root {
+
+  --bg-pastel: #FFF0F5; 
+  
+  --bg-card: #FFFFFF;
+
+  --color-accent: #FFB6C1;
+  
+  --color-point: #E6E6FA;
+  
+  --text-main: #6C7A89;
+  
+  --border-curved: 20px;
+}
+
+body {
+  background-color: var(--bg-pastel);
+  color: var(--text-main);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.pastel-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-curved);
+  box-shadow: 0 8px 16px rgba(255, 182, 193, 0.15); 
+  padding: 24px;
+}
+
+
+.pastel-btn {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  border-radius: 50px;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pastel-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
