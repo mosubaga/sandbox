@@ -4,4 +4,5 @@
 ./golang/src/
 ./golang/.idea
 .vscode/
+.claude/
 
