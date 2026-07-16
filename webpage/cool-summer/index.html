@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A cool summer website theme using light violet, light green, and white.">
+  <title>Cool Summer — CSS Theme Preview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Cool Summer home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Cool Summer
+      </a>
+
+      <div class="nav-links">
+        <a href="#palette">Palette</a>
+        <a href="#details">Details</a>
+        <a href="#subscribe">Subscribe</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid container">
+        <div class="hero-content">
+          <p class="eyebrow">A fresh seasonal theme</p>
+          <h1>Soft air. Clear light.</h1>
+          <p class="hero-copy">
+            A calm interface inspired by pale violet skies, cool green shade,
+            and crisp white summer light.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#palette">Explore palette</a>
+            <a class="button button-secondary" href="#details">View components</a>
+          </div>
+        </div>
+
+        <article class="summer-card" aria-label="Summer weather illustration">
+          <div class="summer-visual" aria-hidden="true">
+            <span class="sun"></span>
+            <span class="wave"></span>
+            <span class="glass"></span>
+          </div>
+
+          <div class="card-caption">
+            <div>
+              <strong>Garden shade</strong>
+              <span>Light breeze · Quiet afternoon</span>
+            </div>
+            <div class="temperature">74°</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="palette">
+      <div class="container">
+        <p class="section-kicker">The palette</p>
+        <h2 class="section-heading">Three colors, one cool mood.</h2>
+        <p class="section-intro">
+          The light violet and green are sampled from the supplied image.
+          White adds open space and keeps the design bright and breathable.
+        </p>
+
+        <div class="palette-grid">
+          <article class="swatch swatch-violet">
+            <span class="swatch-name">Summer Violet</span>
+          </article>
+
+          <article class="swatch swatch-green">
+            <span class="swatch-name">Summer Green</span>
+          </article>
+
+          <article class="swatch swatch-white">
+            <span class="swatch-name">Fresh White</span>
+            <span class="swatch-code">#FFFFFF</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" id="details">
+      <div class="container">
+        <p class="section-kicker">Design language</p>
+        <h2 class="section-heading">Calm, airy, and refreshing.</h2>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-number">01</span>
+            <h3>Open composition</h3>
+            <p>
+              Generous spacing gives every element room to breathe and keeps
+              the page feeling cool rather than crowded.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-number">02</span>
+            <h3>Gentle contrast</h3>
+            <p>
+              Pale seasonal colors are paired with clear typography for a
+              soft appearance that remains easy to read.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-number">03</span>
+            <h3>Simple geometry</h3>
+            <p>
+              Rounded shapes and the diagonal hero division echo sunlight,
+              shade, and an easy summer afternoon.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subscribe">
+      <div class="container">
+        <div class="newsletter">
+          <div class="newsletter-content">
+            <p class="section-kicker">A sample form</p>
+            <h2>Carry a little summer with you.</h2>
+            <p>
+              This section demonstrates form fields, buttons, and a stronger
+              violet-green composition using the same core palette.
+            </p>
+
+            <form class="newsletter-form">
+              <label class="sr-only" for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com">
+              <button class="button button-primary" type="button">Join the list</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-row container">
+      <span>Cool Summer Theme</span>
+      <span>Light violet · Light green · White</span>
+    </div>
+  </footer>
+</body>
+</html>
