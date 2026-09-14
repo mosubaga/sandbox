@@ -128,7 +128,7 @@ func isLetter(c rune) bool {
 //   unary   := '-' unary | primary
 //   primary := NUMBER | '(' expr ')' | IDENT '(' expr ')'
 //
-// IDENT is a function name: sin, cos, tan, ln, exp (all take one argument).
+// IDENT is a function name: sin, cos, tan, ln, exp, sqrt, sq (all take one argument).
 
 type parser struct {
 	lex *lexer
@@ -289,6 +289,13 @@ func applyFunction(name string, arg float64) (float64, error) {
 		return math.Log(arg), nil
 	case "exp":
 		return math.Exp(arg), nil
+	case "sqrt":
+		if arg < 0 {
+			return 0, fmt.Errorf("sqrt undefined for negative values")
+		}
+		return math.Sqrt(arg), nil
+	case "sq":
+		return arg * arg, nil
 	default:
 		return 0, fmt.Errorf("unknown function: %s", name)
 	}
