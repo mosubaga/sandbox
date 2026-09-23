@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Cotton Candy Theme
+   Colors: #F8D0E4 (pink) / #D8C0F0 (purple)
+   Font: Noto Sans
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /* Core palette */
+  --cc-pink: #FDE3EF;
+  --cc-blue: #E8D9F6;
+
+  /* Derived shades (for depth, borders, hover states) */
+  --cc-pink-light: #FFF3F9;
+  --cc-pink-dark: #F8D0E4;
+  --cc-blue-light: #F5EFFC;
+  --cc-blue-dark: #D8C0F0;
+
+  /* Neutral / text colors */
+  --cc-text: #4A4453;
+  --cc-text-soft: #7A7284;
+  --cc-white: #FFFFFF;
+
+  /* Gradient */
+  --cc-gradient: linear-gradient(
+    135deg,
+    var(--cc-pink-light) 0%,
+    var(--cc-pink) 25%,
+    var(--cc-pink-dark) 45%,
+    var(--cc-blue) 65%,
+    var(--cc-blue-dark) 85%,
+    var(--cc-blue-light) 100%
+  );
+
+  /* Effects */
+  --cc-shadow: 0 8px 24px rgba(216, 192, 240, 0.35);
+  --cc-radius: 20px;
+
+  --cc-font: 'Noto Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--cc-font);
+  color: var(--cc-text);
+  background: var(--cc-gradient);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ---------- Typography ---------- */
+
+h1, h2, h3 {
+  font-family: var(--cc-font);
+  font-weight: 800;
+  color: var(--cc-text);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+p {
+  font-family: var(--cc-font);
+  font-weight: 400;
+  color: var(--cc-text-soft);
+  line-height: 1.6;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.cc-container {
+  width: 100%;
+  max-width: 760px;
+}
+
+.cc-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cc-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cc-white);
+  background: var(--cc-blue-dark);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+/* ---------- Card ---------- */
+
+.cc-card {
+  background: var(--cc-white);
+  border-radius: var(--cc-radius);
+  box-shadow: var(--cc-shadow);
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 2px solid var(--cc-pink);
+}
+
+.cc-card--blue {
+  border-color: var(--cc-blue);
+}
+
+.cc-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Buttons ---------- */
+
+.cc-btn {
+  font-family: var(--cc-font);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cc-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cc-btn--pink {
+  background: var(--cc-pink);
+  color: var(--cc-text);
+  box-shadow: 0 4px 14px rgba(255, 221, 225, 0.6);
+}
+
+.cc-btn--pink:hover {
+  background: var(--cc-pink-dark);
+}
+
+.cc-btn--blue {
+  background: var(--cc-blue);
+  color: var(--cc-text);
+  box-shadow: 0 4px 14px rgba(173, 216, 230, 0.6);
+}
+
+.cc-btn--blue:hover {
+  background: var(--cc-blue-dark);
+}
+
+.cc-btn--outline {
+  background: transparent;
+  color: var(--cc-text);
+  border: 2px solid var(--cc-pink-dark);
+}
+
+.cc-btn--outline:hover {
+  background: var(--cc-pink-light);
+}
+
+/* ---------- Form elements ---------- */
+
+.cc-input {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--cc-blue-light);
+  background: var(--cc-blue-light);
+  color: var(--cc-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.cc-input:focus {
+  border-color: var(--cc-blue-dark);
+}
+
+/* ---------- Tags / pills ---------- */
+
+.cc-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin: 0 6px 6px 0;
+}
+
+.cc-tag--pink {
+  background: var(--cc-pink);
+  color: var(--cc-text);
+}
+
+.cc-tag--blue {
+  background: var(--cc-blue);
+  color: var(--cc-text);
+}
+
+/* ---------- Divider ---------- */
+
+.cc-divider {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--cc-gradient);
+  border: none;
+  margin: 24px 0;
+}
+
+/* ---------- Footer ---------- */
+
+.cc-footer {
+  text-align: center;
+  color: var(--cc-white);
+  font-size: 0.9rem;
+  margin-top: 20px;
+  opacity: 0.9;
+}
