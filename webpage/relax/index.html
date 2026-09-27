@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relax</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">RELAX</a>
+      <ul class="nav">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#palette">PALETTE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Take a deep breath</h1>
+      <p>A calm space to slow down and unwind.</p>
+      <a href="#menu" class="btn btn-accent">VIEW MENU</a>
+      <a href="#contact" class="btn btn-outline">CONTACT</a>
+    </div>
+  </section>
+
+  <section id="about" class="section section-sub">
+    <div class="container">
+      <h2 class="section-title">ABOUT</h2>
+      <p style="max-width:680px;margin:0 auto;text-align:center;">
+        Soft pink as the base, warm cream as the sub color, and a touch of dusty blue as the accent.
+        This page shows how the palette works across headers, cards, buttons and forms.
+        Links look <a href="#">like this</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="menu" class="section section-base">
+    <div class="container">
+      <h2 class="section-title">MENU</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <span class="tag">POPULAR</span>
+            <h3>Aroma Massage</h3>
+            <p>60 min of gentle massage with essential oils.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <span class="tag">NEW</span>
+            <h3>Herbal Tea Time</h3>
+            <p>Seasonal blends served in a quiet lounge.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <span class="tag">LIMITED</span>
+            <h3>Head Spa</h3>
+            <p>Refresh your scalp and relieve daily tension.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="palette" class="section section-sub">
+    <div class="container">
+      <h2 class="section-title">COLOR BALANCE</h2>
+      <div class="balance-bar">
+        <div class="base"></div>
+        <div class="accent"></div>
+        <div class="sub"></div>
+      </div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--base)"></div>
+          <strong>BASE</strong><br><code>#EDC4C0</code>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--accent)"></div>
+          <strong>ACCENT</strong><br><code>#98C5CF</code>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--sub)"></div>
+          <strong>SUB</strong><br><code>#ECEBDF</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-base">
+    <div class="container">
+      <h2 class="section-title">CONTACT</h2>
+      <form class="form" onsubmit="return false;">
+        <label>NAME
+          <input type="text" placeholder="Your name">
+        </label>
+        <label>EMAIL
+          <input type="email" placeholder="you@example.com">
+        </label>
+        <label>MESSAGE
+          <textarea rows="5" placeholder="Your message"></textarea>
+        </label>
+        <button type="submit" class="btn btn-accent">SEND</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    &copy; 2026 RELAX
+  </footer>
+
+</body>
+</html>

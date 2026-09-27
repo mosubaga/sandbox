@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">DREAM</a>
+      <ul class="nav">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#collection">COLLECTION</a></li>
+        <li><a href="#palette">PALETTE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Sweet dreams are made of this</h1>
+      <p>Soft pastels, floating clouds, and a little bit of magic.</p>
+      <a href="#collection" class="btn btn-primary">EXPLORE</a>
+      <a href="#contact" class="btn btn-outline">CONTACT</a>
+    </div>
+  </section>
+
+  <section id="about" class="section section-sky">
+    <div class="container">
+      <h2 class="section-title">ABOUT</h2>
+      <p style="max-width:680px;margin:0 auto;text-align:center;">
+        This palette mixes lavender, periwinkle, pink, white and sky blue.
+        This page shows how those colors look on headers, cards, buttons and forms.
+        Links look <a href="#">like this</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="collection" class="section section-white">
+    <div class="container">
+      <h2 class="section-title">COLLECTION</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <span class="tag tag-lavender">POPULAR</span>
+            <h3>Lavender Night</h3>
+            <p>A calm, fragrant evening under a violet sky.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <span class="tag">NEW</span>
+            <h3>Periwinkle Cloud</h3>
+            <p>Drift away on a soft, cool blue breeze.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <span class="tag tag-pink">LIMITED</span>
+            <h3>Cotton Candy</h3>
+            <p>Sweet pink moments to brighten your day.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-pink">
+    <div class="container">
+      <blockquote class="quote">
+        Every dream begins with a single soft color.
+        <cite>— DREAM</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="palette" class="section section-white">
+    <div class="container">
+      <h2 class="section-title">PALETTE</h2>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--lavender)"></div>
+          <div>C13/M27/Y0/K0<br>R215/G196/B221<br><code>#D7C4DD</code></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--periwinkle)"></div>
+          <div>C27/M15/Y0/K0<br>R197/G206/B232<br><code>#C5CEE8</code></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--pink)"></div>
+          <div>C0/M23/Y0/K0<br>R240/G214/B229<br><code>#F0D6E5</code></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip is-white"></div>
+          <div>C0/M0/Y0/K0<br>R255/G255/B255<br><code>#FFFFFF</code></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background:var(--sky)"></div>
+          <div>C17/M0/Y0/K0<br>R224/G239/B251<br><code>#E0EFFB</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-sky">
+    <div class="container">
+      <h2 class="section-title">CONTACT</h2>
+      <form class="form" onsubmit="return false;">
+        <label>NAME
+          <input type="text" placeholder="Your name">
+        </label>
+        <label>EMAIL
+          <input type="email" placeholder="you@example.com">
+        </label>
+        <label>MESSAGE
+          <textarea rows="5" placeholder="Your message"></textarea>
+        </label>
+        <button type="submit" class="btn btn-gradient">SEND</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    &copy; 2026 DREAM
+  </footer>
+
+</body>
+</html>
