@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pastel Bloom — Style Preview</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Preview-page-only helpers */
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; }
+    .logo { font-family: var(--font-display); font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
+    .nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; font-weight: 600; }
+    .nav a { color: var(--color-text); text-decoration: none; }
+    .nav a:hover { color: var(--color-sub-deep); }
+    .hero { padding: 4rem 0 5rem; text-align: center; }
+    .eyebrow { font-family: var(--font-display); letter-spacing: .3em; text-transform: uppercase; font-size: .85rem; color: var(--color-sub-deep); }
+    .lead { font-size: 1.15rem; max-width: 32em; margin: 0 auto 2rem; }
+    .row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    .hero .row { justify-content: center; }
+    .balance { display: flex; height: 90px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .balance > div { display: flex; align-items: flex-end; padding: .5rem .75rem; font: 600 .8rem var(--font-display); letter-spacing: .12em; }
+    .swatch { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--color-white); }
+    .swatch-color { height: 130px; }
+    .swatch-info { padding: 1rem 1.25rem; font-size: .9rem; }
+    .swatch-info strong { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; }
+    .swatch-info code { font-weight: 700; font-size: 1rem; }
+    .swatch-info dl { display: grid; grid-template-columns: auto 1fr auto 1fr; gap: .1rem .6rem; margin: .5rem 0 0; }
+    .swatch-info dt { color: var(--color-text-muted); }
+    .swatch-info dd { margin: 0; }
+    .icon { width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 1rem; }
+    @media (max-width: 600px) { .nav ul { display: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="gradient-bloom">
+    <div class="container">
+      <nav class="nav">
+        <span class="logo">Pastel Bloom</span>
+        <ul>
+          <li><a href="#palette">Palette</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="#type">Typography</a></li>
+        </ul>
+      </nav>
+      <div class="hero">
+        <p class="eyebrow">A Soft Color System</p>
+        <h1>Gentle Colors,<br>Dreamy Design</h1>
+        <p class="lead">Soft shell pink, a breath of pale mint, and a touch of iris — a calm, airy palette for friendly, modern pages.</p>
+        <div class="row">
+          <a href="#palette" class="btn btn--secondary">View Palette</a>
+          <a href="#components" class="btn btn--outline">See Components</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Palette -->
+  <section id="palette" class="section section--paper">
+    <div class="container">
+      <h2>Color Palette</h2>
+
+      <div class="grid">
+        <div class="swatch">
+          <div class="swatch-color bg-base"></div>
+          <div class="swatch-info">
+            <strong>Soft Shell Pink</strong> — Base<br>
+            <code>#f8ccd1</code> <span class="text-muted">var(--color-base)</span>
+            <dl><dt>C</dt><dd>0</dd><dt>R</dt><dd>248</dd>
+                <dt>M</dt><dd>28</dd><dt>G</dt><dd>204</dd>
+                <dt>Y</dt><dd>10</dd><dt>B</dt><dd>209</dd>
+                <dt>K</dt><dd>0</dd></dl>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color bg-accent"></div>
+          <div class="swatch-info">
+            <strong>Pale Mint</strong> — Accent<br>
+            <code>#c2e2d2</code> <span class="text-muted">var(--color-accent)</span>
+            <dl><dt>C</dt><dd>28</dd><dt>R</dt><dd>194</dd>
+                <dt>M</dt><dd>0</dd><dt>G</dt><dd>226</dd>
+                <dt>Y</dt><dd>22</dd><dt>B</dt><dd>210</dd>
+                <dt>K</dt><dd>0</dd></dl>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color bg-sub"></div>
+          <div class="swatch-info">
+            <strong>Iris Magic</strong> — Sub<br>
+            <code>#c9c2e0</code> <span class="text-muted">var(--color-sub)</span>
+            <dl><dt>C</dt><dd>24</dd><dt>R</dt><dd>201</dd>
+                <dt>M</dt><dd>24</dd><dt>G</dt><dd>194</dd>
+                <dt>Y</dt><dd>0</dd><dt>B</dt><dd>224</dd>
+                <dt>K</dt><dd>0</dd></dl>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:3rem">Color Balance</h3>
+      <div class="balance">
+        <div class="bg-base"   style="flex:62">BASE</div>
+        <div class="bg-accent" style="flex:7"></div>
+        <div class="bg-sub"    style="flex:31">SUB</div>
+      </div>
+      <p class="text-muted" style="margin-top:.75rem;font-size:.9rem">Base ≈ 62% · Accent ≈ 7% · Sub ≈ 31%. Use the mint sparingly, as a highlight.</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section section--base">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="icon bg-base">✿</div>
+          <span class="tag tag--base">Base</span>
+          <h3 style="margin-top:.75rem">Soft &amp; Warm</h3>
+          <p>Shell pink covers most of the page, giving it a light and welcoming feel.</p>
+          <a href="#">Read more →</a>
+        </article>
+        <article class="card card--accent">
+          <div class="icon bg-accent">❀</div>
+          <span class="tag tag--accent">Accent</span>
+          <h3 style="margin-top:.75rem">Fresh Highlights</h3>
+          <p>A small dose of pale mint adds freshness and draws the eye.</p>
+          <a href="#">Read more →</a>
+        </article>
+        <article class="card card--sub">
+          <div class="icon bg-sub">✦</div>
+          <span class="tag tag--sub">Sub</span>
+          <h3 style="margin-top:.75rem">Calm Support</h3>
+          <p>Iris lavender balances the pink and frames headers, tables, and footers.</p>
+          <a href="#">Read more →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section id="components" class="section section--paper">
+    <div class="container">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <div class="row" style="margin-bottom:2.5rem">
+        <button class="btn btn--primary">Primary</button>
+        <button class="btn btn--secondary">Secondary</button>
+        <button class="btn btn--accent">Accent</button>
+        <button class="btn btn--outline">Outline</button>
+      </div>
+
+      <h3>Alerts</h3>
+      <div style="margin-bottom:2.5rem">
+        <div class="alert alert--info"><strong>Info:</strong> Your workshop starts at 10:00 AM.</div>
+        <div class="alert alert--success"><strong>Success:</strong> Your reservation has been confirmed.</div>
+        <div class="alert alert--notice"><strong>Notice:</strong> Spring classes fill up quickly — book early.</div>
+      </div>
+
+      <h3>Table</h3>
+      <table class="table" style="margin-bottom:2.5rem">
+        <thead><tr><th>Class</th><th>Schedule</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Watercolor Basics</td><td>Saturdays, 10 AM</td><td>$45</td></tr>
+          <tr><td>Flower Arranging</td><td>Sundays, 1 PM</td><td>$60</td></tr>
+          <tr><td>Calligraphy</td><td>Wednesdays, 6 PM</td><td>$50</td></tr>
+        </tbody>
+      </table>
+
+      <div class="grid">
+        <div>
+          <h3>Form</h3>
+          <form class="card card--sub" onsubmit="return false">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" class="input" placeholder="Jane Smith">
+            </div>
+            <div class="field">
+              <label for="cls">Class</label>
+              <select id="cls" class="select">
+                <option>Watercolor Basics</option><option>Flower Arranging</option><option>Calligraphy</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="msg">Message</label>
+              <textarea id="msg" class="textarea" rows="3"></textarea>
+            </div>
+            <button class="btn btn--secondary">Send</button>
+          </form>
+        </div>
+        <div id="type">
+          <h3>Typography</h3>
+          <div class="card card--accent">
+            <h1 style="font-size:2.2rem">Heading 1</h1>
+            <h2 style="font-size:1.4rem">Heading 2</h2>
+            <h3>Heading 3 — Josefin Sans</h3>
+            <p>Body text is set in Nunito, a rounded sans that keeps the soft mood of the palette while staying easy to read.</p>
+            <p><span class="text-base">Deep pink text</span> · <span class="text-accent">Deep mint text</span> · <span class="text-sub">Deep iris text</span></p>
+            <p class="text-muted">Muted text for captions and notes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">Pastel Bloom</footer>
+
+</body>
+</html>

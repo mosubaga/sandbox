@@ -1,0 +1,222 @@
+/* =========================================================
+   Sakura Palette — stylesheet
+   Base   : マミー・ピンク   (Mammy Pink)   #f9d6e2  C0 M23 Y3 K0
+   Accent : クイーン・ベージュ (Queen Beige)  #f7f3ec  C4 M5 Y8 K0
+   Sub    : ソナタ・ピンク   (Sonata Pink)  #f4aa9a  C0 M43 Y33 K0
+   Suggested balance ≈ Base 55% / Accent 15% / Sub 30%
+   ========================================================= */
+
+/* English fonts first (Cormorant Garamond = elegant serif, Quicksand = soft rounded sans),
+   Japanese fonts kept as fallbacks for any Japanese text. */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Quicksand:wght@400;500;700&family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap");
+
+:root {
+  /* --- The three palette colors --- */
+  --color-base:   #f9d6e2;   /* Mammy Pink  */
+  --color-accent: #f7f3ec;   /* Queen Beige */
+  --color-sub:    #f4aa9a;   /* Sonata Pink */
+
+  /* --- Tints & shades derived from the palette --- */
+  --color-base-light:  #fceaf0;
+  --color-base-dark:   #ebb5c8;
+  --color-sub-light:   #f9cdc3;
+  --color-sub-dark:    #d9826f;   /* for hover / borders */
+  --color-sub-deep:    #a8584a;   /* sub-colored text with readable contrast */
+
+  /* --- Neutrals (warm, so they sit well with the pinks) --- */
+  --color-text:        #4a3530;   /* main text on any palette color */
+  --color-text-muted:  #85695f;
+  --color-white:       #ffffff;
+
+  /* --- Semantic roles --- */
+  --bg-page:      var(--color-accent);
+  --bg-section:   var(--color-base);
+  --bg-highlight: var(--color-sub);
+  --border:       var(--color-base-dark);
+  --focus-ring:   0 0 0 3px rgba(244, 170, 154, 0.55);
+
+  /* --- Typography --- */
+  --font-serif: "Cormorant Garamond", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --font-sans:  "Quicksand", "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+
+  /* --- Shape & spacing --- */
+  --radius-sm: 6px;
+  --radius:    14px;
+  --radius-pill: 999px;
+  --shadow:    0 6px 20px rgba(168, 88, 74, 0.12);
+  --space:     1rem;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  color: var(--color-text);
+  background: var(--bg-page);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  line-height: 1.35;
+  margin: 0 0 0.6em;
+  color: var(--color-text);
+}
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--color-sub-deep);
+  text-decoration-color: var(--color-sub);
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--color-text); }
+
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+::selection { background: var(--color-sub-light); color: var(--color-text); }
+
+/* ---------- Layout ---------- */
+.container {
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.section { padding: 4rem 0; }
+.section--base   { background: var(--color-base); }
+.section--accent { background: var(--color-accent); }
+.section--sub    { background: var(--color-sub); }
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ---------- Background / text utilities ---------- */
+.bg-base   { background-color: var(--color-base); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-sub    { background-color: var(--color-sub); }
+.text-sub  { color: var(--color-sub-deep); }
+.text-muted{ color: var(--color-text-muted); }
+.border-sub{ border: 2px solid var(--color-sub); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.7em 1.8em;
+  font: 500 1rem/1.2 var(--font-sans);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color .2s, color .2s, border-color .2s, transform .1s;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary { background: var(--color-sub); color: var(--color-text); }
+.btn--primary:hover { background: var(--color-sub-dark); color: var(--color-white); }
+
+.btn--secondary { background: var(--color-base); color: var(--color-text); }
+.btn--secondary:hover { background: var(--color-base-dark); }
+
+.btn--outline { background: transparent; border-color: var(--color-sub); color: var(--color-sub-deep); }
+.btn--outline:hover { background: var(--color-sub); color: var(--color-text); }
+
+/* ---------- Tags / pills ---------- */
+.tag {
+  display: inline-block;
+  padding: 0.25em 1em;
+  font-size: 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-sub);
+  color: var(--color-white);
+}
+.tag--soft { background: var(--color-sub-light); color: var(--color-sub-deep); }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-accent);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--color-sub);
+}
+.card--base { background: var(--color-base-light); border-top-color: var(--color-base-dark); }
+
+/* ---------- Price ---------- */
+.price {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  color: var(--color-sub);
+  letter-spacing: 0.02em;
+}
+.price small { font-size: 0.35em; letter-spacing: 0.1em; margin-right: 0.4em; vertical-align: middle; }
+
+/* ---------- Forms ---------- */
+.field { display: grid; gap: 0.35rem; margin-bottom: 1rem; }
+.field label { font-weight: 500; font-size: 0.95rem; }
+.input, .select, .textarea {
+  width: 100%;
+  padding: 0.7em 1em;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-white);
+  border: 2px solid var(--color-base-dark);
+  border-radius: var(--radius-sm);
+  transition: border-color .2s, box-shadow .2s;
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-sub);
+  box-shadow: var(--focus-ring);
+}
+
+/* ---------- Badge circle (like 着 / 物 in the reference) ---------- */
+.circle-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-sub);
+  color: var(--color-white);
+  font: 700 2rem/1 var(--font-serif);
+  box-shadow: 0 0 0 4px var(--color-base), 0 0 0 5px var(--color-sub);
+}
+.circle-badge--light { background: var(--color-base); color: var(--color-sub-deep); }
+
+/* ---------- Sakura dot pattern (decorative) ---------- */
+.pattern-sakura {
+  background-color: var(--color-base);
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--color-white) 0 3px, transparent 4px),
+    radial-gradient(circle at 70% 70%, var(--color-white) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,.7) 0 2px, transparent 3px);
+  background-size: 60px 60px, 45px 45px, 80px 80px;
+}
+
+/* ---------- Table ---------- */
+.table { width: 100%; border-collapse: collapse; background: var(--color-white); border-radius: var(--radius); overflow: hidden; }
+.table th { background: var(--color-sub); color: var(--color-text); text-align: left; padding: 0.75em 1em; font-weight: 700; }
+.table td { padding: 0.75em 1em; border-bottom: 1px solid var(--color-base); }
+.table tr:nth-child(even) td { background: var(--color-base-light); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-accent);
+  border-top: 4px solid var(--color-base);
+  padding: 2rem 0;
+  text-align: center;
+  font-family: var(--font-serif);
+  color: var(--color-sub-deep);
+  letter-spacing: 0.15em;
+}

@@ -1,0 +1,212 @@
+/* =========================================================
+   Pastel Bloom Palette — stylesheet
+   Base   : ソフト・シェル・ピンク (Soft Shell Pink) #f8ccd1  C0  M28 Y10 K0
+   Accent : ペール・ミント       (Pale Mint)       #c2e2d2  C28 M0  Y22 K0
+   Sub    : アイリス・マジック   (Iris Magic)      #c9c2e0  C24 M24 Y0  K0
+   Suggested balance ≈ Base 62% / Accent 7% / Sub 31%
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Nunito:wght@400;600;700&family=Zen+Maru+Gothic:wght@400;700&display=swap");
+
+:root {
+  /* --- The three palette colors --- */
+  --color-base:   #f8ccd1;   /* Soft Shell Pink */
+  --color-accent: #c2e2d2;   /* Pale Mint       */
+  --color-sub:    #c9c2e0;   /* Iris Magic      */
+
+  /* --- Tints & shades derived from the palette --- */
+  --color-base-light:   #fdeef0;
+  --color-base-dark:    #eeaab3;
+  --color-base-deep:    #b25a68;   /* pink text with readable contrast */
+
+  --color-accent-light: #e7f4ed;
+  --color-accent-dark:  #97cbb1;
+  --color-accent-deep:  #3b7a5d;   /* mint text with readable contrast */
+
+  --color-sub-light:    #ebe8f4;
+  --color-sub-dark:     #a59bcc;
+  --color-sub-deep:     #5f5397;   /* iris text with readable contrast */
+
+  /* --- Neutrals (cool plum-gray, sits between pink and lavender) --- */
+  --color-text:       #3d3848;
+  --color-text-muted: #726b80;
+  --color-white:      #ffffff;
+  --color-paper:      #fffafb;
+
+  /* --- Semantic roles --- */
+  --bg-page:    var(--color-paper);
+  --border:     var(--color-sub);
+  --focus-ring: 0 0 0 3px rgba(201, 194, 224, 0.8);
+
+  /* --- Typography --- */
+  --font-display: "Josefin Sans", "Zen Maru Gothic", "Hiragino Sans", sans-serif;
+  --font-body:    "Nunito", "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Meiryo", sans-serif;
+
+  /* --- Shape --- */
+  --radius-sm:   8px;
+  --radius:      18px;
+  --radius-pill: 999px;
+  --shadow:      0 8px 24px rgba(95, 83, 151, 0.12);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.75;
+  color: var(--color-text);
+  background: var(--bg-page);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); text-transform: uppercase; letter-spacing: 0.14em; }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--color-sub-deep);
+  text-decoration-color: var(--color-sub-dark);
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--color-base-deep); }
+
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+::selection { background: var(--color-sub); color: var(--color-text); }
+
+/* ---------- Layout ---------- */
+.container { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+.section { padding: 4rem 0; }
+.section--base   { background: var(--color-base-light); }
+.section--accent { background: var(--color-accent-light); }
+.section--sub    { background: var(--color-sub-light); }
+.section--paper  { background: var(--color-paper); }
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ---------- Utilities ---------- */
+.bg-base   { background-color: var(--color-base); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-sub    { background-color: var(--color-sub); }
+.text-base   { color: var(--color-base-deep); }
+.text-accent { color: var(--color-accent-deep); }
+.text-sub    { color: var(--color-sub-deep); }
+.text-muted  { color: var(--color-text-muted); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.75em 1.9em;
+  font: 700 0.95rem/1.2 var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: background-color .2s, border-color .2s, transform .1s;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary   { background: var(--color-base); }
+.btn--primary:hover   { background: var(--color-base-dark); }
+.btn--secondary { background: var(--color-sub); }
+.btn--secondary:hover { background: var(--color-sub-dark); }
+.btn--accent    { background: var(--color-accent); }
+.btn--accent:hover    { background: var(--color-accent-dark); }
+.btn--outline   { background: transparent; border-color: var(--color-sub-dark); color: var(--color-sub-deep); }
+.btn--outline:hover   { background: var(--color-sub-light); }
+
+/* ---------- Tags ---------- */
+.tag {
+  display: inline-block;
+  padding: 0.2em 0.9em;
+  font: 600 0.8rem/1.6 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+}
+.tag--base   { background: var(--color-base); }
+.tag--accent { background: var(--color-accent); }
+.tag--sub    { background: var(--color-sub); }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--color-base);
+}
+.card--accent { border-top-color: var(--color-accent); }
+.card--sub    { border-top-color: var(--color-sub); }
+
+/* ---------- Alerts ---------- */
+.alert {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border-left: 5px solid;
+  margin-bottom: 1rem;
+}
+.alert--info    { background: var(--color-sub-light);    border-color: var(--color-sub-dark); }
+.alert--success { background: var(--color-accent-light); border-color: var(--color-accent-dark); }
+.alert--notice  { background: var(--color-base-light);   border-color: var(--color-base-dark); }
+
+/* ---------- Forms ---------- */
+.field { display: grid; gap: 0.35rem; margin-bottom: 1rem; }
+.field label { font-weight: 700; font-size: 0.95rem; }
+.input, .select, .textarea {
+  width: 100%;
+  padding: 0.7em 1em;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-white);
+  border: 2px solid var(--color-sub-light);
+  border-radius: var(--radius-sm);
+  transition: border-color .2s, box-shadow .2s;
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-sub-dark);
+  box-shadow: var(--focus-ring);
+}
+
+/* ---------- Table ---------- */
+.table { width: 100%; border-collapse: collapse; background: var(--color-white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.table th { background: var(--color-sub); text-align: left; padding: 0.8em 1em; font-family: var(--font-display); letter-spacing: 0.06em; }
+.table td { padding: 0.8em 1em; border-bottom: 1px solid var(--color-sub-light); }
+.table tr:nth-child(even) td { background: var(--color-base-light); }
+
+/* ---------- Decorative gradient & blobs ---------- */
+.gradient-bloom {
+  background:
+    radial-gradient(circle at 15% 20%, var(--color-accent) 0 12%, transparent 30%),
+    radial-gradient(circle at 85% 80%, var(--color-sub) 0 15%, transparent 40%),
+    var(--color-base);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-sub);
+  padding: 2rem 0;
+  text-align: center;
+  font-family: var(--font-display);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}

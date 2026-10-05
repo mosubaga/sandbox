@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sakura Palette — Style Preview</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Preview-page-only helpers */
+    .hero { padding: 5rem 0 4rem; }
+    .hero-inner { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between; }
+    .hero-badges { display: flex; gap: .75rem; margin-bottom: 1rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0; }
+    .eyebrow { font-family: var(--font-serif); letter-spacing: .3em; text-transform: uppercase; color: var(--color-sub-deep); font-size: .9rem; margin-bottom: .5rem; }
+    .balance { display: flex; height: 90px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .balance > div { display: flex; align-items: flex-end; padding: .5rem .75rem; font-size: .85rem; letter-spacing: .12em; }
+    .swatch { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--color-white); }
+    .swatch-color { height: 130px; }
+    .swatch-info { padding: 1rem 1.25rem; font-size: .9rem; }
+    .swatch-info strong { font-family: var(--font-serif); font-size: 1.2rem; }
+    .swatch-info code { font-size: 1rem; font-weight: 700; }
+    .swatch-info dl { display: grid; grid-template-columns: auto 1fr auto 1fr; gap: .1rem .6rem; margin: .5rem 0 0; }
+    .swatch-info dt { color: var(--color-text-muted); }
+    .swatch-info dd { margin: 0; }
+    .row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    .lead { font-size: 1.1rem; color: var(--color-text-muted); max-width: 34em; }
+    h2 { letter-spacing: .04em; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero pattern-sakura">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-badges">
+          <span class="circle-badge">S</span>
+          <span class="circle-badge circle-badge--light">P</span>
+        </div>
+        <p class="eyebrow">Spring Collection</p>
+        <h1>Sakura Palette</h1>
+        <p class="lead">Soft cherry-blossom tones that evoke the warmth of spring, for a gentle and welcoming design.</p>
+        <div class="hero-tags">
+          <span class="tag">Base</span>
+          <span class="tag">Accent</span>
+          <span class="tag tag--soft">Sub</span>
+        </div>
+        <div class="row">
+          <a href="#palette" class="btn btn--primary">View Colors</a>
+          <a href="#components" class="btn btn--outline">Components</a>
+        </div>
+      </div>
+      <div class="price"><small>SET</small>$350</div>
+    </div>
+  </header>
+
+  <!-- Palette -->
+  <section id="palette" class="section section--accent">
+    <div class="container">
+      <h2>Color Palette</h2>
+
+      <div class="grid">
+        <div class="swatch">
+          <div class="swatch-color bg-base"></div>
+          <div class="swatch-info">
+            <strong>Mammy Pink</strong> — Base<br>
+            <code>#f9d6e2</code> <span class="text-muted">var(--color-base)</span>
+            <dl><dt>C</dt><dd>0</dd><dt>R</dt><dd>249</dd>
+                <dt>M</dt><dd>23</dd><dt>G</dt><dd>214</dd>
+                <dt>Y</dt><dd>3</dd><dt>B</dt><dd>226</dd>
+                <dt>K</dt><dd>0</dd></dl>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color bg-accent" style="border-bottom:1px solid var(--color-base)"></div>
+          <div class="swatch-info">
+            <strong>Queen Beige</strong> — Accent<br>
+            <code>#f7f3ec</code> <span class="text-muted">var(--color-accent)</span>
+            <dl><dt>C</dt><dd>4</dd><dt>R</dt><dd>247</dd>
+                <dt>M</dt><dd>5</dd><dt>G</dt><dd>243</dd>
+                <dt>Y</dt><dd>8</dd><dt>B</dt><dd>236</dd>
+                <dt>K</dt><dd>0</dd></dl>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color bg-sub"></div>
+          <div class="swatch-info">
+            <strong>Sonata Pink</strong> — Sub<br>
+            <code>#f4aa9a</code> <span class="text-muted">var(--color-sub)</span>
+            <dl><dt>C</dt><dd>0</dd><dt>R</dt><dd>244</dd>
+                <dt>M</dt><dd>43</dd><dt>G</dt><dd>170</dd>
+                <dt>Y</dt><dd>33</dd><dt>B</dt><dd>154</dd>
+                <dt>K</dt><dd>0</dd></dl>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:3rem">Color Balance</h3>
+      <div class="balance">
+        <div class="bg-base"   style="flex:55">BASE</div>
+        <div class="bg-accent" style="flex:15">ACCENT</div>
+        <div class="bg-sub"    style="flex:30">SUB</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section id="components" class="section section--base">
+    <div class="container">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <div class="row" style="margin-bottom:2.5rem">
+        <button class="btn btn--primary">Book Now</button>
+        <button class="btn btn--secondary">Learn More</button>
+        <button class="btn btn--outline">Contact Us</button>
+      </div>
+
+      <h3>Cards</h3>
+      <div class="grid" style="margin-bottom:2.5rem">
+        <article class="card">
+          <span class="tag tag--soft">Plan A</span>
+          <h3 style="margin-top:.75rem">Kimono Rental</h3>
+          <p>Choose your favorite pattern and enjoy a spring stroll.</p>
+          <a href="#">See details →</a>
+        </article>
+        <article class="card">
+          <span class="tag tag--soft">Plan B</span>
+          <h3 style="margin-top:.75rem">Dressing &amp; Hair Styling</h3>
+          <p>Our professional staff will take care of every detail.</p>
+          <a href="#">See details →</a>
+        </article>
+        <article class="card card--base">
+          <span class="tag">Recommended</span>
+          <h3 style="margin-top:.75rem">Full Set</h3>
+          <p class="price" style="font-size:2.25rem;margin:0"><small>SET</small>$350</p>
+        </article>
+      </div>
+
+      <h3>Table</h3>
+      <table class="table" style="margin-bottom:2.5rem">
+        <thead><tr><th>Plan</th><th>Includes</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Basic</td><td>Kimono rental, dressing</td><td>$200</td></tr>
+          <tr><td>Standard</td><td>+ Hair styling</td><td>$280</td></tr>
+          <tr><td>Full Set</td><td>+ Hair styling, makeup</td><td>$350</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Form</h3>
+      <form class="card" style="max-width:520px" onsubmit="return false">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" class="input" placeholder="Jane Smith">
+        </div>
+        <div class="field">
+          <label for="plan">Plan</label>
+          <select id="plan" class="select">
+            <option>Basic</option><option>Standard</option><option>Full Set</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Message</label>
+          <textarea id="msg" class="textarea" rows="3"></textarea>
+        </div>
+        <button class="btn btn--primary">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section section--accent">
+    <div class="container">
+      <h2>Typography</h2>
+      <h1>Heading 1 — Cormorant Garamond</h1>
+      <h2>Heading 2 — Cormorant Garamond</h2>
+      <h3>Heading 3 — Cormorant Garamond</h3>
+      <p>This is sample body text set in Quicksand. A warm dark brown keeps it readable against the soft cherry-blossom backgrounds, and <a href="#">links</a> pick up a deeper shade of Sonata Pink.</p>
+      <p class="text-sub">Sub-color text (a deeper tone for readable contrast)</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">SAKURA PALETTE</footer>
+
+</body>
+</html>
