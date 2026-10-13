@@ -1,0 +1,181 @@
+/* =========================================================
+   Urushi Theme — color balance: Base / Accent / Sub
+   Base   ウルシ・ブラック     #150c15  (R21 G12 B21)
+   Accent マチュリティ・レッド #9a1117  (R154 G17 B23)
+   Sub    エレガンス・ゴールド #917c50  (R145 G124 B80)
+   All text is white.
+   ========================================================= */
+
+:root {
+  --urushi-black:   #150c15;
+  --maturity-red:   #9a1117;
+  --elegance-gold:  #917c50;
+  --text:           #ffffff;
+
+  /* Derived tints/shades for hover, borders, surfaces */
+  --black-raised:   #221722;   /* slightly lifted base for cards */
+  --black-line:     #3a2c3a;
+  --red-dark:       #7a0d12;
+  --gold-dark:      #76653f;
+  --text-muted:     rgba(255, 255, 255, 0.72);
+
+  --radius:         14px;
+  --radius-sm:      8px;
+  --space:          1rem;
+  --font-sans: "Avenir Next", "Helvetica Neue", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  background: var(--urushi-black);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+p  { margin: 0 0 1em; }
+small, .muted { color: var(--text-muted); }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--elegance-gold); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--maturity-red); }
+
+hr { border: 0; height: 1px; background: var(--elegance-gold); opacity: 0.6; margin: 2rem 0; }
+
+::selection { background: var(--maturity-red); color: var(--text); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.section   { padding: 3.5rem 0; }
+.grid      { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* ---------- Background utilities ---------- */
+.bg-base   { background: var(--urushi-black);  color: var(--text); }
+.bg-accent { background: var(--maturity-red);  color: var(--text); }
+.bg-sub    { background: var(--elegance-gold); color: var(--text); }
+.border-sub    { border: 1px solid var(--elegance-gold); }
+.border-accent { border: 1px solid var(--maturity-red); }
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  background: var(--urushi-black);
+  border-bottom: 2px solid var(--elegance-gold);
+  position: sticky; top: 0; z-index: 10;
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; flex-wrap: wrap; }
+.logo { font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; }
+.nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav a { text-decoration: none; padding: 0.25rem 0; border-bottom: 2px solid transparent; }
+.nav a:hover, .nav a.active { border-bottom-color: var(--maturity-red); }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    linear-gradient(135deg, var(--urushi-black) 55%, var(--maturity-red) 55%, var(--maturity-red) 70%, var(--elegance-gold) 70%);
+  padding: 5rem 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.btn-accent  { background: var(--maturity-red); }
+.btn-accent:hover  { background: var(--red-dark); }
+.btn-sub     { background: var(--elegance-gold); }
+.btn-sub:hover     { background: var(--gold-dark); }
+.btn-outline { background: transparent; border-color: var(--elegance-gold); }
+.btn-outline:hover { background: var(--elegance-gold); }
+.btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--black-raised);
+  border: 1px solid var(--black-line);
+  border-top: 4px solid var(--elegance-gold);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.card.accent { border-top-color: var(--maturity-red); }
+.card h3 { margin-bottom: 0.4em; }
+
+/* ---------- Swatches (for previewing the palette) ---------- */
+.swatch { border-radius: var(--radius); padding: 1.25rem; min-height: 140px; display: flex; flex-direction: column; justify-content: flex-end; }
+.swatch code { font-size: 0.9rem; }
+
+.balance-bar { display: flex; height: 72px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--black-line); }
+.balance-bar > div { display: flex; align-items: center; justify-content: center; font-size: 0.8rem; letter-spacing: 0.2em; }
+
+/* ---------- Badges ---------- */
+.badge { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding: 0.2rem 0.65rem; border-radius: 999px; color: var(--text); }
+.badge-accent { background: var(--maturity-red); }
+.badge-sub    { background: var(--elegance-gold); }
+
+/* ---------- Alerts ---------- */
+.alert { padding: 1rem 1.25rem; border-radius: var(--radius-sm); border-left: 5px solid; background: var(--black-raised); margin-bottom: 1rem; }
+.alert-accent { border-color: var(--maturity-red); }
+.alert-sub    { border-color: var(--elegance-gold); }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--black-line); }
+thead th { background: var(--maturity-red); font-weight: 600; letter-spacing: 0.08em; }
+tbody tr:nth-child(even) { background: var(--black-raised); }
+tbody tr:hover { background: rgba(145, 124, 80, 0.25); }
+
+/* ---------- Forms ---------- */
+label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; letter-spacing: 0.05em; }
+input, select, textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--black-raised);
+  border: 1px solid var(--elegance-gold);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 1rem;
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--maturity-red); box-shadow: 0 0 0 3px rgba(154, 17, 23, 0.4); }
+input[type="checkbox"], input[type="radio"] { width: auto; accent-color: var(--maturity-red); margin: 0 0.4rem 0 0; }
+
+/* ---------- Blockquote ---------- */
+blockquote { margin: 0; padding: 1rem 1.5rem; border-left: 4px solid var(--elegance-gold); background: var(--black-raised); font-style: italic; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--elegance-gold); color: var(--text); padding: 2rem 0; text-align: center; font-weight: 500; }
+.site-footer a { text-decoration-color: var(--text); }

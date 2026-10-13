@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urushi Theme — Style Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="logo">Urushi</span>
+      <ul class="nav">
+        <li><a href="#palette" class="active">Palette</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#forms">Forms</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Color Balance</p>
+      <h1>漆の深み、紅の成熟、金の気品。</h1>
+      <p class="muted">A stylesheet built on three colors: Urushi Black, Maturity Red, and Elegance Gold.</p>
+      <a href="#palette" class="btn btn-accent">View Palette</a>
+      <a href="#components" class="btn btn-outline">Components</a>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section id="palette" class="section">
+      <h2>Palette</h2>
+      <div class="balance-bar">
+        <div class="bg-base"   style="flex:48">BASE</div>
+        <div class="bg-accent" style="flex:15">ACCENT</div>
+        <div class="bg-sub"    style="flex:37">SUB</div>
+      </div>
+      <br>
+      <div class="grid">
+        <div class="swatch bg-base border-sub">
+          <strong>ウルシ・ブラック</strong>
+          <code>#150c15 · R21 G12 B21</code>
+        </div>
+        <div class="swatch bg-accent">
+          <strong>マチュリティ・レッド</strong>
+          <code>#9a1117 · R154 G17 B23</code>
+        </div>
+        <div class="swatch bg-sub">
+          <strong>エレガンス・ゴールド</strong>
+          <code>#917c50 · R145 G124 B80</code>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="components" class="section">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <p>
+        <button class="btn btn-accent">Accent</button>
+        <button class="btn btn-sub">Sub</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-accent" disabled>Disabled</button>
+      </p>
+
+      <h3>Badges</h3>
+      <p><span class="badge badge-accent">NEW</span> <span class="badge badge-sub">PREMIUM</span></p>
+
+      <h3>Cards</h3>
+      <div class="grid">
+        <div class="card">
+          <h3>伝統</h3>
+          <p class="muted">Card with a gold top rule on the raised base surface.</p>
+          <a href="#">Read more</a>
+        </div>
+        <div class="card accent">
+          <h3>成熟</h3>
+          <p class="muted">Card variant with a red top rule for emphasis.</p>
+          <a href="#">Read more</a>
+        </div>
+        <div class="card">
+          <h3>気品</h3>
+          <p class="muted">Body text on cards uses a muted white.</p>
+          <a href="#">Read more</a>
+        </div>
+      </div>
+
+      <br>
+      <h3>Alerts</h3>
+      <div class="alert alert-accent"><strong>Notice:</strong> An accent-colored alert.</div>
+      <div class="alert alert-sub"><strong>Info:</strong> A sub-colored alert.</div>
+
+      <h3>Table</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Role</th><th>Name</th><th>HEX</th><th>CMYK</th></tr></thead>
+          <tbody>
+            <tr><td>Base</td><td>ウルシ・ブラック</td><td>#150c15</td><td>76 / 73 / 62 / 80</td></tr>
+            <tr><td>Accent</td><td>マチュリティ・レッド</td><td>#9a1117</td><td>30 / 100 / 100 / 25</td></tr>
+            <tr><td>Sub</td><td>エレガンス・ゴールド</td><td>#917c50</td><td>51 / 52 / 75 / 0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+      <blockquote>“Color balance: let the base carry the weight, the accent speak sparingly, the sub add warmth.”</blockquote>
+    </section>
+
+    <hr>
+
+    <section id="forms" class="section">
+      <h2>Forms</h2>
+      <form onsubmit="return false;">
+        <label for="name">お名前</label>
+        <input id="name" type="text" placeholder="山田 太郎">
+
+        <label for="topic">Topic</label>
+        <select id="topic"><option>General</option><option>Support</option></select>
+
+        <label for="msg">Message</label>
+        <textarea id="msg" rows="4" placeholder="Your message…"></textarea>
+
+        <label><input type="checkbox" checked> Subscribe to updates</label>
+        <br>
+        <button class="btn btn-accent" type="submit">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Urushi Theme · <a href="#">Back to top</a></div>
+  </footer>
+
+</body>
+</html>

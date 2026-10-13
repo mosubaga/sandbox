@@ -1,0 +1,145 @@
+/* =========================================================
+   Ivory Theme — color balance: Base / Accent / Sub
+   Base   アイス・アイボリー #f3deb9  (R243 G222 B185)
+   Accent ウイロウ・ピンク   #e8aaa3  (R232 G170 B163)
+   Sub    ジャパン・ティー   #aeac78  (R174 G172 B120)
+   All three are used as lighter tints:
+     ivory #f8ebd5, pink #f1ccc8, tea #cac9a7
+   The originals are kept for hover/border/focus states
+   (--ivory-line ≈ ivory, --pink-dark, --tea-dark).
+   Text is black.
+   ========================================================= */
+
+:root {
+  --ice-ivory:    #f8ebd5;   /* lighter tint of #f3deb9 */
+  --uirou-pink:   #f1ccc8;   /* lighter tint of #e8aaa3 */
+  --japan-tea:    #cac9a7;   /* lighter tint of #aeac78 */
+
+  --text:         #1a1a1a;
+  --text-muted:   rgba(26, 26, 26, 0.72);
+  --text-shadow:  none;
+
+  /* Derived tints/shades */
+  --ivory-raised: #fcf6ec;
+  --ivory-line:   #ead7b4;
+  --pink-dark:    #e8aaa3;   /* original Uirou Pink */
+  --tea-dark:     #aeac78;   /* original Japan Tea */
+
+  --radius:       14px;
+  --radius-sm:    8px;
+  --font-sans: "Avenir Next", "Helvetica Neue", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ice-ivory);
+  color: var(--text);
+  text-shadow: var(--text-shadow);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 { color: var(--text); font-weight: 600; letter-spacing: 0.12em; line-height: 1.3; margin: 0 0 0.6em; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+p  { margin: 0 0 1em; }
+small, .muted { color: var(--text-muted); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.85rem; font-weight: 600; }
+
+a { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--tea-dark); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--pink-dark); }
+
+hr { border: 0; height: 1px; background: var(--tea-dark); margin: 2rem 0; }
+::selection { background: var(--uirou-pink); color: var(--text); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.section   { padding: 3.5rem 0; }
+.grid      { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* ---------- Background utilities ---------- */
+.bg-base   { background: var(--ice-ivory);  color: var(--text); }
+.bg-accent { background: var(--uirou-pink); color: var(--text); }
+.bg-sub    { background: var(--japan-tea);  color: var(--text); }
+.border-sub    { border: 1px solid var(--japan-tea); }
+.border-accent { border: 1px solid var(--uirou-pink); }
+
+/* ---------- Header / Nav ---------- */
+.site-header { background: var(--japan-tea); position: sticky; top: 0; z-index: 10; }
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; flex-wrap: wrap; }
+.logo { font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; }
+.nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav a { text-decoration: none; padding: 0.25rem 0; border-bottom: 2px solid transparent; }
+.nav a:hover, .nav a.active { border-bottom-color: var(--uirou-pink); }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--ice-ivory) 50%, var(--uirou-pink) 50%, var(--uirou-pink) 58%, var(--japan-tea) 58%);
+  padding: 5rem 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block; font: inherit; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--text); text-shadow: var(--text-shadow);
+  padding: 0.7rem 1.5rem; border-radius: var(--radius-sm); border: 1px solid transparent;
+  cursor: pointer; text-decoration: none; transition: background-color 0.15s, border-color 0.15s;
+}
+.btn-accent  { background: var(--uirou-pink); }
+.btn-accent:hover  { background: var(--pink-dark); }
+.btn-sub     { background: var(--japan-tea); }
+.btn-sub:hover     { background: var(--tea-dark); }
+.btn-outline { background: transparent; border: 2px solid var(--japan-tea); }
+.btn-outline:hover { background: var(--japan-tea); }
+.btn:focus-visible { outline: 2px solid var(--tea-dark); outline-offset: 3px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Cards ---------- */
+.card { background: var(--ivory-raised); border: 1px solid var(--ivory-line); border-top: 4px solid var(--japan-tea); border-radius: var(--radius); padding: 1.5rem; }
+.card.accent { border-top-color: var(--uirou-pink); }
+
+/* ---------- Swatches ---------- */
+.swatch { border-radius: var(--radius); padding: 1.25rem; min-height: 140px; display: flex; flex-direction: column; justify-content: flex-end; }
+.balance-bar { display: flex; height: 72px; border-radius: var(--radius-sm); overflow: hidden; }
+.balance-bar > div { display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; }
+
+/* ---------- Badges ---------- */
+.badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.65rem; border-radius: 999px; }
+.badge-accent { background: var(--uirou-pink); }
+.badge-sub    { background: var(--japan-tea); }
+
+/* ---------- Alerts ---------- */
+.alert { padding: 1rem 1.25rem; border-radius: var(--radius-sm); border-left: 5px solid; margin-bottom: 1rem; }
+.alert-accent { border-color: var(--pink-dark); background: var(--uirou-pink); }
+.alert-sub    { border-color: var(--tea-dark);  background: var(--japan-tea); }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--ivory-line); }
+thead th { background: var(--japan-tea); font-weight: 700; letter-spacing: 0.08em; }
+tbody tr:nth-child(even) { background: var(--ivory-raised); }
+tbody tr:hover { background: rgba(232, 170, 163, 0.45); }
+
+/* ---------- Forms ---------- */
+label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; }
+input, select, textarea {
+  width: 100%; font: inherit; color: var(--text); text-shadow: var(--text-shadow);
+  background: var(--japan-tea); border: 2px solid var(--tea-dark); border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem; margin-bottom: 1rem;
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--pink-dark); box-shadow: 0 0 0 3px rgba(232, 170, 163, 0.6); }
+input[type="checkbox"], input[type="radio"] { width: auto; accent-color: var(--pink-dark); margin: 0 0.4rem 0 0; }
+
+/* ---------- Blockquote ---------- */
+blockquote { margin: 0; padding: 1rem 1.5rem; border-left: 4px solid var(--uirou-pink); background: var(--japan-tea); font-style: italic; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--japan-tea); padding: 2rem 0; text-align: center; font-weight: 600; }

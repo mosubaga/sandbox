@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ivory Theme — Style Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="logo">Ivory</span>
+      <ul class="nav">
+        <li><a href="#palette" class="active">Palette</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#forms">Forms</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Color Balance</p>
+      <h1>象牙の柔らかさ、外郎の淡紅、茶の落ち着き。</h1>
+      <p class="muted">A stylesheet built on three colors: Ice Ivory, Uirou Pink, and Japan Tea.</p>
+      <a href="#palette" class="btn btn-accent">View Palette</a>
+      <a href="#components" class="btn btn-sub">Components</a>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section id="palette" class="section">
+      <h2>Palette</h2>
+      <div class="balance-bar">
+        <div class="bg-base border-sub" style="flex:53">BASE</div>
+        <div class="bg-accent" style="flex:5"></div>
+        <div class="bg-sub"    style="flex:42">SUB</div>
+      </div>
+      <br>
+      <div class="grid">
+        <div class="swatch bg-base border-sub">
+          <strong>アイス・アイボリー</strong>
+          <code>#f8ebd5 · R248 G235 B213 (tint of #f3deb9)</code>
+        </div>
+        <div class="swatch bg-accent">
+          <strong>ウイロウ・ピンク</strong>
+          <code>#f1ccc8 · R241 G204 B200 (tint of #e8aaa3)</code>
+        </div>
+        <div class="swatch bg-sub">
+          <strong>ジャパン・ティー</strong>
+          <code>#cac9a7 · R202 G201 B167 (tint of #aeac78)</code>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="components" class="section">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <p>
+        <button class="btn btn-accent">Accent</button>
+        <button class="btn btn-sub">Sub</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-accent" disabled>Disabled</button>
+      </p>
+
+      <h3>Badges</h3>
+      <p><span class="badge badge-accent">NEW</span> <span class="badge badge-sub">SEASONAL</span></p>
+
+      <h3>Cards</h3>
+      <div class="grid">
+        <div class="card"><h3>やわらか</h3><p class="muted">Card with a tea-colored top rule.</p><a href="#">Read more</a></div>
+        <div class="card accent"><h3>ほのか</h3><p class="muted">Card variant with a pink top rule.</p><a href="#">Read more</a></div>
+        <div class="card"><h3>おだやか</h3><p class="muted">Body text uses a slightly muted tone.</p><a href="#">Read more</a></div>
+      </div>
+
+      <br>
+      <h3>Alerts</h3>
+      <div class="alert alert-accent"><strong>Notice:</strong> An accent-colored alert.</div>
+      <div class="alert alert-sub"><strong>Info:</strong> A sub-colored alert.</div>
+
+      <h3>Table</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Role</th><th>Name</th><th>HEX</th><th>CMYK</th></tr></thead>
+          <tbody>
+            <tr><td>Base</td><td>アイス・アイボリー</td><td>#f8ebd5 <small>(orig. #f3deb9)</small></td><td>5 / 15 / 30 / 0</td></tr>
+            <tr><td>Accent</td><td>ウイロウ・ピンク</td><td>#f1ccc8 <small>(orig. #e8aaa3)</small></td><td>5 / 41 / 27 / 3</td></tr>
+            <tr><td>Sub</td><td>ジャパン・ティー</td><td>#cac9a7 <small>(orig. #aeac78)</small></td><td>38 / 28 / 58 / 0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+      <blockquote>“Let the ivory breathe, the pink whisper, and the tea ground the page.”</blockquote>
+    </section>
+
+    <hr>
+
+    <section id="forms" class="section">
+      <h2>Forms</h2>
+      <form onsubmit="return false;">
+        <label for="name">お名前</label>
+        <input id="name" type="text" placeholder="山田 太郎">
+        <label for="topic">Topic</label>
+        <select id="topic"><option>General</option><option>Support</option></select>
+        <label for="msg">Message</label>
+        <textarea id="msg" rows="4" placeholder="Your message…"></textarea>
+        <label><input type="checkbox" checked> Subscribe to updates</label>
+        <br>
+        <button class="btn btn-accent" type="submit">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Ivory Theme · <a href="#">Back to top</a></div>
+  </footer>
+
+</body>
+</html>
