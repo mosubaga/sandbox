@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mist Lavender — Style Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="logo">Mist</span>
+      <ul class="nav">
+        <li><a href="#palette" class="active">Palette</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#form">Form</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="panel">
+        <p class="eyebrow">Mist · Lavender · Ice</p>
+        <h1>Mist Lavender</h1>
+        <p class="muted">淡いピンク、ラベンダー、アイスブルーに白を添えて。</p>
+        <a href="#palette" class="btn btn-lavender">View palette</a>
+        <a href="#components" class="btn btn-white">Components</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section id="palette" class="section">
+      <h2>Palette</h2>
+      <div class="grid">
+        <div class="swatch"><div class="chip bg-mist"></div><div class="info"><strong>Sakura Mist · base</strong><code>#faeef3</code></div></div>
+        <div class="swatch"><div class="chip bg-lavender"></div><div class="info"><strong>Lavender · accent</strong><code>#d7c4dd</code></div></div>
+        <div class="swatch"><div class="chip bg-ice"></div><div class="info"><strong>Ice Blue · accent</strong><code>#e0effb</code></div></div>
+        <div class="swatch"><div class="chip bg-white"></div><div class="info"><strong>White · sub</strong><code>#ffffff</code></div></div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="components" class="section">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <p>
+        <button class="btn btn-lavender">Lavender</button>
+        <button class="btn btn-ice">Ice Blue</button>
+        <button class="btn btn-white">White</button>
+        <button class="btn btn-lavender" disabled>Disabled</button>
+      </p>
+
+      <h3>Badges</h3>
+      <p><span class="badge badge-lavender">NEW</span> <span class="badge badge-ice">INFO</span> <span class="badge badge-white">DRAFT</span></p>
+
+      <h3>Cards</h3>
+      <div class="grid">
+        <div class="card top-lavender"><h3>White card</h3><p class="muted">White surface with a lavender top rule.</p><a href="#">Read more</a></div>
+        <div class="card top-ice"><h3>White card</h3><p class="muted">White surface with an ice-blue top rule.</p><a href="#">Read more</a></div>
+        <div class="card tinted-lav"><h3>Lavender card</h3><p>Tinted card for emphasis.</p></div>
+        <div class="card tinted-ice"><h3>Ice card</h3><p>Tinted card for secondary info.</p></div>
+      </div>
+      <br>
+
+      <h3>Alerts</h3>
+      <div class="alert alert-lavender"><strong>Notice:</strong> A lavender alert.</div>
+      <div class="alert alert-ice"><strong>Info:</strong> An ice-blue alert.</div>
+      <div class="alert alert-white"><strong>Note:</strong> A white alert.</div>
+
+      <h3>Table</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>HEX</th><th>RGB</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>Sakura Mist</td><td>#faeef3</td><td>250 / 238 / 243</td><td>Base</td></tr>
+            <tr><td>Lavender</td><td>#d7c4dd</td><td>215 / 196 / 221</td><td>Accent</td></tr>
+            <tr><td>Ice Blue</td><td>#e0effb</td><td>224 / 239 / 251</td><td>Accent</td></tr>
+            <tr><td>White</td><td>#ffffff</td><td>255 / 255 / 255</td><td>Sub</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+
+      <blockquote>“Soft colors, quiet elegance.”</blockquote>
+    </section>
+
+    <hr>
+
+    <section id="form" class="section">
+      <h2>Form</h2>
+      <div class="form-card">
+        <form onsubmit="return false;">
+          <label for="name">お名前</label>
+          <input id="name" type="text" placeholder="山田 花子">
+          <label for="topic">Topic</label>
+          <select id="topic"><option>General</option><option>Support</option></select>
+          <label for="msg">Message</label>
+          <textarea id="msg" rows="4" placeholder="Your message…"></textarea>
+          <label><input type="checkbox" checked> Subscribe to updates</label>
+          <br>
+          <button class="btn btn-lavender" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Mist Lavender Theme · <a href="#">Back to top</a></div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* =========================================================
+   Mist Lavender Theme
+   Base    Sakura Mist  #faeef3  (page background)
+   Accent  Lavender     #d7c4dd  (buttons, headers, highlights)
+   Accent  Ice Blue     #e0effb  (secondary panels, info)
+   Sub     White        #ffffff  (cards, inputs, surfaces)
+   Text is a soft plum-black for readability on pale tones.
+   ========================================================= */
+
+:root {
+  --mist:     #faeef3;
+  --lavender: #d7c4dd;
+  --ice:      #e0effb;
+  --white:    #ffffff;
+
+  /* deeper shades for hover / borders / focus */
+  --lavender-deep: #bea2c8;
+  --ice-deep:      #b3d4ef;
+  --mist-deep:     #efd6e1;
+  --line:          #eedfe7;
+
+  --text:       #2e2533;
+  --text-muted: #6f6475;
+
+  --radius:    16px;
+  --radius-sm: 10px;
+  --shadow:    0 6px 20px rgba(190, 162, 200, 0.22);
+
+  --font-sans:  "Avenir Next", "Helvetica Neue", "Hiragino Sans", "Noto Sans JP", Arial, sans-serif;
+  --font-serif: "Didot", "Bodoni 72", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3 { margin: 0 0 0.6em; line-height: 1.3; font-weight: 600; letter-spacing: 0.06em; }
+h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: 0.12em; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.15rem; }
+p  { margin: 0 0 1em; }
+.muted { color: var(--text-muted); }
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); }
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--lavender-deep); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+a:hover { text-decoration-color: var(--ice-deep); }
+
+hr { border: 0; height: 1px; background: var(--lavender); margin: 2.5rem 0; }
+::selection { background: var(--lavender); color: var(--text); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+.section   { padding: 4rem 0; }
+.grid      { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+
+/* ---------- Background utilities ---------- */
+.bg-mist     { background: var(--mist); }
+.bg-lavender { background: var(--lavender); }
+.bg-ice      { background: var(--ice); }
+.bg-white    { background: var(--white); }
+.bg-blend    { background: linear-gradient(135deg, var(--mist), var(--lavender) 50%, var(--ice)); }
+
+/* ---------- Header / Nav ---------- */
+.site-header { background: var(--white); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; flex-wrap: wrap; }
+.logo { font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: 0.15em; }
+.nav { display: flex; gap: 0.4rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav a { text-decoration: none; padding: 0.35rem 0.9rem; border-radius: 999px; }
+.nav a:hover { background: var(--ice); }
+.nav a.active { background: var(--lavender); }
+
+/* ---------- Hero ---------- */
+.hero { padding: 5.5rem 0; text-align: center; background: linear-gradient(160deg, var(--mist) 0%, var(--lavender) 55%, var(--ice) 100%); }
+.hero .panel { display: inline-block; background: rgba(255,255,255,0.7); border-radius: var(--radius); padding: 2.5rem 2.5rem 2rem; max-width: 640px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block; font: inherit; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--text); padding: 0.7rem 1.6rem; border-radius: 999px; border: 0;
+  cursor: pointer; text-decoration: none; transition: background-color 0.15s, box-shadow 0.15s;
+}
+.btn-lavender { background: var(--lavender); }
+.btn-lavender:hover { background: var(--lavender-deep); }
+.btn-ice      { background: var(--ice); }
+.btn-ice:hover      { background: var(--ice-deep); }
+.btn-white    { background: var(--white); box-shadow: inset 0 0 0 2px var(--lavender); }
+.btn-white:hover    { box-shadow: inset 0 0 0 2px var(--lavender-deep); }
+.btn:focus-visible { outline: 3px solid var(--lavender-deep); outline-offset: 3px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Cards ---------- */
+.card { background: var(--white); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow); }
+.card.top-lavender { border-top: 5px solid var(--lavender); }
+.card.top-ice      { border-top: 5px solid var(--ice-deep); }
+.card.tinted-ice   { background: var(--ice); box-shadow: none; }
+.card.tinted-lav   { background: var(--lavender); box-shadow: none; }
+
+/* ---------- Swatches ---------- */
+.swatch { border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: var(--shadow); }
+.swatch .chip { height: 110px; border-bottom: 1px solid var(--line); }
+.swatch .info { padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.swatch code { color: var(--text-muted); }
+
+/* ---------- Badges ---------- */
+.badge { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding: 0.2rem 0.8rem; border-radius: 999px; }
+.badge-lavender { background: var(--lavender); }
+.badge-ice      { background: var(--ice); }
+.badge-white    { background: var(--white); box-shadow: inset 0 0 0 1px var(--lavender); }
+
+/* ---------- Alerts ---------- */
+.alert { padding: 1rem 1.25rem; border-radius: var(--radius-sm); border-left: 5px solid; margin-bottom: 0.75rem; }
+.alert-lavender { background: var(--lavender); border-color: var(--lavender-deep); }
+.alert-ice      { background: var(--ice);      border-color: var(--ice-deep); }
+.alert-white    { background: var(--white);    border-color: var(--lavender); }
+
+/* ---------- Table ---------- */
+.table-wrap { overflow-x: auto; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.8rem 1.1rem; text-align: left; border-bottom: 1px solid var(--line); }
+thead th { background: var(--lavender); font-weight: 600; letter-spacing: 0.06em; }
+tbody tr:nth-child(even) { background: var(--mist); }
+tbody tr:hover { background: var(--ice); }
+tbody tr:last-child td { border-bottom: 0; }
+
+/* ---------- Forms ---------- */
+.form-card { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); max-width: 560px; }
+label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; font-weight: 600; }
+input, select, textarea {
+  width: 100%; font: inherit; color: var(--text);
+  background: var(--white); border: 1.5px solid var(--lavender);
+  border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; margin-bottom: 1rem;
+}
+input::placeholder, textarea::placeholder { color: #a99fae; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--lavender-deep); box-shadow: 0 0 0 4px var(--ice); }
+input[type="checkbox"] { width: auto; accent-color: var(--lavender-deep); margin: 0 0.4rem 0 0; }
+
+/* ---------- Blockquote ---------- */
+blockquote { margin: 0; padding: 1.25rem 1.5rem; background: var(--ice); border-left: 4px solid var(--lavender-deep); border-radius: var(--radius-sm); font-family: var(--font-serif); font-style: italic; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--white); border-top: 4px solid var(--lavender); padding: 2rem 0; text-align: center; color: var(--text-muted); }
