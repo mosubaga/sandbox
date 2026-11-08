@@ -1,0 +1,168 @@
+/* =========================================================
+   Dreamy Theme — ドリーミー
+   寒色系＋ピンクを中心にした、淡いペールトーン
+   Lavender  #d7c4dd  (C13 M27 Y0 K0 / R215 G196 B221)
+   Pink      #f0d6e5  (C0 M23 Y0 K0  / R240 G214 B229)
+   White     #ffffff  (C0 M0 Y0 K0   / R255 G255 B255)
+   Ice Blue  #e0effb  (C17 M0 Y0 K0  / R224 G239 B251)
+   Text is near-black for readability on the pale tones.
+   ========================================================= */
+
+:root {
+  --lavender:      #d7c4dd;
+  --pink:          #f0d6e5;
+  --white:         #ffffff;
+  --ice-blue:      #e0effb;
+
+  /* Slightly deeper shades for hover, borders and focus */
+  --lavender-dark: #bfa3c9;
+  --pink-dark:     #e2b6cf;
+  --ice-dark:      #b9d6ef;
+  --line:          #e6dcec;
+
+  --text:          #1f1b24;
+  --text-muted:    rgba(31, 27, 36, 0.68);
+
+  --radius:        16px;
+  --radius-sm:     10px;
+  --shadow:        0 6px 24px rgba(160, 130, 180, 0.18);
+  --font-sans: "Avenir Next", "Helvetica Neue", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Arial, sans-serif;
+  --font-serif: "Didot", "Bodoni 72", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background-color: var(--white);
+  /* soft, dreamy glow in the corners */
+  background-image:
+    radial-gradient(circle at 10% 0%,  var(--pink)     0, transparent 40%),
+    radial-gradient(circle at 90% 20%, var(--ice-blue) 0, transparent 45%),
+    radial-gradient(circle at 50% 100%, var(--lavender) 0, transparent 50%);
+  background-attachment: fixed;
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 { color: var(--text); font-weight: 500; letter-spacing: 0.1em; line-height: 1.35; margin: 0 0 0.6em; }
+h1 { font-family: var(--font-serif); font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: 0.25em; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.2rem; }
+p  { margin: 0 0 1em; }
+small, .muted { color: var(--text-muted); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.78rem; color: var(--text-muted); }
+
+a { color: var(--text); text-decoration: underline; text-decoration-color: var(--lavender-dark); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+a:hover { text-decoration-color: var(--pink-dark); }
+
+hr { border: 0; height: 2px; margin: 2.5rem 0; background: linear-gradient(90deg, var(--pink), var(--lavender), var(--ice-blue)); }
+::selection { background: var(--lavender); color: var(--text); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.section   { padding: 3.5rem 0; }
+.grid      { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* ---------- Background utilities ---------- */
+.bg-lavender { background: var(--lavender); }
+.bg-pink     { background: var(--pink); }
+.bg-white    { background: var(--white); }
+.bg-ice      { background: var(--ice-blue); }
+.bg-dreamy   { background: linear-gradient(135deg, var(--pink), var(--lavender) 50%, var(--ice-blue)); }
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; flex-wrap: wrap; }
+.logo { font-family: var(--font-serif); font-size: 1.3rem; letter-spacing: 0.3em; }
+.nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav a { text-decoration: none; padding: 0.2rem 0; border-bottom: 2px solid transparent; }
+.nav a:hover, .nav a.active { border-bottom-color: var(--lavender-dark); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 6rem 0;
+  text-align: center;
+  background: linear-gradient(160deg, var(--pink) 0%, var(--lavender) 45%, var(--ice-blue) 100%);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block; font: inherit; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--text); padding: 0.7rem 1.6rem; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.btn-lavender { background: var(--lavender); }
+.btn-lavender:hover { background: var(--lavender-dark); }
+.btn-pink     { background: var(--pink); }
+.btn-pink:hover     { background: var(--pink-dark); }
+.btn-ice      { background: var(--ice-blue); }
+.btn-ice:hover      { background: var(--ice-dark); }
+.btn-white    { background: var(--white); border-color: var(--lavender); }
+.btn-white:hover    { border-color: var(--lavender-dark); box-shadow: var(--shadow); }
+.btn:focus-visible { outline: 2px solid var(--lavender-dark); outline-offset: 3px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.card.pink     { border-top: 4px solid var(--pink-dark); }
+.card.lavender { border-top: 4px solid var(--lavender-dark); }
+.card.ice      { border-top: 4px solid var(--ice-dark); }
+
+/* ---------- Swatches ---------- */
+.swatch { border-radius: var(--radius); padding: 1.25rem; min-height: 150px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--line); }
+.swatch code { font-size: 0.85rem; }
+
+/* ---------- Badges ---------- */
+.badge { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding: 0.2rem 0.75rem; border-radius: 999px; }
+.badge-lavender { background: var(--lavender); }
+.badge-pink     { background: var(--pink); }
+.badge-ice      { background: var(--ice-blue); }
+
+/* ---------- Alerts ---------- */
+.alert { padding: 1rem 1.25rem; border-radius: var(--radius-sm); border-left: 5px solid; margin-bottom: 1rem; }
+.alert-pink     { background: var(--pink);     border-color: var(--pink-dark); }
+.alert-lavender { background: var(--lavender); border-color: var(--lavender-dark); }
+.alert-ice      { background: var(--ice-blue); border-color: var(--ice-dark); }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; background: var(--white); }
+th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--line); }
+thead th { background: var(--lavender); font-weight: 600; letter-spacing: 0.08em; }
+tbody tr:nth-child(even) { background: var(--ice-blue); }
+tbody tr:hover { background: var(--pink); }
+
+/* ---------- Forms ---------- */
+label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; letter-spacing: 0.05em; }
+input, select, textarea {
+  width: 100%; font: inherit; color: var(--text);
+  background: var(--white); border: 1px solid var(--lavender);
+  border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; margin-bottom: 1rem;
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--lavender-dark); box-shadow: 0 0 0 4px var(--pink); }
+input[type="checkbox"], input[type="radio"] { width: auto; accent-color: var(--lavender-dark); margin: 0 0.4rem 0 0; }
+
+/* ---------- Blockquote ---------- */
+blockquote { margin: 0; padding: 1.25rem 1.5rem; border-radius: var(--radius-sm); border-left: 4px solid var(--lavender-dark); background: var(--ice-blue); font-family: var(--font-serif); font-style: italic; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: linear-gradient(90deg, var(--ice-blue), var(--lavender), var(--pink)); padding: 2rem 0; text-align: center; }

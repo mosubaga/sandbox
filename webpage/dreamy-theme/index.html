@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dreamy Theme — Style Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="logo">Dreamy</span>
+      <ul class="nav">
+        <li><a href="#palette" class="active">Palette</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#forms">Forms</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Catch the Dream</p>
+      <h1>Dreamy</h1>
+      <p>淡いペールトーンで、幻想的な世界観を。</p>
+      <a href="#palette" class="btn btn-white">View Palette</a>
+      <a href="#components" class="btn btn-pink">Components</a>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section id="palette" class="section">
+      <h2>Palette</h2>
+      <div class="grid">
+        <div class="swatch bg-lavender"><strong>Lavender</strong><code>#d7c4dd · R215 G196 B221</code></div>
+        <div class="swatch bg-pink"><strong>Pink</strong><code>#f0d6e5 · R240 G214 B229</code></div>
+        <div class="swatch bg-white"><strong>White</strong><code>#ffffff · R255 G255 B255</code></div>
+        <div class="swatch bg-ice"><strong>Ice Blue</strong><code>#e0effb · R224 G239 B251</code></div>
+      </div>
+      <br>
+      <div class="swatch bg-dreamy" style="min-height:90px"><strong>Gradient</strong><code>pink → lavender → ice blue</code></div>
+    </section>
+
+    <hr>
+
+    <section id="components" class="section">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <p>
+        <button class="btn btn-lavender">Lavender</button>
+        <button class="btn btn-pink">Pink</button>
+        <button class="btn btn-ice">Ice Blue</button>
+        <button class="btn btn-white">White</button>
+        <button class="btn btn-lavender" disabled>Disabled</button>
+      </p>
+
+      <h3>Badges</h3>
+      <p><span class="badge badge-lavender">NEW</span> <span class="badge badge-pink">LIMITED</span> <span class="badge badge-ice">FREE</span></p>
+
+      <h3>Cards</h3>
+      <div class="grid">
+        <div class="card pink"><h3>星に願いを</h3><p class="muted">Card with a pink top rule.</p><a href="#">Read more</a></div>
+        <div class="card lavender"><h3>月あかり</h3><p class="muted">Card with a lavender top rule.</p><a href="#">Read more</a></div>
+        <div class="card ice"><h3>ホログラム</h3><p class="muted">Card with an ice-blue top rule.</p><a href="#">Read more</a></div>
+      </div>
+
+      <br>
+      <h3>Alerts</h3>
+      <div class="alert alert-pink"><strong>Notice:</strong> A pink alert.</div>
+      <div class="alert alert-lavender"><strong>Info:</strong> A lavender alert.</div>
+      <div class="alert alert-ice"><strong>Tip:</strong> An ice-blue alert.</div>
+
+      <h3>Table</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>HEX</th><th>RGB</th><th>CMYK</th></tr></thead>
+          <tbody>
+            <tr><td>Lavender</td><td>#d7c4dd</td><td>215 / 196 / 221</td><td>13 / 27 / 0 / 0</td></tr>
+            <tr><td>Pink</td><td>#f0d6e5</td><td>240 / 214 / 229</td><td>0 / 23 / 0 / 0</td></tr>
+            <tr><td>White</td><td>#ffffff</td><td>255 / 255 / 255</td><td>0 / 0 / 0 / 0</td></tr>
+            <tr><td>Ice Blue</td><td>#e0effb</td><td>224 / 239 / 251</td><td>17 / 0 / 0 / 0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+      <blockquote>“Make a wish upon a star.”</blockquote>
+    </section>
+
+    <hr>
+
+    <section id="forms" class="section">
+      <h2>Forms</h2>
+      <form onsubmit="return false;">
+        <label for="name">お名前</label>
+        <input id="name" type="text" placeholder="山田 花子">
+        <label for="topic">Topic</label>
+        <select id="topic"><option>General</option><option>Event</option></select>
+        <label for="msg">Message</label>
+        <textarea id="msg" rows="4" placeholder="Your message…"></textarea>
+        <label><input type="checkbox" checked> Subscribe to updates</label>
+        <br>
+        <button class="btn btn-lavender" type="submit">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Dreamy Theme · <a href="#">Back to top</a></div>
+  </footer>
+
+</body>
+</html>
