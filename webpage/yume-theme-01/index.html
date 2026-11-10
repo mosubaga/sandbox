@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YumeKawa Dream Theme ✧ Style Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="yk-header">
+  <nav class="yk-nav yk-container">
+    <a href="#" class="yk-logo yk-gradient-text">ゆめかわ ✧</a>
+    <ul>
+      <li><a href="#palette" class="active">Palette</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#cards">Cards</a></li>
+      <li><a href="#forms">Forms</a></li>
+      <li><a href="#misc">Misc</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="yk-hero">
+  <h1 class="yk-gradient-text">ゆめかわドリーム配色</h1>
+  <p>A dreamy pastel theme in orchid, violet, sky &amp; aqua — YumeKawa (夢かわいい)</p>
+  <a href="#palette" class="yk-btn yk-btn-primary">Explore the theme</a>
+  <a href="#forms" class="yk-btn yk-btn-ghost">Try the forms</a>
+</section>
+
+<main class="yk-container">
+
+  <section id="palette">
+    <h2 class="yk-sparkle">Palette</h2>
+    <div class="yk-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+      <div class="yk-swatch yk-bg-orchid">#efadf4</div>
+      <div class="yk-swatch yk-bg-violet">#a191f0</div>
+      <div class="yk-swatch yk-bg-sky">#92c9f6</div>
+      <div class="yk-swatch yk-bg-aqua">#84dee6</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="typography">
+    <h2>Typography</h2>
+    <h1>Heading 1 見出し</h1>
+    <h3>Heading 3 — soft and rounded</h3>
+    <p>This is body text in <strong>Mulish</strong>. ゆめかわいいは「夢のようにかわいい」という意味です。
+       Here is <a href="#">an inline link</a> and some <code>inline code</code>.</p>
+    <blockquote>夢みたいにかわいい世界へようこそ。 — Welcome to a dreamy, cute world.</blockquote>
+  </section>
+
+  <hr>
+
+  <section id="buttons">
+    <h2>Buttons</h2>
+    <p style="display:flex; flex-wrap:wrap; gap:.75rem;">
+      <button class="yk-btn yk-btn-primary">Primary</button>
+      <button class="yk-btn yk-btn-orchid">Orchid</button>
+      <button class="yk-btn yk-btn-violet">Violet</button>
+      <button class="yk-btn yk-btn-sky">Sky</button>
+      <button class="yk-btn yk-btn-aqua">Aqua</button>
+      <button class="yk-btn">Default</button>
+      <button class="yk-btn yk-btn-ghost">Ghost</button>
+    </p>
+    <p>
+      <span class="yk-badge orchid">New</span>
+      <span class="yk-badge violet">Dreamy</span>
+      <span class="yk-badge sky">Airy</span>
+      <span class="yk-badge aqua">Calm</span>
+    </p>
+  </section>
+
+  <hr>
+
+  <section id="cards">
+    <h2>Cards</h2>
+    <div class="yk-grid">
+      <article class="yk-card orchid">
+        <span class="yk-badge orchid">オーキッド</span>
+        <h3>Orchid Dream</h3>
+        <p>Soft orchid for highlights, errors, and warm accents.</p>
+        <a href="#" class="yk-btn yk-btn-orchid">Read more</a>
+      </article>
+      <article class="yk-card violet">
+        <span class="yk-badge violet">バイオレット</span>
+        <h3>Violet Night</h3>
+        <p>Used for headings, table headers, and focus rings.</p>
+        <a href="#" class="yk-btn yk-btn-violet">Read more</a>
+      </article>
+      <article class="yk-card sky">
+        <span class="yk-badge sky">スカイ</span>
+        <h3>Sky Bubble</h3>
+        <p>A light sky blue for success states and calm sections.</p>
+        <a href="#" class="yk-btn yk-btn-sky">Read more</a>
+      </article>
+      <article class="yk-card aqua">
+        <span class="yk-badge aqua">アクア</span>
+        <h3>Aqua Wave</h3>
+        <p>Cool aqua for links and informational messages.</p>
+        <a href="#" class="yk-btn yk-btn-aqua">Read more</a>
+      </article>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="forms">
+    <h2>Forms</h2>
+    <div class="yk-card">
+      <form class="yk-form" onsubmit="event.preventDefault(); document.getElementById('formMsg').hidden = false;">
+        <div>
+          <label for="name">Name お名前</label>
+          <input id="name" class="yk-input" type="text" placeholder="ゆめこ">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" class="yk-input" type="email" placeholder="you@example.com">
+        </div>
+        <div>
+          <label for="fav">Favorite color</label>
+          <select id="fav" class="yk-select">
+            <option>Orchid</option><option>Violet</option><option>Sky</option><option>Aqua</option>
+          </select>
+        </div>
+        <div>
+          <label for="msg">Message</label>
+          <textarea id="msg" class="yk-textarea" placeholder="Write something dreamy..."></textarea>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center;">
+          <label class="yk-check"><input type="checkbox" checked> Subscribe</label>
+          <label class="yk-check"><input type="radio" name="r" checked> Option A</label>
+          <label class="yk-check"><input type="radio" name="r"> Option B</label>
+          <label class="yk-switch"><input type="checkbox" checked><span></span></label>
+        </div>
+        <div>
+          <label for="range">Sparkle level</label>
+          <input id="range" type="range" min="0" max="100" value="70" style="width:100%;">
+        </div>
+        <div>
+          <button class="yk-btn yk-btn-primary" type="submit">Send ✧</button>
+        </div>
+        <div id="formMsg" class="yk-alert success" hidden>送信しました！ Your message was sent.</div>
+      </form>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="misc">
+    <h2>Alerts</h2>
+    <div class="yk-alert info"><strong>Info:</strong> A gentle note in aqua.</div>
+    <div class="yk-alert success"><strong>Success:</strong> Everything went smoothly.</div>
+    <div class="yk-alert warning"><strong>Notice:</strong> Something worth a look.</div>
+    <div class="yk-alert error"><strong>Error:</strong> Oops, something went wrong.</div>
+
+    <h2>Table</h2>
+    <table class="yk-table">
+      <thead><tr><th>Color</th><th>Hex</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>Orchid</td><td><code>#efadf4</code></td><td>Accents, errors</td></tr>
+        <tr><td>Violet</td><td><code>#a191f0</code></td><td>Headings, focus</td></tr>
+        <tr><td>Sky</td><td><code>#92c9f6</code></td><td>Success</td></tr>
+        <tr><td>Aqua</td><td><code>#84dee6</code></td><td>Links, info</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Progress</h2>
+    <div class="yk-progress"><span style="width:72%"></span></div>
+  </section>
+
+</main>
+
+<footer class="yk-footer">
+  <p>© 2026 YumeKawa Theme ✧ made with pastel dreams</p>
+</footer>
+
+</body>
+</html>
